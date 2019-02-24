@@ -1,0 +1,58 @@
+@font-face {
+    font-family: Poet;
+    src: url("src/fonts/Poet.ttf");
+}
+/*Ficar com essa*/
+@font-face {
+    font-family: Signatra;
+    src: url("src/fonts/Signatra.otf");
+}
+
+.tela-login-container{
+    background: url("../../assets/bg-tela-login.jpeg") 100% 100%/cover;
+    width: 100%;
+    height: 100%;
+}
+.tela-login-form{
+    margin: 5%;
+    padding: 10% 8%;
+    font-weight: 400;
+    font: 25px Signatra;
+    border: 2px 2px 2px solid #ddd;
+    background: #FAFAFA;
+    border-radius: 20px;
+    -webkit-box-shadow: -5px 8px 20px 0px #777;
+    -moz-box-shadow: -5px 8px 20px 0px #777;
+    box-shadow: -5px 8px 20px 0px #777;
+}
+.ui-inputgroup-addon {
+    color: white !important;
+    background: #52AF72 !important;
+}
+
+.tela-login-titulos{
+    padding: 5%;
+    color: white;
+    font-family: Poet;
+    text-shadow: 2px 2px 2px rgb(41, 39, 39);
+}
+.tela-login-titulos h1{
+    font-size: 30px;
+}
+
+
+input, button{
+    font-weight: 200 !important;
+    font-family: Poet;
+    font-size: 15px;
+}
+
+input.ng-valid.ng-dirty{
+    border: 1px solid green;
+}
+input.ng-invalid.ng-dirty{
+    border: 1px solid red;
+}
+a{
+    color: inherit !important;
+}

@@ -1,0 +1,27 @@
+
+.menuSuperior{
+    border: 2px solid red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+}
+
+
+.menuLateral{
+    border: 2px solid black;
+    position: relative;
+    top: 50px;
+}
+
+
+.conteudoSite{
+    border: 2px solid green;
+    position: relative;
+    top: 50px;
+}
+
+.height100{
+    height: 100%;
+}
