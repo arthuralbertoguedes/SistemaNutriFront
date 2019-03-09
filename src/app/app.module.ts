@@ -6,13 +6,18 @@ import { AppComponent } from './app.component';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { TelaInicialModule } from './tela-inicial/tela-inicial.module';
+import { AuthguardService } from './guards/authguard.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Infos_globais } from './shared/constantes';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TelaLoginComponent,
-    TelaInicialComponent
+    TelaInicialComponent,
+    DashboardComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,10 @@ import { TelaInicialModule } from './tela-inicial/tela-inicial.module';
     
     
   ],
-  providers: [],
+  exports: [
+    
+  ],
+  providers: [AuthguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

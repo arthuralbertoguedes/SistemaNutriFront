@@ -5,7 +5,10 @@
             <div>
                 <ul>
                     <li>
-                        <a href="">Pacientes</a>
+                        <a routerLink="/home">Dashboard</a>
+                    </li>
+                    <li>
+                        <a routerLink="paciente">Pacientes</a>
                     </li>
                     <li>
                         <a href="">Consultas</a>
@@ -24,8 +27,7 @@
         </aside>
     </section>
     <section class="conteudoSite col-10" >
-            <app-paciente></app-paciente>
-
+            <router-outlet></router-outlet>
     </section>
 
 </div>
