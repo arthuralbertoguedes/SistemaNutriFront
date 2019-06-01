@@ -1,6 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+/* RESETS */
 body,html{
     height: 100%;
     overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
 
+/* CORES PRINCIPAIS */
+body{
+    --cor-primaria: rgb(6, 121, 6);
+}
+
+
+/* MATERIALIZE RESETS*/
+
+h1, h2, h3, h4, h5 {
+    font-size: 100% !important;
+    margin: 0 !important;
+}
+.modal{
+    height: auto;
+}
+
+.row{
+    margin: 0px;
+}
+
+i{
+    color: var(--cor-primaria);
+}
+
+[type="radio"]:checked + span:after, [type="radio"].with-gap:checked + span:after{
+    background-color: var(--cor-primaria);
+}    
