@@ -10,10 +10,10 @@ import { AuthguardService } from './guards/authguard.service';
 
 export const routes : Routes = [
   {path: 'login', component: TelaLoginComponent},
-  {path: 'home', component: TelaInicialComponent, canActivate: [AuthguardService], children: [
-      {path: 'paciente', component: PacienteComponent,  canActivate: [AuthguardService] },
-      {path: 'novo-paciente', component: NovoPacienteComponent, canActivate: [AuthguardService] },
-      {path: '', component: DashboardComponent, canActivate: [AuthguardService] }
+  {path: 'home', component: TelaInicialComponent, children: [
+      {path: 'paciente', component: PacienteComponent,  },
+      {path: 'novo-paciente', component: NovoPacienteComponent },
+      {path: '', component: DashboardComponent}
   ]
   },
   {path: '', redirectTo: '/login', pathMatch: 'full'},
