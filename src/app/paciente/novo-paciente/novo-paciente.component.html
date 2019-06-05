@@ -1,24 +1,33 @@
 <section>
         <div class="container-fluid">
                 <div class="col-10 mx-auto">
-                        <form action="" class="formulario_container">
+                        <form class="formulario_container" [formGroup]="novoPacienteFormulario"  novalidate>
                                 <h2>Cadastrar paciente</h2>
                                 <div class="row">
                                         <div class="input-field col-sm-12 col-md-12">
                                                 <i class="material-icons prefix">account_circle</i>
-                                                <input  id="nome" type="text" class="validate">
+                                                <input  id="nome" 
+                                                        type="text" 
+                                                        class="validate" 
+                                                        formControlName="nomeCompleto">
                                                 <label for="nome">Nome Completo</label>
                                         </div>
                                 </div>
                                 <div class="row">
                                         <div class="input-field col-sm-12 col-md-6">
                                                 <i class="material-icons prefix">phone</i>
-                                                <input  id="telefone" type="text" class="validate">
+                                                <input  id="telefone" 
+                                                        type="text" 
+                                                        class="validate"
+                                                        formControlName="telefone" >
                                                 <label for="telefone">Telefone</label>
                                         </div>
                                         <div class="input-field col-sm-12 col-md-6" >
                                                 <i class="material-icons prefix">map</i>
-                                                <input id="estado" type="text" class="validate">
+                                                <input  id="estado" 
+                                                        type="text" 
+                                                        class="validate"
+                                                        formControlName="estado">
                                                 <label for="estado">Estado</label>
                                                
                                         </div>
@@ -27,61 +36,77 @@
                                         <div class="input-field col-sm-12 col-md-6">
                                                 <i class="material-icons prefix">date_range</i>
                                                 <label for="data">Data de nascimento</label>
-                                                <input id="data" type="text" class="datepicker">
+                                                <input  id="data" 
+                                                        type="text" 
+                                                        class="datepicker"
+                                                        formControlName="dataDeNascimento">
                                         </div>
                                         <div class="input-field col-sm-12 col-md-6" >
                                                 <i class="material-icons prefix">location_city</i>
-                                                <input id="cidade" type="text" class="validate">
+                                                <input id="cidade" 
+                                                        type="text" 
+                                                        class="validate"
+                                                        formControlName="cidade">
                                                 <label for="cidade">Cidade</label>
                                         </div>
                                 </div>
                                 <div class="row">
                                         <div class="input-field col-sm-12 col-md-6">
-                                                <i class="material-icons prefix">phone</i>
-                                                <input  id="telefone" type="text" class="validate">
-                                                <label for="telefone">Telefone</label>
+                                                <i class="material-icons prefix">laptop</i>
+                                                <input  id="email" 
+                                                        type="text" 
+                                                        class="validate"
+                                                        formControlName="email">
+                                                <label for="email">Email</label>
                                         </div>
-                                        <div class="input-field col-sm-12 col-md-6" >
-                                        
+                                        <div class="input-field col-sm-12 col-md-6" >               
                                                 <i class="material-icons prefix">domain</i>
-                                                <input id="cep" type="text" class="validate">
+                                                <input id="cep" 
+                                                        type="text" 
+                                                        class="validate"
+                                                        formControlName="cep">
                                                 <label for="cep">CEP</label>
                                         </div>
                                 </div>
                                 <div class="row">
                                         <div class="input-field col-sm-12 col-md-6">
-                                                <i class="material-icons prefix">laptop</i>
-                                                <input  id="email" type="text" class="validate">
-                                                <label for="email">Email</label>
+                                                <i class="material-icons prefix">wc</i>
+                                                <br/>
+                                                <label id="genero">
+                                                        <input name="genero" 
+                                                                type="radio" 
+                                                                value="M" 
+                                                                formControlName="genero" />
+                                                        <span>Masculino</span>
+                                                </label> 
+                                                
+                                                <label style="margin-left: 190px;">
+                                                        <input name="genero" 
+                                                                type="radio" 
+                                                                value="F"
+                                                                formControlName="genero" />
+                                                        <span>Feminino</span>
+                                                </label>                                            
                                         </div>
-                                        <div class="input-field col-sm-12 col-md-6" >
-                                                        
+                                        <div class="input-field col-sm-12 col-md-6" >                      
                                                 <i class="material-icons prefix">markunread</i>
-                                                <input id="endereco" type="text" class="validate">
+                                                <input id="endereco" 
+                                                        type="text" 
+                                                        class="validate"
+                                                        formControlName="endereco">
                                                 <label for="endereco">Endereço</label>
                                         </div>
                                 </div>
-                                <div class="row">
-                                          <div class="col-sm-12 col-md-6">                                                            
-                                                <i class="material-icons prefix">wc</i>
-                                                <label for="genero">Gênero</label>
-                                                <br/>
-                                                <label id="genero">
-                                                        <input name="genero" type="radio" checked />
-                                                        <span>Masculino</span>
-                                                </label>         
-                                                 <label>
-                                                        <input name="genero" type="radio" />
-                                                        <span>Feminino</span>
-                                                </label>                                 
-                                          </div>
-                                </div>
                                 <div class="row mt-3 ">
-                                        <button class="btn waves-effect waves-light ml-auto" type="button" name="action">Limpar
-                                                <i class="material-icons right">refresh</i>
+                                        <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
+                                                <i class="material-icons right" style="color: white;" >refresh</i>
                                         </button>
-                                        <button class="btn waves-effect waves-light mx-3" type="button" name="action">Cadastrar
-                                                <i class="material-icons right">send</i>
+                                        <button class="btn waves-effect waves-light mx-3" 
+                                                type="button" 
+                                                name="action" 
+                                                (click)="salvar()"
+                                                [disabled]="false">Cadastrar
+                                                <i class="material-icons right" style="color: white;">send</i>
                                         </button>                       
                                 </div>
                         </form>

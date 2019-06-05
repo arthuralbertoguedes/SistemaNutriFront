@@ -7,17 +7,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NovoPacienteComponent } from './novo-paciente/novo-paciente.component';
 import { RouterModule } from '../../../node_modules/@angular/router';
 import { AuthguardService } from '../guards/authguard.service';
+import { ReactiveFormsModule, FormBuilder } from '../../../node_modules/@angular/forms';
+import { PacienteService } from './paciente.service';
+
 @NgModule({
-  declarations: [PacienteComponent, NovoPacienteComponent],
+  declarations: [PacienteComponent, 
+                 NovoPacienteComponent],
   imports: [
     CommonModule,
     FieldsetModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     PacienteComponent
   ],
-  providers: [AuthguardService]
+  providers: [AuthguardService,
+              FormBuilder,
+              PacienteService  ]
 })
 export class PacienteModule { }

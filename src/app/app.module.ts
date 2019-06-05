@@ -8,8 +8,7 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { TelaInicialModule } from './tela-inicial/tela-inicial.module';
 import { AuthguardService } from './guards/authguard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Infos_globais } from './shared/constantes';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,9 +22,10 @@ import { Infos_globais } from './shared/constantes';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    TelaInicialModule
-    
-    
+    TelaInicialModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  
   ],
   exports: [
     

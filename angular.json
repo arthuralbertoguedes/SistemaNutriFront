@@ -63,7 +63,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SistemaNutri:build"
+            "browserTarget": "SistemaNutri:build",
+            "proxyConfig": "proxy.config.js"
           },
           "configurations": {
             "production": {

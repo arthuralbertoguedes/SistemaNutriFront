@@ -7,6 +7,7 @@ import { NovoPacienteComponent } from './paciente/novo-paciente/novo-paciente.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CanActivate } from '../../node_modules/@angular/router/src/utils/preactivation';
 import { AuthguardService } from './guards/authguard.service';
+import { ReactiveFormsModule } from '../../node_modules/@angular/forms';
 
 export const routes : Routes = [
   {path: 'login', component: TelaLoginComponent},
@@ -21,7 +22,8 @@ export const routes : Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)
+],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
