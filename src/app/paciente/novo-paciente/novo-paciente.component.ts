@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { PacienteService } from '../paciente.service';
+import { Paciente } from '../Paciente.model';
+import { Utilitarios } from '../../recursos/utilitarios';
 
 @Component({
   selector: 'app-novo-paciente',
@@ -16,25 +18,24 @@ export class NovoPacienteComponent implements OnInit {
 
   ngOnInit() {
         this.novoPacienteFormulario = this.formBuilder.group({
-            'nomeCompleto': ['', Validators.required],
+            'nome': ['', Validators.required],
             'telefone': ['', Validators.required],
             'estado': ['', Validators.required],
-            'dataDeNascimento': ['', Validators.required],
+            'dataNascimento': ['', Validators.required],
             'cidade': ['', Validators.required],
             'email': ['', Validators.required],
             'cep': ['', Validators.required],
             'endereco': ['', Validators.required],
-            'genero': ['M']
+            'genero': ['M'],
+            'dataCadastro': ['']
         }) 
-        this.novoPacienteFormulario.get('dataDeNascimento').valueChanges.subscribe((e)=>{
-            console.log('aaaa');
-        })
+
 
         
     }   
 
 
-
+/*
     public teste() : void{
         let resposta$ = this._pacienteService.teste();
         resposta$.subscribe(
@@ -43,10 +44,19 @@ export class NovoPacienteComponent implements OnInit {
             ()=>{console.log("fim da requisição")}
 
         );
-    }
+    }*/
 
     public salvar() : void{
-        this._pacienteService.salvar().subscribe(
+        let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
+        let dataFormatada = Utilitarios.gerarData(dataSelecionada);
+        let dataCadastro = Utilitarios.getDataAtual();
+ 
+        this.novoPacienteFormulario.get('dataNascimento').setValue(dataFormatada);
+        this.novoPacienteFormulario.get('dataCadastro').setValue(dataCadastro);
+
+        let modelSalvar = this.novoPacienteFormulario.value;
+        
+        this._pacienteService.salvar(modelSalvar).subscribe(
             (res)=>{console.log(res)}
         );
     }
