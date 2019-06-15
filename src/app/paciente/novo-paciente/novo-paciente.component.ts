@@ -34,18 +34,6 @@ export class NovoPacienteComponent implements OnInit {
         
     }   
 
-
-/*
-    public teste() : void{
-        let resposta$ = this._pacienteService.teste();
-        resposta$.subscribe(
-            (res)=>{console.log(res)},
-            (err)=>{console.log(err)},
-            ()=>{console.log("fim da requisição")}
-
-        );
-    }*/
-
     public salvar() : void{
         let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
         let dataFormatada = Utilitarios.gerarData(dataSelecionada);

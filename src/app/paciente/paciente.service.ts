@@ -18,4 +18,17 @@ export class PacienteService {
        map(res=>res)
     )
   }
+
+  public listarTodos(): Observable<Paciente[]> {
+      return this.http.get<Paciente[]>(this.url+"/paciente/listarTodos")
+      .pipe(
+          map(resposta=>{
+            return resposta;
+          })
+      )
+  }
+
+  public listarPorNome(nomePaciente: string): Observable<Paciente[]>{
+      return this.http.get<Paciente[]>(this.url + "/paciente/listarPorNome/" + nomePaciente );
+  }
 }

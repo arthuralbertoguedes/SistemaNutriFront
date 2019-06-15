@@ -1,7 +1,6 @@
 /* RESETS */
 body,html{
     height: 100%;
-    overflow: hidden;
     padding: 0;
     margin: 0;
 }
@@ -47,8 +46,14 @@ i{
     color: white;
 }
 
+.ui-autocomplete{
+    width: 95%;
+    margin-left: 5%;
+}
 
-
+.ui-calendar{
+    width: 100%;
+}
 /* DEFINIÇÕES DE ESTILOS DA APLICAÇÃO */ 
 
 h2{

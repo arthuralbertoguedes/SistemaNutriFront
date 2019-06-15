@@ -1,2 +1,28 @@
-<h1>Tela inicial para cadastrar pacientes</h1>
+<h1>Pacientes</h1>
 <a  routerLink="/home/novo-paciente">cadastrar </a>
+
+<div class="container-fluid">
+    <p-dataView [value]="pacientes">
+        <ng-template let-paciente pTemplate="listItem">
+            <!--Container com cada paciente-->
+            <div class="col-sm-12 col-md-12 col-lg-6 container-paciente">
+                <div class="row">
+                    <div class="col-4">
+                        <img  class="img-fluid" src="http://localhost:4200/assets/paciente1.jpg" alt="">
+                    </div>    
+                    <div class="col-6">
+                        {{paciente.nome}}
+                        <br/>
+                        Consulta agendada em:
+                        <br/>
+                        {{paciente.telefone}}
+                    </div> 
+                    <div class="col-1">
+                        <button>Ver paciente</button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView> 
+</div>
+

@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <form action="" novalidate class="formulario_container" [formGroup]="novaConsultaFormulario">
+        <h1>Nova consulta</h1>
+        <div class="row">
+            <div class="input-field col-sm-12 col-md-6">
+                <i class="material-icons prefix">date_range</i>
+                        <input  id="data" 
+                                type="text" 
+                                class="datepicker"
+                                placeholder="Data da consulta"
+                        >
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <h3>Horário início </h3>
+                <p-calendar  [timeOnly]="true"
+                             (onSelect)="vincularHorarioInicio($event)"   
+                >
+            </p-calendar>
+            </div>    
+            <div class="col-sm-12 col-md-3">     
+                <h3 style="">Horário fim </h3>
+                <p-calendar  [timeOnly]="true"
+                             (onSelect)="vincularHorarioFim($event)"  
+                >
+                </p-calendar>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col-sm-1 col-md-1">     
+                <i class="material-icons prefix">textsms</i>
+            </div> 
+            <div class="col-sm-12 col-md-12" >
+                <p-autoComplete
+                                [suggestions]="listaPacientes" 
+                                (completeMethod)="listarPacientes($event.query)"
+                                (onSelect)="vincularPaciente($event)" 
+                                field="nome" 
+                                [size]="30"
+                                [minLength]="1"
+                                placeholder="Nome do paciente"
+                                >
+                </p-autoComplete>
+            </div>
+        </div>
+       <div class="row mt-4">  
+                <div class="input-field col-sm-12 col-md-12">
+                <i class="material-icons prefix">speaker_notes</i>
+                        <input  type="text" 
+                                class="validate" 
+                                formControlName="informacoesAdicionais"
+                                placeholder="Informações Adicionais">
+                </div>
+        </div>
+        <div class="row mt-4 ">
+                <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
+                        <i class="material-icons right" style="color: white;" >refresh</i>
+                </button>
+                <button class="btn waves-effect waves-light mx-3" 
+                        type="button" 
+                        name="action" 
+                        (click)="salvar()"
+                         >Salvar
+                        <i class="material-icons right" style="color: white;">send</i>
+                </button>                       
+        </div>
+    </form>
+</div>

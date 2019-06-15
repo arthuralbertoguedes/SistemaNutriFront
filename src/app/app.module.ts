@@ -9,14 +9,15 @@ import { TelaInicialModule } from './tela-inicial/tela-inicial.module';
 import { AuthguardService } from './guards/authguard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ConsultaModule } from './consulta/consulta.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TelaLoginComponent,
     TelaInicialComponent,
-    DashboardComponent
-    
+    DashboardComponent  
   ],
   imports: [
     BrowserModule,
@@ -24,8 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     TelaInicialModule,
     ReactiveFormsModule,
-    HttpClientModule
-  
+    HttpClientModule,
+    ConsultaModule
   ],
   exports: [
     

@@ -9,6 +9,7 @@ import { RouterModule } from '../../../node_modules/@angular/router';
 import { AuthguardService } from '../guards/authguard.service';
 import { ReactiveFormsModule, FormBuilder } from '../../../node_modules/@angular/forms';
 import { PacienteService } from './paciente.service';
+import { DataViewModule } from '../../../node_modules/primeng/dataview';
 
 @NgModule({
   declarations: [PacienteComponent, 
@@ -18,7 +19,8 @@ import { PacienteService } from './paciente.service';
     FieldsetModule,
     BrowserAnimationsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataViewModule
   ],
   exports: [
     PacienteComponent
