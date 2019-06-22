@@ -23,11 +23,13 @@ export class NovaConsultaComponent implements OnInit {
   ngOnInit() { 
       this.novaConsultaFormulario = this.fb.group({
         'informacoesAdicionais': ['', Validators.required],
-        'pacienteId': [''],
+        'idPaciente': [''],
         'dataConsulta': [''],
         'horarioInicio': [''],
         'horarioFim': ['']
       })
+
+    
   }
 
 
@@ -41,23 +43,30 @@ export class NovaConsultaComponent implements OnInit {
   }
 
   public vincularPaciente(event): void{
-     this.novaConsultaFormulario.get('pacienteId').setValue(event.id);
+     this.novaConsultaFormulario.get('idPaciente').setValue(event.id);
   }
 
   public vincularHorarioInicio(event): void{
-      this.novaConsultaFormulario.get('horarioInicio').setValue(event);
+      let horarioInicio = Utilitarios.pegarHorarioData(event.toString());
+      this.novaConsultaFormulario.get('horarioInicio').setValue(horarioInicio);
   }
 
   public vincularHorarioFim(event): void{
-      this.novaConsultaFormulario.get('horarioFim').setValue(event);
+      let horarioFim = Utilitarios.pegarHorarioData(event.toString());
+      this.novaConsultaFormulario.get('horarioFim').setValue(horarioFim);
   }
 
   public salvar(){
         let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
-        this.novaConsultaFormulario.get('dataConsulta').setValue(dataSelecionada);
+        let dataFormatada = Utilitarios.gerarData(dataSelecionada);
+        this.novaConsultaFormulario.get('dataConsulta').setValue(dataFormatada);
         
-        let consulta = new Consulta();
+        let consulta = this.novaConsultaFormulario.value;
+        console.log(consulta)
         this.consultaService.salvarConsulta(consulta)
-        console.log(this.novaConsultaFormulario.value);
+        .subscribe(
+            res=>console.log(res),
+            erro=>console.log(erro)
+        )
   }
 }

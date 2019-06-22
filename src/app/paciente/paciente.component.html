@@ -18,7 +18,8 @@
                         {{paciente.telefone}}
                     </div> 
                     <div class="col-1">
-                        <button>Ver paciente</button>
+                        <button (click)="verInformacoesPaciente(paciente)" >Ver paciente</button>
+                        <button (click)="iniciarAtendimento(paciente)" >Iniciar Avaliação</button>
                     </div>
                 </div>
             </div>

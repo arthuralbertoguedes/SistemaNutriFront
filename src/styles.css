@@ -14,7 +14,7 @@ body{
 /* MATERIALIZE RESETS*/
 
 h1, h2, h3, h4, h5 {
-    font-size: 100% !important;
+   /* font-size: 100% !important; */
     margin: 0 !important;
 }
 
@@ -68,3 +68,4 @@ h2{
 	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 }
+

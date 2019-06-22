@@ -10,6 +10,8 @@ import { AuthguardService } from './guards/authguard.service';
 import { ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { ConsultaComponent } from './consulta/consulta.component';
 import { NovaConsultaComponent } from './consulta/nova-consulta/nova-consulta.component';
+import { PacienteDetalhadoComponent } from './paciente/paciente-detalhado/paciente-detalhado.component';
+import { AvaliacaoComponent } from './avaliacao/avaliacao.component';
 
 export const routes : Routes = [
   {path: 'login', component: TelaLoginComponent},
@@ -17,7 +19,9 @@ export const routes : Routes = [
       {path: 'paciente', component: PacienteComponent,  },
       {path: 'novo-paciente', component: NovoPacienteComponent },
       {path: 'consulta', component: ConsultaComponent},
-      {path: 'nova-consulta', component: NovaConsultaComponent}
+      {path: 'nova-consulta', component: NovaConsultaComponent},
+      {path: 'paciente-detalhado/:id', component: PacienteDetalhadoComponent},
+      {path: 'iniciar-avaliacao/:id', component: AvaliacaoComponent}
   ]
   },
   {path: '', redirectTo: '/login', pathMatch: 'full'},

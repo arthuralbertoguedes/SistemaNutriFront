@@ -10,10 +10,11 @@ import { AuthguardService } from '../guards/authguard.service';
 import { ReactiveFormsModule, FormBuilder } from '../../../node_modules/@angular/forms';
 import { PacienteService } from './paciente.service';
 import { DataViewModule } from '../../../node_modules/primeng/dataview';
+import { PacienteDetalhadoComponent } from './paciente-detalhado/paciente-detalhado.component';
 
 @NgModule({
   declarations: [PacienteComponent, 
-                 NovoPacienteComponent],
+                 NovoPacienteComponent, PacienteDetalhadoComponent],
   imports: [
     CommonModule,
     FieldsetModule,
