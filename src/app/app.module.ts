@@ -10,8 +10,8 @@ import { AuthguardService } from './guards/authguard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ConsultaModule } from './consulta/consulta.module';
-import { AvaliacaoComponent } from './avaliacao/avaliacao.component';
 import { UtilitariosModule } from './utilitarios/utilitarios.module';
+import { AvaliacaoModule } from './avaliacao/avaliacao.module';
 
 
 @NgModule({
@@ -19,8 +19,7 @@ import { UtilitariosModule } from './utilitarios/utilitarios.module';
     AppComponent,
     TelaLoginComponent,
     TelaInicialComponent,
-    DashboardComponent,
-    AvaliacaoComponent  
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +29,8 @@ import { UtilitariosModule } from './utilitarios/utilitarios.module';
     ReactiveFormsModule,
     HttpClientModule,
     ConsultaModule,
-    UtilitariosModule
+    UtilitariosModule,
+    AvaliacaoModule
   ],
   exports: [
     

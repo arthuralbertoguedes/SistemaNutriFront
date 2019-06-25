@@ -34,6 +34,10 @@ i{
     color: var(--cor-primaria);
 }
 
+label{
+    width: 100%;
+}
+
 .btn, .btn-large, .btn-small{
     background-color: var(--cor-primaria) !important;
 }

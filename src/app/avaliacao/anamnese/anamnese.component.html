@@ -1,0 +1,300 @@
+<div class="container-fluid">
+  <div class="col-12">
+      <h1>Anamneses</h1>
+      <form novalidate [formGroup]="anamneseForm">
+          <div class="col-8">
+              <label>Nome do paciente aqui</label>
+              <label>Idade aqui</label>
+              <label>Sexo aqui</label>   
+          </div>
+          <div class="col-12 card p-4 mx-auto">
+              <h3>Caso clínico</h3>
+              <input type="text" size="200" formControlName="casoClinico">
+              <span>Objetivo do paciente:</span>
+              <input type="text" formControlName="objetivo">
+          </div>
+          <div class="row">
+                   <!--Hábitos alimentares-->
+                <div class="col-12 col-md-8 p-4">
+                    <h3>Hábitos alimentares</h3>
+                    <div>
+                        <span>Frequência refeições fora de casa</span>
+                    </div>
+                    <div >
+                        <label>
+                            <input class="with-gap" 
+                                   name="refeicoesFora" 
+                                   type="radio" 
+                                   checked 
+                                   formControlName="refeicoesFora"
+                                   value="B"/>
+                            <span>Baixa</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" 
+                                   name="refeicoesFora" 
+                                   type="radio" 
+                                   formControlName="refeicoesFora"
+                                   value="M"/>
+                            <span>Moderada</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" 
+                                   name="refeicoesFora" 
+                                   type="radio" 
+                                   formControlName="refeicoesFora"
+                                   value="A"/>
+                            <span>Alta</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <span>Apetite</span>
+                    </div>
+                    <div >
+                        <label>
+                            <input class="with-gap" 
+                                   name="apetite" 
+                                   type="radio" 
+                                   checked 
+                                   formControlName="apetite"
+                                   value="B"/>
+                            <span>Baixo</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" 
+                                   name="apetite" 
+                                   type="radio" 
+                                   formControlName="apetite"
+                                   value="N"/>
+                            <span>Normal</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" 
+                                   name="apetite" 
+                                   type="radio" 
+                                   formControlName="apetite"
+                                   value="A"/>
+                            <span>Alto</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input class="with-gap" type="number" />
+                            <span>Quantidade de refeições diárias</span>
+                        </label>
+                    </div>
+                    <div >
+                        <label>
+                            <input class="with-gap" type="text" />
+                            <span>Suplementos</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input class="with-gap" type="text" />
+                            <span>Alimentos mais consumidos</span>
+                        </label>
+                    </div>
+                </div>
+                <!--Hábitos de vida-->
+                <div class="col-12 col-md-4 card p-4">
+                    <h3>Hábitos de vida  </h3>
+                    <div>
+                        <br/>
+                        <span>Fumante</span>
+                        <br/>
+                        <label>
+                            <input class="with-gap" 
+                                   name="fumante" 
+                                   type="radio" 
+                                   checked
+                                   value="S"/>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" 
+                                   name="fumante" 
+                                   type="radio" 
+                                   value="N"/>
+                            <span>Não</span>
+                        </label>                    
+                    </div>
+                    <div>
+                        <br/>
+                        <span>Bebidas alcóolicas?</span>
+                        <br/>
+                        <label>
+                            <input class="with-gap" 
+                                   name="bebidas" 
+                                   type="radio" 
+                                   checked
+                                   formControlName="bebidas"
+                                   value="S"
+                                   />
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" 
+                                   name="bebidas" 
+                                   type="radio"  
+                                   formControlName="bebidas"
+                                   value="N"/>
+                            <span>Não</span>
+                        </label>                    
+                    </div>
+                    <div>
+                        <br/>
+                        <span>Academia?</span>
+                        <br/>
+                        <label>
+                            <input class="with-gap" 
+                                   name="academia" 
+                                   type="radio" 
+                                   checked
+                                   formControlName="academia"
+                                   value="S"/>
+                            <span>Sim</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" 
+                                   name="academia" 
+                                   type="radio" 
+                                   formControlName="academia"
+                                   value="N"/>
+                            <span>Não</span>
+                        </label>                    
+                    </div>
+                    <div>
+                        <label>
+                            <input class="with-gap" type="text" formControlName="atividadesFisicas"/>
+                            <span>Atividades físicas</span>
+                        </label>
+                    </div>      
+                    <div>
+                        <label>
+                            <input class="with-gap" type="number" name="tempoDeSono" formControlName="tempoDeSono" />
+                            <span>Tempo de sono</span>
+                        </label>
+                    </div> 
+                    <div>
+                        <br/>
+                        <span>Qualidade do sono</span>
+                        <br/>
+                        <label>
+                            <input class="with-gap" 
+                                   name="qualidadeSono" 
+                                   type="radio" 
+                                   checked
+                                   formControlName="qualidadeSono"
+                                   value="B"
+                                   />
+                            <span>Boa</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" 
+                                   name="qualidadeSono" 
+                                   type="radio"  
+                                   formControlName="qualidadeSono"
+                                   value="R"/>
+                            <span>Ruim</span>
+                        </label>                    
+                    </div>                   
+                </div>
+          </div>
+          <!--Informações clínicas-->
+          <div class="row">
+                <h3>Informações clínicas</h3>
+                <br/>
+                <div class="col-12">
+                    <br/>
+                    <span>Gestante?</span>
+                    <br/>
+                    <label>
+                        <input class="with-gap" 
+                               name="gestante" 
+                               type="radio" 
+                               checked
+                               formControlName="gestante"
+                               value="S"/>
+                        <span>Sim</span>
+                    </label>
+                    <label>
+                        <input class="with-gap" 
+                               name="gestante" 
+                               type="radio" 
+                               formControlName="gestante"
+                               value="N"/>
+                        <span>Não</span>
+                    </label>                    
+                </div>
+                <div class="col-12">
+                    <br/>
+                    <span>Diabetes?</span>
+                    <br/>
+                    <label>
+                        <input class="with-gap" 
+                               name="diabetes" 
+                               type="radio" 
+                               checked
+                               formControlName="diabetes"
+                               value="S"/>
+                        <span>Sim</span>
+                    </label>
+                    <label>
+                        <input class="with-gap" 
+                               name="diabetes" 
+                               type="radio" 
+                               formControlName="diabetes"
+                               value="N"/>
+                        <span>Não</span>
+                    </label>                    
+                </div>
+                <div class="col-12">
+                    <div>
+                        <label>
+                            <input class="with-gap" type="text" formControlName="alergias"/>
+                            <span>Alergias</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div>
+                        <label>
+                            <input class="with-gap" type="text" formControlName="sintomas"/>
+                            <span>Sintomas e queixas</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div>
+                        <label>
+                            <input class="with-gap" type="text" formControlName="doencas"/>
+                            <span>Doenças crônicas</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div>
+                        <label>
+                            <input class="with-gap" type="text" formControlName="observacoes"/>
+                            <span>Observações adicionais</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
+                        <i class="material-icons right" style="color: white;" >refresh</i>
+                    </button>
+                    <button class="btn waves-effect waves-light mx-3" 
+                            type="button" 
+                            name="action" 
+                            (click)="salvar()"
+                            >Salvar
+                            <i class="material-icons right" style="color: white;">send</i>
+                    </button> 
+                </div>
+          </div>
+      </form>
+  </div>
+</div>
