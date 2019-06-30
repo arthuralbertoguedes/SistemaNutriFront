@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
+import { AnamneseService } from './anamnese.service';
 
 
 
@@ -13,7 +14,8 @@ export class AnamneseComponent implements OnInit {
   public anamneseForm: FormGroup;
   @Output() chamarPasso2: EventEmitter<string> = new EventEmitter();
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private _service: AnamneseService) { }
 
   ngOnInit() {
 
@@ -22,23 +24,31 @@ export class AnamneseComponent implements OnInit {
       'casoClinico': [''],
       'refeicoesFora': ['B'],
       'apetite': ['B'],
-      'fumante': ['S'],
-      'bebidas': ['S'],
-      'academia': ['S'],
+      'fumante': ['true'],
+      'bebidas': ['true'],
+      'academia': ['true'],
       'atividadesFisicas': [''],
       'tempoDeSono': [''],
-      'qualidadeSono': ['B'],
-      'gestante': ['S'],
-      'diabetes': ['S'],
+      'qualidadeDeSono': ['B'],
+      'gestante': ['true'],
+      'diabetes': ['true'],
       'alergias': [''],
       'sintomas': [''],
       'doencas': [''],
-      'observacoes': ['']
+      'observacoes': [''],
+      'quantidadeRefeicoes': [''],
+      'suplementos': [''],
+      'alimentosConsumidos': ['']
     });
   }
 
   public salvar(): void{
-      console.log(this.anamneseForm.value)
-      this.chamarPasso2.emit('passo2');
+      //this.chamarPasso2.emit('passo2');
+      console.log(this.anamneseForm.value);
+      let model = this.anamneseForm.value;
+      this._service.salvar(model).subscribe(
+          res=>console.log(res)
+
+      );
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '../../../../node_modules/@angular/forms';
+import { AntropometriaService } from './antropometria-service';
 
 @Component({
   selector: 'antropometria',
@@ -10,7 +11,8 @@ export class AntropometriaComponent implements OnInit {
 
   public antropometriaForm : FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, 
+              private _antropometriaService: AntropometriaService) { }
 
   ngOnInit() {
     this.antropometriaForm = this.fb.group({
@@ -30,8 +32,21 @@ export class AntropometriaComponent implements OnInit {
       'panturrilhaEsquerda': [''],
       'panturrilhaDireita': [''],
       'coxaEsquerda': [''],
-      'coxaDireita': ['']
+      'coxaDireita': [''],
+      'pescoco': [''],
+      'ombro': [''],
+      'peitoral': [''],
+      'cintura': ['']
+
     })
+  }
+
+  salvar(): void{
+    this._antropometriaService.salvar(this.antropometriaForm.value).subscribe(
+            res=>alert('salvou'),
+            (erro)=>console.log(erro)
+        );
+
   }
 
 }

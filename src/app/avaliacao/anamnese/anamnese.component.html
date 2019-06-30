@@ -66,7 +66,7 @@
                                    name="apetite" 
                                    type="radio" 
                                    formControlName="apetite"
-                                   value="N"/>
+                                   value="false"/>
                             <span>Normal</span>
                         </label>
                         <label>
@@ -80,19 +80,19 @@
                     </div>
                     <div>
                         <label>
-                            <input class="with-gap" type="number" />
+                            <input class="with-gap" type="number" formControlName="quantidadeRefeicoes"/>
                             <span>Quantidade de refeições diárias</span>
                         </label>
                     </div>
                     <div >
                         <label>
-                            <input class="with-gap" type="text" />
+                            <input class="with-gap" type="text" formControlName="suplementos"/>
                             <span>Suplementos</span>
                         </label>
                     </div>
                     <div>
                         <label>
-                            <input class="with-gap" type="text" />
+                            <input class="with-gap" type="text" formControlName="alimentosConsumidos"/>
                             <span>Alimentos mais consumidos</span>
                         </label>
                     </div>
@@ -109,14 +109,16 @@
                                    name="fumante" 
                                    type="radio" 
                                    checked
-                                   value="S"/>
+                                   value="true"
+                                   formControlName="fumante"/>
                             <span>Sim</span>
                         </label>
                         <label>
                             <input class="with-gap" 
                                    name="fumante" 
                                    type="radio" 
-                                   value="N"/>
+                                   value="false"
+                                   formControlName="fumante"/>
                             <span>Não</span>
                         </label>                    
                     </div>
@@ -130,7 +132,7 @@
                                    type="radio" 
                                    checked
                                    formControlName="bebidas"
-                                   value="S"
+                                   value="true"
                                    />
                             <span>Sim</span>
                         </label>
@@ -139,7 +141,7 @@
                                    name="bebidas" 
                                    type="radio"  
                                    formControlName="bebidas"
-                                   value="N"/>
+                                   value="false"/>
                             <span>Não</span>
                         </label>                    
                     </div>
@@ -153,7 +155,7 @@
                                    type="radio" 
                                    checked
                                    formControlName="academia"
-                                   value="S"/>
+                                   value="true"/>
                             <span>Sim</span>
                         </label>
                         <label>
@@ -161,7 +163,7 @@
                                    name="academia" 
                                    type="radio" 
                                    formControlName="academia"
-                                   value="N"/>
+                                   value="false"/>
                             <span>Não</span>
                         </label>                    
                     </div>
@@ -174,7 +176,7 @@
                     <div>
                         <label>
                             <input class="with-gap" type="number" name="tempoDeSono" formControlName="tempoDeSono" />
-                            <span>Tempo de sono</span>
+                            <span>Tempo de sono (horas)</span>
                         </label>
                     </div> 
                     <div>
@@ -186,7 +188,7 @@
                                    name="qualidadeSono" 
                                    type="radio" 
                                    checked
-                                   formControlName="qualidadeSono"
+                                   formControlName="qualidadeDeSono"
                                    value="B"
                                    />
                             <span>Boa</span>
@@ -195,7 +197,7 @@
                             <input class="with-gap" 
                                    name="qualidadeSono" 
                                    type="radio"  
-                                   formControlName="qualidadeSono"
+                                   formControlName="qualidadeDeSono"
                                    value="R"/>
                             <span>Ruim</span>
                         </label>                    
@@ -216,7 +218,7 @@
                                type="radio" 
                                checked
                                formControlName="gestante"
-                               value="S"/>
+                               value="true"/>
                         <span>Sim</span>
                     </label>
                     <label>
@@ -224,7 +226,7 @@
                                name="gestante" 
                                type="radio" 
                                formControlName="gestante"
-                               value="N"/>
+                               value="false"/>
                         <span>Não</span>
                     </label>                    
                 </div>
@@ -238,7 +240,7 @@
                                type="radio" 
                                checked
                                formControlName="diabetes"
-                               value="S"/>
+                               value="true"/>
                         <span>Sim</span>
                     </label>
                     <label>
@@ -246,7 +248,7 @@
                                name="diabetes" 
                                type="radio" 
                                formControlName="diabetes"
-                               value="N"/>
+                               value="false"/>
                         <span>Não</span>
                     </label>                    
                 </div>

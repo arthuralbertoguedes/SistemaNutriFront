@@ -37,7 +37,7 @@
       </div>
 
       <h2 class="col-12">Circunferências</h2>
-      <div class="col-6 float-left">
+      <div class="col-sm-6 col-md-6 col-lg-3 float-left">
           <h3>Braço direito</h3>
           <br/>
           <div class="row">
@@ -55,17 +55,17 @@
               </div>
           </div>
       </div>
-      <div class="col-6 float-right">
+      <div class="col-md-6 col-sm-6 col-lg-3 float-left">
           <h3>Braço esquerdo</h3>
           <br/>
           <div class="row">
-            <div class="col-5">
+            <div class="col-6">
                   <label >
                       <input class="with-gap" type="number" formControlName="bracoRelaxadoEsquerdo"/>
                       <span>Relaxado (cm)</span>
                   </label>
               </div>
-              <div class="col-5 ">
+              <div class="col-6 ">
                   <label >
                       <input class="with-gap" type="number" formControlName="bracoContraidoEsquerdo"/>
                       <span>Contraido (cm)</span>
@@ -73,7 +73,7 @@
               </div>
           </div>
       </div>
-      <div class="col-6 float-left">
+      <div class="col-md-6 col-sm-6 col-lg-3 float-left">
           <h3>Antebraço direito</h3>
           <br/>
           <div class="row">
@@ -91,17 +91,17 @@
               </div>
           </div>
       </div>  
-      <div class="col-6 float-right">
+      <div class="col-md-6 col-sm-6 col-lg-3 float-left">
           <h3 class="col-12">Antebraço esquerdo</h3>
           <br/>
           <div class="row">
-            <div class="col-5">
+            <div class="col-6">
                   <label >
                       <input class="with-gap" type="number" formControlName="antebracoRelaxadoEsquerdo"/>
                       <span>Relaxado (cm)</span>
                   </label>
               </div>
-              <div class="col-5 ">
+              <div class="col-6 ">
                   <label >
                       <input class="with-gap" type="number" formControlName="antebracoContraidoEsquerdo"/>
                       <span>Contraido (cm)</span>
@@ -109,7 +109,7 @@
               </div>
           </div>         
       </div>
-      <div class="col-6 float-left">
+      <div class="col-md-6 col-sm-6 col-lg-3 float-left">
         <div class="row">
           <h3 class="col-12">Coxa</h3>
           <div class="col-6">
@@ -126,22 +126,65 @@
           </div>
         </div>  
       </div>
-      <div class="col-6 float-left">
-        <div class="row">
-          <h3 class="col-12">Panturrilha</h3>
-          <div class="col-6">
-              <label >
-                  <input class="with-gap" type="number" formControlName="panturrilhaEsquerda"/>
-                  <span>Panturrilha esquerda (cm)</span>
-              </label>
-          </div>
-          <div class="col-6 ">
-              <label >
-                  <input class="with-gap" type="number" formControlName="panturrilhaDireita"/>
-                  <span>Panturrilha direita (cm)</span>
-              </label>
-          </div>
-        </div>  
-      </div>
+       <div class="col-md-6 col-sm-6 col-lg-3 float-left">
+            <div class="row">
+                <h3 class="col-12">Panturrilha</h3>
+                <div class="col-6">
+                    <label >
+                        <input class="with-gap" type="number" formControlName="panturrilhaEsquerda"/>
+                        <span>Panturrilha esquerda (cm)</span>
+                    </label>
+                </div>
+                <div class="col-6 ">
+                    <label >
+                        <input class="with-gap" type="number" formControlName="panturrilhaDireita"/>
+                        <span>Panturrilha direita (cm)</span>
+                    </label>
+                </div>
+            </div>       
+       </div>
+       <div class="col-md-12 col-sm-12 col-lg-6 float-right" >
+           <div class="row">
+               <h3 class="col-12">Superiores</h3>
+               <div class="col-3">
+                   <label >
+                       <input class="with-gap" type="number" formControlName="pescoco"/>
+                       <span>Pescoço</span>
+                   </label>
+               </div>
+               <div class="col-3 ">
+                   <label >
+                       <input class="with-gap" type="number" formControlName="ombro"/>
+                       <span>Ombro</span>
+                   </label>
+               </div>
+               <div class="col-3">
+                   <label >
+                       <input class="with-gap" type="number" formControlName="peitoral"/>
+                       <span>Peitoral</span>
+                   </label>
+               </div>
+               <div class="col-3 ">
+                   <label >
+                       <input class="with-gap" type="number" formControlName="cintura"/>
+                       <span>Cintura</span>
+                   </label>
+               </div>
+           </div>
+           <br/>
+           <div class="col-12">
+                <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
+                    <i class="material-icons right" style="color: white;" >refresh</i>
+                </button>
+                <button class="btn waves-effect waves-light mx-3" 
+                        type="button" 
+                        name="action" 
+                        (click)="salvar()"
+                        >Salvar
+                        <i class="material-icons right" style="color: white;">send</i>
+                </button> 
+            </div>
+       </div>
+      
     </form>
 </div>

@@ -1,0 +1,127 @@
+<div class="container-fluid">
+   <form novalidate [formGroup]="composicaoForm">
+
+      <!--Biopendância--> 
+      <h2 class="col-12" style="clear:both;">Biopendância</h2>
+      <div class="col-12 row">
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="massaGorda"/>
+                  <span>Massa gorda (%)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="massaMagra"/>
+                  <span>Massa magra (%)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="aguaCorporal"/>
+                  <span>Água corporal (%)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="pesoOsseo"/>
+                  <span>Peso Ósseo</span>
+              </label>
+          </div>
+      </div>
+      <div class="col-12 row">
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="pesoResidual"/>
+                  <span>Peso residual</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="pesoMuscular"/>
+                  <span>Peso muscular</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="gorduraVisceral"/>
+                  <span>Gordura visceral (%)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="idadeMetabolica"/>
+                  <span>Idade metabólica</span>
+              </label>
+          </div>
+      </div>
+
+      <!--Pregas cutâneas-->
+      <h2 class="col-12" style="clear:both;">Pregas Cutâneas</h2>
+      <div class="col-12 row">
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="triceps"/>
+                  <span>Tríceps (mm)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="biceps"/>
+                  <span>Bíceps (mm)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="subescapular"/>
+                  <span>Subescapular (mm)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="coxa"/>
+                  <span>Coxa (mm)</span>
+              </label>
+          </div>
+      </div>
+      <div class="col-12 row">
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="toracica"/>
+                  <span>Torácica (mm)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="axilarMedia"/>
+                  <span>Axilar média (mm)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="supraIliaca"/>
+                  <span>Supra-Ilíaca (mm)</span>
+              </label>
+          </div>
+          <div class="col-6 col-md-3">
+              <label >
+                  <input class="with-gap" type="number" formControlName="abdominal"/>
+                  <span>Abdominal (mm)</span>
+              </label>
+          </div>
+          <div class="col-12">
+            <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
+                <i class="material-icons right" style="color: white;" >refresh</i>
+            </button>
+            <button class="btn waves-effect waves-light mx-3" 
+                    type="button" 
+                    name="action" 
+                    (click)="salvar()"
+                    >Salvar
+                    <i class="material-icons right" style="color: white;">send</i>
+            </button> 
+        </div>
+      </div>
+      <h3>Resultado: </h3>
+   </form>
+</div>

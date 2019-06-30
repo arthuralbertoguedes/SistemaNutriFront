@@ -1,10 +1,13 @@
 <!--Passo 1 - Anamnese-->
 <anamnese 
-    *ngIf="passo1"
+    *ngIf="false"
     (chamarPasso2)="iniciarPasso2($event)">
 </anamnese>
-<!--Passo 2 - Antropometria-->
+<!--Passo 2 - Início da Antropometria-->
 <antropometria
-    *ngIf="true">
-
+    *ngIf="false">
 </antropometria>
+<!--Passo 3 - cadastro da composição corporal (biopendancias e pregas cutênas)-->
+<composicao-corporal *ngIf="true">
+    
+</composicao-corporal>

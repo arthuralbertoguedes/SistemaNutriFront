@@ -4,12 +4,17 @@ import { AvaliacaoComponent } from './avaliacao.component';
 import { AnamneseComponent } from './anamnese/anamnese.component';
 import { UtilitariosModule } from '../utilitarios/utilitarios.module';
 import { AntropometriaComponent } from './antropometria/antropometria.component';
+import { ComposicaoCorporalComponent } from './composicao-corporal/composicao-corporal.component';
+import { AnamneseService } from './anamnese/anamnese.service';
+import { AntropometriaService } from './antropometria/antropometria-service';
+import { ComposicaoService } from './composicao-corporal/composicao-service';
 
 @NgModule({
   declarations: [
       AvaliacaoComponent,
       AnamneseComponent,
-      AntropometriaComponent
+      AntropometriaComponent,
+      ComposicaoCorporalComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +24,9 @@ import { AntropometriaComponent } from './antropometria/antropometria.component'
       AvaliacaoComponent
   ],
   providers: [
-      
+    AnamneseService,
+    AntropometriaService,
+    ComposicaoService
   ]
   
 })
