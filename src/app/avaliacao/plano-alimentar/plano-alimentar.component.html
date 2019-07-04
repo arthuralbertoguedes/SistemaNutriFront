@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <form [formGroup]="planoAlimentarForm">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <p-autoComplete 
+                      formControlName="alimentos"
+                      [suggestions]="alimentosRetornados" 
+                      (completeMethod)="buscarAlimentos($event)"
+                      field="descricao"
+                      (onSelect)="adicionarAlimento($event)"
+                >
+                </p-autoComplete>
+            </div>
+         </div>
+    </form>
+</div>

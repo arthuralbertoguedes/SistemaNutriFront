@@ -1,3 +1,19 @@
+<div class="p2 m-4">
+    <p-tabMenu [model]="items" [activeItem]="activeItem">
+        <ng-template pTemplate="item" let-item let-i="index" >
+            <div style="position: relative; text-align: center; min-width: 10em">          
+                <div>
+                    <img [src]="imagens[i]" style="height: 40px;">
+                </div>
+                <div class="ui-menuitem-text">
+                    {{item.label}}
+                </div>
+            </div>
+        </ng-template>
+    </p-tabMenu>
+</div>
+
+
 <!--Passo 1 - Anamnese-->
 <anamnese 
     *ngIf="false"
@@ -8,6 +24,7 @@
     *ngIf="false">
 </antropometria>
 <!--Passo 3 - cadastro da composição corporal (biopendancias e pregas cutênas)-->
-<composicao-corporal *ngIf="true">
+<composicao-corporal *ngIf="false">
     
 </composicao-corporal>
+<plano-alimentar></plano-alimentar>

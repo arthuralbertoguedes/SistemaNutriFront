@@ -8,17 +8,25 @@ import { ComposicaoCorporalComponent } from './composicao-corporal/composicao-co
 import { AnamneseService } from './anamnese/anamnese.service';
 import { AntropometriaService } from './antropometria/antropometria-service';
 import { ComposicaoService } from './composicao-corporal/composicao-service';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { PlanoAlimentarComponent } from './plano-alimentar/plano-alimentar.component';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import { PlanoAlimentarService } from './plano-alimentar/plano-alimentar.service';
 
 @NgModule({
   declarations: [
       AvaliacaoComponent,
       AnamneseComponent,
       AntropometriaComponent,
-      ComposicaoCorporalComponent
+      ComposicaoCorporalComponent,
+      PlanoAlimentarComponent
+     
   ],
   imports: [
     CommonModule,
-    UtilitariosModule
+    UtilitariosModule,
+    TabMenuModule,
+    AutoCompleteModule
   ],
   exports: [
       AvaliacaoComponent
@@ -26,6 +34,7 @@ import { ComposicaoService } from './composicao-corporal/composicao-service';
   providers: [
     AnamneseService,
     AntropometriaService,
+    PlanoAlimentarService,
     ComposicaoService
   ]
   

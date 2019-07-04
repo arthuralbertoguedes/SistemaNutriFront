@@ -32,6 +32,7 @@ export class ComposicaoCorporalComponent implements OnInit {
       'axilarMedia': [''],
       'supraIliaca': [''],
       'abdominal': [''],
+      'coxa': ['']
 
     })
   }
