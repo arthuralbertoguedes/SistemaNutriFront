@@ -55,7 +55,7 @@ label{
 
 .ui-autocomplete{
     width: 95%;
-    margin-left: 5%;
+
 }
 
 .ui-calendar{
@@ -76,3 +76,49 @@ h2{
 	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/*RESETS BOTOES PRIMENG*/
+body .ui-selectbutton .ui-button.ui-state-active{
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+body .ui-button {
+    margin: 0;
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+    font-size: 14px;
+}
+
+body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #ffffff;
+}
+body .ui-selectbutton .ui-button.ui-state-active {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #ffffff;
+
+}
+
+.ui-state-active .ui-state-focus{
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #ffffff;
+  }
+
+  body .ui-selectbutton .ui-button.ui-state-active.ui-state-focus {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #ffffff;
+  }

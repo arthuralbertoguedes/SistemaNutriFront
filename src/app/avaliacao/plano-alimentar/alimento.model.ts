@@ -1,6 +1,6 @@
 export class Alimento{
 
-    public Id;
+    public id;
 	
 	public codigo;
 	

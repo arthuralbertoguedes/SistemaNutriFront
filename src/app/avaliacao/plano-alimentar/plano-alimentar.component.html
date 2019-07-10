@@ -1,16 +1,96 @@
 <div class="container-fluid">
     <form [formGroup]="planoAlimentarForm">
         <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-12">
+                <h2>Adicionar plano alimentar</h2>
+            </div>
+            <div class="col-12">
+                <p-selectButton 
+                                [options]="diasDaSemana" 
+                                formControlName="diasDaSemanaSelecionados" 
+                                multiple="multiple" 
+                >
+                </p-selectButton>
+            </div>
+            <div class="col-sm-12 col-md-8 mt-4">
                 <p-autoComplete 
                       formControlName="alimentos"
                       [suggestions]="alimentosRetornados" 
                       (completeMethod)="buscarAlimentos($event)"
                       field="descricao"
                       (onSelect)="adicionarAlimento($event)"
+                      placeholder="Pesquisar alimento"
+                      class="w-100"
                 >
                 </p-autoComplete>
             </div>
+            <div class="col-sm-6 col-md-2">
+                <br/>
+                <label>
+                    <input class="with-gap" type="number" formControlName="quantidade" placeholder="Quantidade "/>
+                </label>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <br/>
+                <select style="display: inline-block" id="medida">
+                    <option value="" disabled selected>Medida</option>
+                    <option value="Gramas">Gramas</option>
+                    <option value="Colher de sopa">Colher de sopa</option>
+                    <option value="Colher de chá">Colher de chá</option>
+                    <option value="Concha grande">Concha grande</option>
+                    <option value="Pedaço">Pedaço</option>
+                    <option value="Litro">Litro</option>
+                    <option value="Mililitro">Mililitro</option>
+                </select>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-sm-12 col-md-3">
+                <h3>Horário da refeição </h3>
+                <p-calendar  [timeOnly]="true"
+                             formControlName="horarioRefeicao"   
+                
+                >
+                </p-calendar>
+            </div>   
+            <div class="col-2">
+                <br/>
+                <button class="btn waves-effect waves-light mx-3" 
+                    type="button" 
+                    name="action" 
+                    (click)="adicionarItemPlanoAlimentar()"
+                    >Adicionar alimento
+                    <i class="material-icons right" style="color: white;">send</i>
+                </button> 
+            </div>
+         </div>
+         <div class="row">
+            <p-table [value]="itensPlanoAlimentar">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 5%; text-align: center;">Horário</th>
+                        <th style="width: 17%; text-align: center">Alimento</th>
+                        <th style="width: 8%; text-align: center">Quantidade</th>
+                        <th style="width: 7%; text-align: center">Calorias</th>
+                        <th style="width: 7%; text-align: center">Carboidratos</th>
+                        <th style="width: 7%; text-align: center">Proteínas</th>
+                        <th style="width: 7%; text-align: center">Lipídeos</th>
+                        <th style="width: 7%; text-align: center">Sódio</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item>
+                    <tr>
+                        <td>{{item.horario}}</td>
+                        <td>{{item.alimento}}</td>
+                        <td>{{item.quantidade}} {{item.medida}}</td>
+                        <td>{{item.calorias}}</td>
+                        <td>{{item.carboidratos}}</td>
+                        <td>{{item.proteinas}}</td>
+                        <td>{{item.lipideos}}</td>
+                        <td>{{item.sodio}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
          </div>
     </form>
 </div>

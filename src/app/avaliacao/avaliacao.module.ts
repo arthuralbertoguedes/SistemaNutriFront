@@ -12,6 +12,8 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import { PlanoAlimentarComponent } from './plano-alimentar/plano-alimentar.component';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { PlanoAlimentarService } from './plano-alimentar/plano-alimentar.service';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { PlanoAlimentarService } from './plano-alimentar/plano-alimentar.service
     CommonModule,
     UtilitariosModule,
     TabMenuModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    SelectButtonModule,
+    TableModule
   ],
   exports: [
       AvaliacaoComponent
