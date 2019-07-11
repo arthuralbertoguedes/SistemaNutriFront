@@ -23,6 +23,8 @@ export class PlanoAlimentarComponent implements OnInit {
   public itensPlanoAlimentar: any[] = [];
 
   public alimentoSelecionado: Alimento;
+
+  public mostrarSecaoAdicionarAlimentos: boolean = false;
  
   constructor(private fb: FormBuilder,
               private _service: PlanoAlimentarService) { 
@@ -59,6 +61,9 @@ export class PlanoAlimentarComponent implements OnInit {
           );
   }
 
+  adicionarNovaRefeicao(){
+      this.mostrarSecaoAdicionarAlimentos = true;
+  }
   adicionarItemPlanoAlimentar(): void{
 
         //Verificar se alimento já está na lista
