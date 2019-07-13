@@ -12,7 +12,7 @@ import { AnamneseService } from './anamnese.service';
 export class AnamneseComponent implements OnInit {
 
   public anamneseForm: FormGroup;
-  @Output() chamarPasso2: EventEmitter<string> = new EventEmitter();
+  @Output() chamarAnamnese: EventEmitter<string> = new EventEmitter();
 
   constructor(private fb: FormBuilder,
               private _service: AnamneseService) { }

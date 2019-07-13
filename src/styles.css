@@ -76,6 +76,11 @@ h2{
 	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.containerShadow{
+    box-shadow: 0px 1px 2px 1px #ddd;
+    min-height: 400px;
+}
+
 /*RESETS BOTOES PRIMENG*/
 body .ui-selectbutton .ui-button.ui-state-active{
     background-color: var(--cor-primaria);
@@ -121,4 +126,9 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
     background-color: var(--cor-primaria);
     border-color: var(--cor-primaria);
     color: #ffffff;
+  }
+
+  body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
+    background-color: #538868;
+    border: 1px solid #538868;
   }

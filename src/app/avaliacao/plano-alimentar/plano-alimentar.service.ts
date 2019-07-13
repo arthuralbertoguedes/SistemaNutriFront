@@ -19,17 +19,7 @@ export class PlanoAlimentarService {
   listarAlimentos(pesquisa: String){
       return this.http.get<Observable<Alimento[]>>(this.url + '/listarTodos/' + pesquisa)
           .pipe(
-                map(res=>{
-                  let alimentos: Alimento[] = [];
-                  for(let i = 0; i<10; i++){
-                      if(res[i].descricao_preparacao!='NAO SE APLICA')
-                          res[i].descricao = res[i].descricao + " " + res[i].descricao_preparacao;                   
-                      alimentos.push(res[i]);
-                  }    
-                  return alimentos;    
-                })
+                map(res=> res)
           )
-
   }
-
 }

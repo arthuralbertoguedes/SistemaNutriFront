@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid " >
     <div class="row">
         <div class="col-12">
             <div class="p2 m-4">
                 <p-tabMenu [model]="items" [activeItem]="activeItem" class="col-6">
                     <ng-template pTemplate="item" let-item let-i="index" >
-                        <div style="position: relative; text-align: center; min-width: 10em">          
+                        <div style="position: relative; text-align: center; min-width: 10em" (click)="abrirComponenteCorrespondente(item)">          
                             <div>
                                 <img [src]="imagens[i]" style="height: 40px;">
                             </div>
@@ -19,18 +19,21 @@
     </div>
 </div>
 
-
-<!--Passo 1 - Anamnese-->
-<anamnese 
-    *ngIf="false"
-    (chamarPasso2)="iniciarPasso2($event)">
-</anamnese>
-<!--Passo 2 - Início da Antropometria-->
-<antropometria
-    *ngIf="false">
-</antropometria>
-<!--Passo 3 - cadastro da composição corporal (biopendancias e pregas cutênas)-->
-<composicao-corporal *ngIf="false">
-    
-</composicao-corporal>
-<plano-alimentar></plano-alimentar>
+<div class="container containerShadow w-100">
+    <anamnese 
+            *ngIf="mostrarAnamnese"
+            (click)="iniciarAnamnese()">
+    </anamnese>
+    <antropometria
+            *ngIf="mostrarAntropometria"
+            (click)="iniciarAntropometria()">
+    </antropometria>
+    <composicao-corporal
+            *ngIf="mostrarComposicaoCorporal"
+            (click)="iniciarComposicaoCorporal()">
+    </composicao-corporal>
+    <plano-alimentar
+            *ngIf="mostrarPlanoAlimentar"
+            (click)="iniciarPlanoAlimentar()">
+    </plano-alimentar>
+</div>

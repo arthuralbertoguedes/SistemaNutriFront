@@ -1,7 +1,6 @@
 <div class="container-fluid">
     <form [formGroup]="planoAlimentarForm">
         <div class="row">
-            
             <div class="col-12">
                 <p-selectButton 
                                 [options]="diasDaSemana" 
@@ -13,58 +12,65 @@
 
             <!--Linha para adicionar nova refeição-->
            
-            <div class="col-12">
-                <h6>Adicionar nova refeição para o paciente</h6>
-            </div>
-            <div class="row col-12">
-                <div class="input-field col-sm-12 col-md-5">
-                    <i class="material-icons prefix">assignment</i>
-                        <input  id="nomeRefeicao" 
-                                type="text" 
-                                placeholder="Observação/Anotações"
+           <div class="section" *ngIf="mostrarSecaoNovaRefeicao">
+                <div class="col-12">
+                    <h6>Adicionar nova refeição para o paciente</h6>
+                </div>
+                <div class="row col-12">
+                    <div class="input-field col-sm-12 col-md-5">
+                        <i class="material-icons prefix">assignment</i>
+                            <input  id="nomeRefeicao" 
+                                    type="text" 
+                                    placeholder="Observação/Anotações"
+                                    formControlName="observacaoRefeicao"
+                            >
+                    </div>
+                    <div class="input-field" style="margin-right: 20px;">
+                        <i class="material-icons prefix">access_alarm</i>
+                    </div>         
+                    <div class="input-field col-sm-12 col-md-2" style="text-align: center;">
+                        <p-calendar  
+                            [timeOnly]="true"
+                            formControlName="horarioRefeicao"
+                            placeholder="Horário"
                         >
+                        </p-calendar>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <br/>
+                        <select style="display: inline-block" id="tipoRefeicao">
+                            <option value="" disabled selected>Tipo Refeição</option>
+                            <option value="Café da manhã">Café da manhã</option>
+                            <option value="Almoço">Almoço</option>
+                            <option value="Jantar">Jantar</option>
+                            <option value="Lanche da manhã">Lanche da manhã</option>
+                            <option value="Lanche da tarde">Lanche da tarde</option>
+                            <option value="Ceia">Ceia</option>
+                            <option value="Sobremesa">Sobremesa</option>
+                            <option value="Pré-treino">Pré-treino</option>
+                            <option value="Pós-treino">Pós-treino</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-1">
+                        <br/>
+                        <button class="btn waves-effect waves-light mx-3" 
+                            type="button" 
+                            name="action" 
+                            (click)="adicionarNovaRefeicao()"
+                            >Adicionar nova refeição
+                            <i class="material-icons right" style="color: white;">send</i>
+                        </button> 
+                    </div>
                 </div>
-                <div class="input-field" style="margin-right: 20px;">
-                    <i class="material-icons prefix">access_alarm</i>
-                </div>         
-                <div class="input-field col-sm-12 col-md-2" style="text-align: center;">
-                    <p-calendar  
-                        [timeOnly]="true"
-                        formControlName="horarioRefeicao"
-                        placeholder="Horário"
-                    >
-                    </p-calendar>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <br/>
-                    <select style="display: inline-block" id="tipoRefeicao">
-                        <option value="" disabled selected>Tipo Refeição</option>
-                        <option value="cafeDaManha">Café da manhã</option>
-                        <option value="almoco">Almoço</option>
-                        <option value="jantar">Jantar</option>
-                        <option value="lancheDaManha">Lanche da manhã</option>
-                        <option value="lancheDaTarde">Lanche da tarde</option>
-                        <option value="ceia">Ceia</option>
-                        <option value="sobremesa">Sobremesa</option>
-                        <option value="preTreino">Pré-treino</option>
-                        <option value="posTreino">Pós-treino</option>
-                    </select>
-                </div>
-                <div class="col-12 col-sm-1">
-                    <br/>
-                    <button class="btn waves-effect waves-light mx-3" 
-                        type="button" 
-                        name="action" 
-                        (click)="adicionarNovaRefeicao()"
-                        >Adicionar nova refeição
-                        <i class="material-icons right" style="color: white;">send</i>
-                    </button> 
-                </div>
-            </div>
+           </div>
         </div>
         
         <!-- Inserção de alimentos numa refeição -->
-        <div *ngIf="mostrarSecaoAdicionarAlimentos" class="containerSecaoAdicionarAlimentos mt-4">
+        <div *ngIf="mostrarSecaoAdicionarAlimentos" class=" mt-4">
+           
+            <div class="row">
+                <h3>{{tipoRefeicaoSelecionado}} - {{horarioRefeicaoSelecionado}}</h3>
+            </div>
             <div class="row">
                 <div class="col-sm-12 col-md-6 mt-4">
                     <p-autoComplete 
@@ -95,6 +101,7 @@
                         <option value="Pedaço">Pedaço</option>
                         <option value="Litro">Litro</option>
                         <option value="Mililitro">Mililitro</option>
+                        <option value="Unidade(s)">Unidade(s)</option>
                     </select>
                 </div>       
                 <div class="col-1">
@@ -114,8 +121,7 @@
                 <p-table [value]="itensPlanoAlimentar">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="width: 5%; text-align: center;">Horário</th>
-                            <th style="width: 17%; text-align: center">Alimento</th>
+                            <th style="width: 25%; text-align: center">Alimento</th>
                             <th style="width: 8%; text-align: center">Quantidade</th>
                             <th style="width: 7%; text-align: center">Calorias</th>
                             <th style="width: 7%; text-align: center">Carboidratos</th>
@@ -126,7 +132,6 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-item>
                         <tr>
-                            <td>{{item.horario}}</td>
                             <td>{{item.alimento}}</td>
                             <td>{{item.quantidade}} {{item.medida}}</td>
                             <td>{{item.calorias}}</td>
@@ -137,8 +142,32 @@
                         </tr>
                     </ng-template>
                 </p-table>
+                <button style="float: right;" 
+                        class="btn waves-effect waves-light ml-auto my-3" 
+                        (click)="adicionarRefeicao()"
+                >Adicionar refeição
+                </button>
             </div>
         </div>
-            
+
+        <div *ngIf="listaRefeicoes.length>0" class=" mt-4" style="padding: 20px;">
+            <div class="row col-12">
+                <div  *ngFor="let refeicao of listaRefeicoes" class="col-12 col-md-4">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{refeicao.tipoRefeicao}}<i class="material-icons right">arrow_drop_down</i></span>
+                            <p>{{refeicao.horario}}</p>
+                        </div>
+                        <div class="card-reveal" >
+                            <span class="card-title grey-text text-darken-4">Alimentos da refeição<i class="material-icons right">close</i></span>
+                            <p *ngFor="let alimento of refeicao.alimentosRefeicao"><span style="color: green">></span> {{alimento.descricao}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
     </form>
 </div>

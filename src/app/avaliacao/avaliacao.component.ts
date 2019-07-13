@@ -9,8 +9,10 @@ import {MenuItem} from 'primeng/api';
 })
 export class AvaliacaoComponent implements OnInit {
   
-  public passo1: boolean = true;
-  public passo2: boolean = false;
+  public mostrarAnamnese: boolean = true;
+  public mostrarAntropometria: boolean = false;
+  public mostrarComposicaoCorporal: boolean = false;
+  public mostrarPlanoAlimentar: boolean = false;
   public items: any[];
   public imagens: any[];
   items1: MenuItem[];
@@ -32,10 +34,10 @@ export class AvaliacaoComponent implements OnInit {
 
 
     this.items = [
-        {label: 'Anamnese'},
-        {label: 'Antropometria'},
-        {label: 'Composição Corporal'},
-        {label: 'Plano Alimentar'}
+        {label: 'Anamnese', mostrarComponent: 'mostrarAnamnese'},
+        {label: 'Antropometria', mostrarComponent: 'mostrarAntropometria'},
+        {label: 'Composição Corporal', mostrarComponent: 'mostrarComposicaoCorporal'},
+        {label: 'Plano Alimentar', mostrarComponent: 'mostrarPlanoAlimentar'}
     ];
 
     this.items2 = [
@@ -49,8 +51,43 @@ export class AvaliacaoComponent implements OnInit {
     this.activeItem = this.items[0];
   }
   
-  iniciarPasso2(event: any){
-     this.passo1 = false;
-     this.passo2 = true;
+  iniciarAnamnese(): void{
+      this.mostrarAnamnese           = true;
+      this.mostrarAntropometria      = false;
+      this.mostrarComposicaoCorporal = false;
+      this.mostrarPlanoAlimentar     = false;
+  }
+
+  iniciarAntropometria(): void{
+      this.mostrarAnamnese           = false;
+      this.mostrarAntropometria      = true;
+      this.mostrarComposicaoCorporal = false;
+      this.mostrarPlanoAlimentar     = false;
+  }
+
+  iniciarComposicaoCorporal(): void{
+      this.mostrarAnamnese           = false;
+      this.mostrarAntropometria      = false;
+      this.mostrarComposicaoCorporal = true;
+      this.mostrarPlanoAlimentar     = false;
+  }
+
+  iniciarPlanoAlimentar(): void{   
+      this.mostrarAnamnese           = false;
+      this.mostrarAntropometria      = false;
+      this.mostrarComposicaoCorporal = false;
+      this.mostrarPlanoAlimentar     = true;
+  }
+
+  abrirComponenteCorrespondente(item: any){
+      let componenteClicado = item.mostrarComponent;
+      if(componenteClicado=='mostrarAnamnese')
+          this.iniciarAnamnese();
+      else if(componenteClicado=='mostrarAntropometria')    
+          this.iniciarAntropometria();
+      else if(componenteClicado=='mostrarComposicaoCorporal')    
+          this.iniciarComposicaoCorporal();
+      else if(componenteClicado=='mostrarPlanoAlimentar')    
+          this.iniciarPlanoAlimentar();  
   }
 }

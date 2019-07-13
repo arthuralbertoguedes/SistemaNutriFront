@@ -4,6 +4,7 @@ import { Alimento } from './alimento.model';
 import { PlanoAlimentarService } from './plano-alimentar.service';
 import { SelectItem } from '../../../../node_modules/primeng/api';
 import { ItemPlanoAlimentar } from '../../models/itemPlanoAlimentar.model';
+import { Refeicao } from '../../models/refeicao.model';
 
 @Component({
   selector: 'plano-alimentar',
@@ -25,7 +26,19 @@ export class PlanoAlimentarComponent implements OnInit {
   public alimentoSelecionado: Alimento;
 
   public mostrarSecaoAdicionarAlimentos: boolean = false;
+
+  public horarioRefeicaoSelecionado: string;
+
+  public tipoRefeicaoSelecionado: string;
  
+  public mostrarSecaoNovaRefeicao: boolean = true;
+
+  public listaAlimentosRefeicao: Alimento[] = [];
+
+  public observacoesRefeicaoSelecionada: string;
+
+  public listaRefeicoes: Refeicao[] = [];
+
   constructor(private fb: FormBuilder,
               private _service: PlanoAlimentarService) { 
                   
@@ -40,21 +53,21 @@ export class PlanoAlimentarComponent implements OnInit {
          'quantidade': [''],
          'medida': [''],
          'diasDaSemanaSelecionados': [''],
-         'horarioRefeicao': ['']
+         'horarioRefeicao': [''],
+         'observacaoRefeicao': ['']
       })
 
   }
 
   adicionarAlimento(event) : void{
-      console.log(event)
       this.alimentoSelecionado = event;
   } 
 
   buscarAlimentos(pesquisa) : void{
       this._service.listarAlimentos(pesquisa.query)
           .subscribe( 
-                res => {
-                    this.alimentosRetornados = res;
+                (res: any) => {
+                    this.alimentosRetornados = res as Alimento[];
                 },
                 erro => {
                 }
@@ -62,16 +75,16 @@ export class PlanoAlimentarComponent implements OnInit {
   }
 
   adicionarNovaRefeicao(){
+      this.mostrarSecaoNovaRefeicao       = false;
       this.mostrarSecaoAdicionarAlimentos = true;
-  }
-  adicionarItemPlanoAlimentar(): void{
+      this.horarioRefeicaoSelecionado     = this.getHorario(this.planoAlimentarForm.get('horarioRefeicao').value);
+      this.tipoRefeicaoSelecionado        = (<HTMLInputElement>document.getElementById('tipoRefeicao')).value;
+      this.observacoesRefeicaoSelecionada = this.planoAlimentarForm.get('observacaoRefeicao').value;
+   }
 
-        //Verificar se alimento já está na lista
-        //implementar aqui
-        this.itensPlanoAlimentar.forEach(element=>{
-            console.log(element);
-        });
+   adicionarItemPlanoAlimentar(): void{
 
+        /*Adiciona alimento a lista/tabela*/
         let novoItemPlanoAlimentar = new ItemPlanoAlimentar();
         novoItemPlanoAlimentar.alimento       = this.alimentoSelecionado.descricao;
         novoItemPlanoAlimentar.idAlimento     = this.alimentoSelecionado.id;
@@ -84,21 +97,16 @@ export class PlanoAlimentarComponent implements OnInit {
         novoItemPlanoAlimentar.vitaminas      = this.alimentoSelecionado.vitamina; 
         novoItemPlanoAlimentar.sodio          = this.alimentoSelecionado.sodio; 
         
-        //Pegando apenas horário do date
-        let horarioSemFormatacao: Date        = this.planoAlimentarForm.get('horarioRefeicao').value;
-        let horaDaRefeicao = horarioSemFormatacao.getHours() 
-                                + ":" + horarioSemFormatacao.getMinutes()
-                                         + horarioSemFormatacao.getSeconds();
+        /*Adiciona alimento para a lista que vai para o banco de dados */
+        this.listaAlimentosRefeicao.push(this.alimentoSelecionado);
 
-        novoItemPlanoAlimentar.horario = horaDaRefeicao.toString().substring(0,5);
-        
+        /*Adiciona item para a lista que só sera exibida na tabela*/ 
         this.itensPlanoAlimentar.push(novoItemPlanoAlimentar);
-        console.log(this.itensPlanoAlimentar);
 
-        //Reset formulário
+        //Reset preenchimento de alimento
         (<HTMLInputElement>document.getElementById('medida')).value = "";
         this.planoAlimentarForm.get('quantidade').reset();
-        this.planoAlimentarForm.get('alimento').reset();
+        this.planoAlimentarForm.get('alimentos').reset();
         this.planoAlimentarForm.get('medida').reset();
         this.planoAlimentarForm.get('horarioRefeicao').reset();
         this.alimentoSelecionado = null;
@@ -114,6 +122,36 @@ export class PlanoAlimentarComponent implements OnInit {
         this.diasDaSemana.push({label:'Quinta', value:'quinta'});
         this.diasDaSemana.push({label:'Sexta', value:'sexta'});
         this.diasDaSemana.push({label:'Sabado', value:'sabado'});
+  }
+
+  /*Retira o horario do tipo Date*/
+  public getHorario(dataCompleta: Date): string{
+    let horarioSemFormatacao: Date        = dataCompleta;
+    let horaDaRefeicao: string = horarioSemFormatacao.getHours() 
+                                    + ":" + horarioSemFormatacao.getMinutes()
+                                            + horarioSemFormatacao.getSeconds();
+                                     
+    return horaDaRefeicao.toString().substring(0,5); 
+  }
+
+  adicionarRefeicao(): void{  
+      /*Adicionando refeição para salvar no banco de dados*/
+      let refeicao = new Refeicao();
+      refeicao.descricao         = this.observacoesRefeicaoSelecionada;
+      refeicao.horario           = this.horarioRefeicaoSelecionado;
+      refeicao.alimentosRefeicao = this.listaAlimentosRefeicao;
+      refeicao.tipoRefeicao      = this.tipoRefeicaoSelecionado;
+      refeicao.diaDaSemana       = this.planoAlimentarForm.get('diasDaSemanaSelecionados').value;
+      
+      this.listaRefeicoes.push(refeicao);
+      console.log(this.listaRefeicoes)
+      /*resets*/
+      this.planoAlimentarForm.get('observacaoRefeicao').reset();
+      this.planoAlimentarForm.get('horarioRefeicao').reset();
+      this.mostrarSecaoNovaRefeicao       = true;
+      this.mostrarSecaoAdicionarAlimentos = false;
+      this.itensPlanoAlimentar            = [];
+      this.listaAlimentosRefeicao         = []
   }
 
 }
