@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-tela-inicial',
   templateUrl: './tela-inicial.component.html',
@@ -10,6 +11,7 @@ export class TelaInicialComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
+        
+    }
 
 }

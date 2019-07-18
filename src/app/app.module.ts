@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConsultaModule } from './consulta/consulta.module';
 import { UtilitariosModule } from './utilitarios/utilitarios.module';
 import { AvaliacaoModule } from './avaliacao/avaliacao.module';
+import { FullCalendarModule } from '../../node_modules/primeng/fullcalendar';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AvaliacaoModule } from './avaliacao/avaliacao.module';
     HttpClientModule,
     ConsultaModule,
     UtilitariosModule,
-    AvaliacaoModule
+    AvaliacaoModule,
+    FullCalendarModule
   ],
   exports: [
     
