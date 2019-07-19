@@ -14,6 +14,7 @@
                 <h3>Horário início </h3>
                 <p-calendar  [timeOnly]="true"
                              (onSelect)="vincularHorarioInicio($event)"   
+                             id="horarioInicio"
                 >
             </p-calendar>
             </div>    
@@ -21,6 +22,7 @@
                 <h3 style="">Horário fim </h3>
                 <p-calendar  [timeOnly]="true"
                              (onSelect)="vincularHorarioFim($event)"  
+                             id="horarioFim"
                 >
                 </p-calendar>
             </div>

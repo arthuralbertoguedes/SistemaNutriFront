@@ -5,4 +5,5 @@ export class Consulta{
     public horarioInicio            : Date;
     public horarioFim               : Date;
     public informacoesAdicionais    : String;
+    public horarioDateTime          : Date;
 }

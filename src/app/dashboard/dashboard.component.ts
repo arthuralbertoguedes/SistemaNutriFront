@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { ConsultaService } from '../consulta/consulta.service';
+import { Consulta } from '../consulta/consulta.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,17 +13,24 @@ import interactionPlugin from '@fullcalendar/interaction';
 export class DashboardComponent implements OnInit {
 
   
-  public events: any[];
+  public events: any[] = [];
   public options: any;
 
 
-  constructor() {
+  constructor(private _consultaService: ConsultaService) {
       
    }
 
   ngOnInit() {
+    this._consultaService.listar()
+        .subscribe(
+            res =>{
+                this.carregarConsultas(res);
 
-    this.events = [
+            }
+        )
+
+  /*  this.events = [
       {
           "title": "Consulta Ester Macena",
           "start": "2019-07-01",
@@ -62,31 +71,48 @@ export class DashboardComponent implements OnInit {
         "start": "2019-07-16T12:30:00"
       }
 
-  ];
+    ];*/
 
-this.options = {
-  plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-  timeZone: 'BRT',
-  header: {
-      left: 'prev,next',
-      center: 'title',
-      right: 'week'
-  },
-  locale: 'pt-br',
-  editable: true,
- /* titleFormat: {
-    year: 'numeric', month: 'long', day: 'numeric'
-  },*/
-  dateClick: (e) =>  {
-    console.log(e);
-  },
-  eventClick: (e) => {
-    console.log(e);
+    this.options = {
+      plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+      timeZone: 'BRT',
+      header: {
+          left: 'prev,next',
+          center: 'title',
+          right: 'week'
+      },
+      locale: 'pt-br',
+      editable: true,
+    /* titleFormat: {
+        year: 'numeric', month: 'long', day: 'numeric'
+      },*/
+      dateClick: (e) =>  {
+        console.log(e);
+      },
+      eventClick: (e) => {
+        console.log(e);
+      }
+    };
+
+
   }
-};
 
-let calendario = document.getElementById('calendario');
-console.log(calendario);
+  public carregarConsultas(res: Consulta[]): void{
+      let arrayConsultaCalendar: any[] = [];
+
+        res.forEach((element: Consulta) => {
+              arrayConsultaCalendar.push( 
+                  {   
+                    //Colocar aqui o nome do paciente, que virá com o JPA na consulta
+                     'title': 'Teste nome',
+                     'start': element.horarioDateTime
+                  }
+              )
+        })
+        
+        console.log(arrayConsultaCalendar);
+      
+      this.events = arrayConsultaCalendar;
   }
 
 }

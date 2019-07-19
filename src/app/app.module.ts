@@ -13,6 +13,7 @@ import { ConsultaModule } from './consulta/consulta.module';
 import { UtilitariosModule } from './utilitarios/utilitarios.module';
 import { AvaliacaoModule } from './avaliacao/avaliacao.module';
 import { FullCalendarModule } from '../../node_modules/primeng/fullcalendar';
+import { ConsultaService } from './consulta/consulta.service';
 
 
 @NgModule({
@@ -37,7 +38,10 @@ import { FullCalendarModule } from '../../node_modules/primeng/fullcalendar';
   exports: [
     
   ],
-  providers: [AuthguardService],
+  providers: [
+    AuthguardService,
+    ConsultaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

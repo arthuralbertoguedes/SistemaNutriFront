@@ -26,7 +26,8 @@ export class NovaConsultaComponent implements OnInit {
         'idPaciente': [''],
         'dataConsulta': [''],
         'horarioInicio': [''],
-        'horarioFim': ['']
+        'horarioFim': [''],
+        'horarioDateTime': ['']
       })
 
     
@@ -47,6 +48,7 @@ export class NovaConsultaComponent implements OnInit {
   }
 
   public vincularHorarioInicio(event): void{
+      this.novaConsultaFormulario.get('horarioDateTime').setValue(event);
       let horarioInicio = Utilitarios.pegarHorarioData(event.toString());
       this.novaConsultaFormulario.get('horarioInicio').setValue(horarioInicio);
   }
@@ -56,17 +58,35 @@ export class NovaConsultaComponent implements OnInit {
       this.novaConsultaFormulario.get('horarioFim').setValue(horarioFim);
   }
 
-  public salvar(){
+  public salvar(): void{
         let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
         let dataFormatada = Utilitarios.gerarData(dataSelecionada);
         this.novaConsultaFormulario.get('dataConsulta').setValue(dataFormatada);
         
+        this.validarForm();
+
         let consulta = this.novaConsultaFormulario.value;
         console.log(consulta)
         this.consultaService.salvarConsulta(consulta)
-        .subscribe(
-            res=>console.log(res),
-            erro=>console.log(erro)
-        )
+            .subscribe(
+                res=>{
+                    alert('Consulta cadastrada');
+                }
+            )
   }
+
+  public validarForm(): void{
+      
+    if(this.novaConsultaFormulario.get('horarioInicio').value==undefined 
+    || this.novaConsultaFormulario.get('horarioFim').value ==undefined
+    || this.novaConsultaFormulario.get('horarioInicio').value ==''
+    || this.novaConsultaFormulario.get('horarioFim').value ==''            ){
+        let horarioInicioConsulta = (<HTMLInputElement>document.querySelector('#horarioInicio span input')).value;
+        let horarioFimConsulta =    (<HTMLInputElement>document.querySelector('#horarioFim span input')).value;
+        this.novaConsultaFormulario.get('horarioInicio').setValue(horarioInicioConsulta);
+        this.novaConsultaFormulario.get('horarioFim').setValue(horarioFimConsulta);
+        
+    }   
+  }
+
 }

@@ -18,9 +18,16 @@ export class ConsultaService {
     let endPoint = this.url+"/consulta/salvar";
      
      return this.http.post<Consulta>(endPoint,consulta)
-     .pipe(
-        map(res=>res),
-     )
+        .pipe(
+            map(res=>res),
+        )
+  }
+
+  public listar(): Observable<Consulta[]>{
+      return this.http.get(this.url + "/consulta/listar")
+          .pipe(
+              map(res => res as Consulta[])
+          );
   }
   
 }
