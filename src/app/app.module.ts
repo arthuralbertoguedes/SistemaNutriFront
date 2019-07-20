@@ -14,6 +14,7 @@ import { UtilitariosModule } from './utilitarios/utilitarios.module';
 import { AvaliacaoModule } from './avaliacao/avaliacao.module';
 import { FullCalendarModule } from '../../node_modules/primeng/fullcalendar';
 import { ConsultaService } from './consulta/consulta.service';
+import { PacienteService } from './paciente/paciente.service';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ConsultaService } from './consulta/consulta.service';
   ],
   providers: [
     AuthguardService,
-    ConsultaService
+    ConsultaService,
+    PacienteService
   ],
   bootstrap: [AppComponent]
 })

@@ -31,4 +31,9 @@ export class PacienteService {
   public listarPorNome(nomePaciente: string): Observable<Paciente[]>{
       return this.http.get<Paciente[]>(this.url + "/paciente/listarPorNome/" + nomePaciente );
   }
+
+  public listarUltimosCadastros(): Observable<Paciente[]>{
+      return this.http.get<Paciente[]>(this.url + "/paciente/listarUltimos");
+  }
+
 }

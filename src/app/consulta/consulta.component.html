@@ -1,4 +1,22 @@
 <h1>Nova consulta</h1>
 <a routerLink="/home/nova-consulta">Cadastrar nova consulta</a>
 
-<!--Iniciar avaliacao passa o id do paciente em que será feita a avaliação-->
+<div class="container-fluid">
+    <p-dataView [value]="listaConsultas" emptyMessage="Nenhuma consulta encontrada">
+        <ng-template let-consulta pTemplate="listItem">
+            <!--Container com cada paciente-->
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <div class="row">
+                    <div class="col-6">
+                        <br/>
+                        <p>Consulta agendada em:</p>
+                        <br/>
+                        {{consulta.dataConsulta}}
+                        <p>Horário: </p> <span> {{consulta.horarioInicio}}</span>
+         
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView> 
+</div>

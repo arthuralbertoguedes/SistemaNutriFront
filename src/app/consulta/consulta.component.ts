@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConsultaService } from './consulta.service';
+import { Consulta } from './consulta.model';
 
 @Component({
   selector: 'app-consulta',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultaComponent implements OnInit {
 
-  constructor() { }
+  public listaConsultas: Consulta[];
+
+  constructor(private _consultaService: ConsultaService) {}
 
   ngOnInit() {
+
+      this._consultaService.listar()
+          .subscribe(
+                res=>{
+                    this.listaConsultas = res;
+                }
+          )
   }
 
 }

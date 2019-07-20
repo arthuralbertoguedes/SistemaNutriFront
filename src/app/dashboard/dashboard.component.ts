@@ -4,6 +4,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ConsultaService } from '../consulta/consulta.service';
 import { Consulta } from '../consulta/consulta.model';
+import { PacienteService } from '../paciente/paciente.service';
+import { Paciente } from '../paciente/Paciente.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,13 +17,15 @@ export class DashboardComponent implements OnInit {
   
   public events: any[] = [];
   public options: any;
+  public ultimosPacientes: Paciente[] = [];
 
-
-  constructor(private _consultaService: ConsultaService) {
+  constructor(private _consultaService: ConsultaService,
+              private _pacienteService: PacienteService) {
       
    }
 
   ngOnInit() {
+    //Listando as consultas   
     this._consultaService.listar()
         .subscribe(
             res =>{
@@ -30,6 +34,15 @@ export class DashboardComponent implements OnInit {
             }
         )
 
+    //Listando os últimos pacientes cadastrados
+    this._pacienteService.listarUltimosCadastros()
+        .subscribe(
+            res => {
+                this.ultimosPacientes = res;
+            }
+        )
+    
+    
   /*  this.events = [
       {
           "title": "Consulta Ester Macena",

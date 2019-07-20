@@ -1,8 +1,25 @@
 
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-9">
+        <div class="col-12 col-md-8">
             <p-fullCalendar #fc [events]="events" [options]="options"></p-fullCalendar>
+        </div>
+    
+        <div class="col-12 col-md-4 text-center">
+            <h3>
+                Novos pacientes
+            </h3>
+            <div class="col-12 mt-5">
+                <div class="card" *ngFor="let paciente of ultimosPacientes">
+                    <div class="card-content">
+                    <span class="card-title">{{paciente.nome}}</span>
+                        <img src="../../assets/paciente1.jpg" alt="" style=" width: 100% ">
+                        <p>Informações do paciente</p>
+                        <button (click)="verInformacoesPaciente(paciente.Id)">Ver informações</button>
+                        <button>Enviar mensagem</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
