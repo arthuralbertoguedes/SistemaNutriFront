@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
       {
           "title": "Fazer cocô",
           "start": "2019-07-09T16:00:00"
-      },
+      
       {
           "title": "Tomar banho",
           "start": "2019-07-16T16:00:00"

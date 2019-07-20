@@ -29,8 +29,6 @@ export class NovaConsultaComponent implements OnInit {
         'horarioFim': [''],
         'horarioDateTime': ['']
       })
-
-    
   }
 
 
@@ -43,9 +41,12 @@ export class NovaConsultaComponent implements OnInit {
       );
   }
 
+
   public vincularPaciente(event): void{
      this.novaConsultaFormulario.get('idPaciente').setValue(event.id);
   }
+
+
 
   public vincularHorarioInicio(event): void{
       this.novaConsultaFormulario.get('horarioDateTime').setValue(event);
@@ -53,40 +54,61 @@ export class NovaConsultaComponent implements OnInit {
       this.novaConsultaFormulario.get('horarioInicio').setValue(horarioInicio);
   }
 
+
+
   public vincularHorarioFim(event): void{
       let horarioFim = Utilitarios.pegarHorarioData(event.toString());
       this.novaConsultaFormulario.get('horarioFim').setValue(horarioFim);
   }
 
-  public salvar(): void{
-        let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
-        let dataFormatada = Utilitarios.gerarData(dataSelecionada);
-        this.novaConsultaFormulario.get('dataConsulta').setValue(dataFormatada);
-        
-        this.validarForm();
 
+  public salvar(): void{
+       
+        this.validarForm();
         let consulta = this.novaConsultaFormulario.value;
-        console.log(consulta)
+
         this.consultaService.salvarConsulta(consulta)
             .subscribe(
                 res=>{
                     alert('Consulta cadastrada');
+                    this.resetarFormulario();
                 }
             )
   }
 
+
+
   public validarForm(): void{
-      
-    if(this.novaConsultaFormulario.get('horarioInicio').value==undefined 
-    || this.novaConsultaFormulario.get('horarioFim').value ==undefined
-    || this.novaConsultaFormulario.get('horarioInicio').value ==''
-    || this.novaConsultaFormulario.get('horarioFim').value ==''            ){
-        let horarioInicioConsulta = (<HTMLInputElement>document.querySelector('#horarioInicio span input')).value;
-        let horarioFimConsulta =    (<HTMLInputElement>document.querySelector('#horarioFim span input')).value;
-        this.novaConsultaFormulario.get('horarioInicio').setValue(horarioInicioConsulta);
-        this.novaConsultaFormulario.get('horarioFim').setValue(horarioFimConsulta);
-        
-    }   
+    
+    let horarioInicio = (<HTMLInputElement>document.querySelector('#horarioInicio>span>input')).value;
+    let horarioFim = (<HTMLInputElement>document.querySelector('#horarioFim>span>input')).value;
+    let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
+    let dataFormatada = Utilitarios.gerarData(dataSelecionada);
+    this.novaConsultaFormulario.get('dataConsulta').setValue(dataFormatada);    
+  
+    let hora          = Number(horarioInicio.toString().substring(0,2));
+    let minutos       = Number(horarioInicio.toString().substring(3,5));
+    
+    let ano           = Number(dataSelecionada.substring(6,10));
+    let mes           = Number(dataSelecionada.substring(3,5));
+    let dia           = Number(dataSelecionada.substring(0,2));
+
+    //Criação do LocalDateTime que será utilizado no componente FullCalendar no Dashboard
+    let dataConsultaDateTime = new Date(ano ,mes-1, dia, hora, minutos, Number('00'));
+
+    this.novaConsultaFormulario.get('horarioInicio').setValue(horarioInicio);
+    this.novaConsultaFormulario.get('horarioFim').setValue(horarioFim);
+    this.novaConsultaFormulario.get('horarioDateTime').setValue(dataConsultaDateTime);
   }
+
+
+  public resetarFormulario(): void{
+      this.novaConsultaFormulario.reset();
+      (<HTMLInputElement>document.querySelector('#horarioInicio>span>input')).value = "";
+      (<HTMLInputElement>document.querySelector('#horarioFim>span>input')).value = "";
+      (<HTMLInputElement>document.querySelector('#nomePaciente>span>input')).value = "";
+      (<HTMLInputElement>document.querySelector('#data')).value = "";
+  }
+
 
 }
