@@ -1,6 +1,6 @@
 export class Paciente{
 
-    public Id: Number;
+    public id: Number;
 	
 	public nome: String;
 

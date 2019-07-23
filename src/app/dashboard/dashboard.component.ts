@@ -117,14 +117,12 @@ export class DashboardComponent implements OnInit {
               arrayConsultaCalendar.push( 
                   {   
                     //Colocar aqui o nome do paciente, que virá com o JPA na consulta
-                     'title': 'Teste nome',
+                     'title': `: ${element.paciente.nome}`,
                      'start': element.horarioDateTime
                   }
               )
         })
         
-        console.log(arrayConsultaCalendar);
-      
       this.events = arrayConsultaCalendar;
   }
 

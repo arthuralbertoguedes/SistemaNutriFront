@@ -23,7 +23,7 @@ export class NovaConsultaComponent implements OnInit {
   ngOnInit() { 
       this.novaConsultaFormulario = this.fb.group({
         'informacoesAdicionais': ['', Validators.required],
-        'idPaciente': [''],
+        'paciente': [''],
         'dataConsulta': [''],
         'horarioInicio': [''],
         'horarioFim': [''],
@@ -43,7 +43,7 @@ export class NovaConsultaComponent implements OnInit {
 
 
   public vincularPaciente(event): void{
-     this.novaConsultaFormulario.get('idPaciente').setValue(event.id);
+     this.novaConsultaFormulario.get('paciente').setValue(event.id);
   }
 
 
@@ -66,7 +66,7 @@ export class NovaConsultaComponent implements OnInit {
        
         this.validarForm();
         let consulta = this.novaConsultaFormulario.value;
-
+        console.log(consulta);
         this.consultaService.salvarConsulta(consulta)
             .subscribe(
                 res=>{
@@ -99,6 +99,14 @@ export class NovaConsultaComponent implements OnInit {
     this.novaConsultaFormulario.get('horarioInicio').setValue(horarioInicio);
     this.novaConsultaFormulario.get('horarioFim').setValue(horarioFim);
     this.novaConsultaFormulario.get('horarioDateTime').setValue(dataConsultaDateTime);
+
+    let paciente = new Paciente();
+    let idPaciente = this.novaConsultaFormulario.get('paciente').value;
+    paciente.id = idPaciente;
+    paciente.nome = 'arthur';
+    paciente.genero = 'M';
+
+    this.novaConsultaFormulario.get('paciente').setValue(paciente);
   }
 
 

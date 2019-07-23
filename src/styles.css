@@ -135,3 +135,22 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
     background-color: #538868;
     border: 1px solid #538868;
   }
+
+
+  /*FULL-CALENDAR styles*/
+  
+  .fc-time, .fc-title{
+      font-size: 12px;
+      
+  }
+
+  body .fc .fc-event{
+      background-color: #538868;
+      color: white;
+      border-color: #538868;
+  }
+
+  .fc table{
+      font-size: 0.9em;
+     
+  }

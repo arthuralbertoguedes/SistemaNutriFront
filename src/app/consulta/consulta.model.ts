@@ -1,3 +1,5 @@
+import { Paciente } from '../paciente/Paciente.model';
+
 export class Consulta{
 
     public id                       : Number;
@@ -6,4 +8,5 @@ export class Consulta{
     public horarioFim               : Date;
     public informacoesAdicionais    : String;
     public horarioDateTime          : Date;
+    public paciente                 : Paciente;
 }
