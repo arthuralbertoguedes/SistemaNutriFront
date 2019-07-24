@@ -36,4 +36,8 @@ export class PacienteService {
       return this.http.get<Paciente[]>(this.url + "/paciente/listarUltimos");
   }
 
+  public listarPorId(id: Number): Observable<Paciente>{
+      return this.http.get<Paciente>(this.url + `/paciente/${id}` );
+  }
+
 }

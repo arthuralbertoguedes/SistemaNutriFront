@@ -154,3 +154,10 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
       font-size: 0.9em;
      
   }
+
+
+/*Fontes*/
+@font-face {
+    font-family: 'crystal';
+    src: url('./fonts/crystal.ttf');
+}

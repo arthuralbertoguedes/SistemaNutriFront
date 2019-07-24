@@ -1,22 +1,50 @@
-<!--
-<div class="container-fluid" >
-   
-      <div class="float-left col-4" style="height: 8vp;">
-          <img  class="img-fluid" src="http://localhost:4200/assets/paciente1.jpg" alt="" style="height: 100%">
-      </div>
-      <div class="col-8 float-right">
-          <div class="">
-              <h2>Nome do paciente</h2>
-              <p>Arthur alberto guedes</p>
-          </div>
-          <div class="col-8">
-              <h2>Email</h2>
-              <p>agalbertoguedes@gmail.com</p>
-          </div>
-          <div class="col-8">
-              <h2>Telefone</h2>
-              <p>062 98173-4412</p>
-          </div>
-      </div>      
-</div>
--->
+<section class="container-fluid p-0">
+    <!-- Cabeçalho -->
+    <div class="row secaoPaciente" *ngIf="pacienteEscolhido!=undefined">
+         <div class="col-4 p-0" style="height: 100px;">
+                <img  class="img-fluid" src="../../../assets/pessoa.jpg" alt="" style="height: 100px; width: 150px; max-width: 300px;" class="ml-5">
+         </div>
+         <div class="col-8">
+                <span class="cabecalhoPaciente">{{pacienteEscolhido.nome}}</span>
+                <br/>
+                <span class="cabecalhoPaciente">{{idadePaciente}} anos</span>
+                <br/>
+                <!--Colocar o objetivo aqui quando tiver implementado no JPA -->
+                <span class="cabecalhoPaciente">Objetivo: Hipertrofia</span>
+         </div>
+    </div>
+    <div class="row d-flex justify-content-around mt-5">
+        <div class="col-12 col-md-3 divCabecalhoPaciente text-center">
+            <img src="../../../assets/informacoes.png" style="height: 40px; "class="my-2"/>
+            <h2>Informações pessoais</h2>
+        </div>
+        
+        <div class="col-12 col-md-3 divCabecalhoPaciente text-center text-center">
+                <img src="../../../assets/plano.png" style="height: 40px;" class="my-2"/>
+            <h2>Plano alimentar atual</h2>
+        </div>
+
+        <div class="col-12 col-md-3 divCabecalhoPaciente text-center">
+            <img src="../../../assets/antropometria.png" style="height: 40px; "class="my-2"/>
+            <h2>Medidas antropométricas</h2>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-around mt-4 text-center">
+        <div class="col-12 col-md-3 divCabecalhoPaciente">
+            <img src="../../../assets/historico.png" style="height: 40px; "class="my-2"/>
+            <h2>Histórico de consultas</h2>
+        </div>
+        
+        <div class="col-12 col-md-3 divCabecalhoPaciente text-center">
+            <img src="../../../assets/anamnese.png" style="height: 40px;" class="my-2"/>
+            <h2>Anamneses</h2>
+        </div>
+
+        <div class="col-12 col-md-3 divCabecalhoPaciente text-center">
+            <img src="../../../assets/mensagens.png" style="height: 40px; "class="my-2"/>
+            <h2>Histórico de mensagens</h2>
+        </div>
+    </div>
+
+
+</section>
