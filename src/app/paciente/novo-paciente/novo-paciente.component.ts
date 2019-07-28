@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { PacienteService } from '../paciente.service';
 import { Paciente } from '../Paciente.model';
 import { Utilitarios } from '../../recursos/utilitarios';
+import { Endereco } from '../../models/endereco.model';
 
 @Component({
   selector: 'app-novo-paciente',
@@ -25,9 +26,10 @@ export class NovoPacienteComponent implements OnInit {
             'cidade': ['', Validators.required],
             'email': ['', Validators.required],
             'cep': ['', Validators.required],
-            'endereco': ['', Validators.required],
+            'logradouro': ['', Validators.required],
             'genero': ['M'],
-            'dataCadastro': ['']
+            'dataCadastro': [''],
+            'endereco': ['']
         }) 
 
 
@@ -35,17 +37,31 @@ export class NovoPacienteComponent implements OnInit {
     }   
 
     public salvar() : void{
+
+        this.validarForm();
+
+        let modelSalvar = this.novoPacienteFormulario.value;
+        console.log(modelSalvar);
+        this._pacienteService.salvar(modelSalvar).subscribe(
+            (res)=>{console.log(res)}
+        );
+    }
+
+    public validarForm(): void{
+
+        let enderecoPessoa = new Endereco();
+        enderecoPessoa.cep = this.novoPacienteFormulario.get('cep').value;
+        enderecoPessoa.cidade = this.novoPacienteFormulario.get('cidade').value;
+        enderecoPessoa.logradouro = this.novoPacienteFormulario.get('logradouro').value;
+        enderecoPessoa.estado = this.novoPacienteFormulario.get('estado').value;
+
+       
         let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
         let dataFormatada = Utilitarios.gerarData(dataSelecionada);
         let dataCadastro = Utilitarios.getDataAtual();
  
         this.novoPacienteFormulario.get('dataNascimento').setValue(dataFormatada);
         this.novoPacienteFormulario.get('dataCadastro').setValue(dataCadastro);
-
-        let modelSalvar = this.novoPacienteFormulario.value;
-        
-        this._pacienteService.salvar(modelSalvar).subscribe(
-            (res)=>{console.log(res)}
-        );
+        this.novoPacienteFormulario.get('endereco').setValue(enderecoPessoa);
     }
 }

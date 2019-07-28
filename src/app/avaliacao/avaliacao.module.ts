@@ -9,9 +9,7 @@ import { AnamneseService } from './anamnese/anamnese.service';
 import { AntropometriaService } from './antropometria/antropometria-service';
 import { ComposicaoService } from './composicao-corporal/composicao-service';
 import {TabMenuModule} from 'primeng/tabmenu';
-import { PlanoAlimentarComponent } from './plano-alimentar/plano-alimentar.component';
 import {AutoCompleteModule} from 'primeng/autocomplete';
-import { PlanoAlimentarService } from './plano-alimentar/plano-alimentar.service';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {TableModule} from 'primeng/table';
 
@@ -20,8 +18,7 @@ import {TableModule} from 'primeng/table';
       AvaliacaoComponent,
       AnamneseComponent,
       AntropometriaComponent,
-      ComposicaoCorporalComponent,
-      PlanoAlimentarComponent
+      ComposicaoCorporalComponent
      
   ],
   imports: [
@@ -33,12 +30,15 @@ import {TableModule} from 'primeng/table';
     TableModule
   ],
   exports: [
-      AvaliacaoComponent
+      AvaliacaoComponent,
+      AnamneseComponent,
+      AntropometriaComponent,
+      ComposicaoCorporalComponent
+      
   ],
   providers: [
     AnamneseService,
     AntropometriaService,
-    PlanoAlimentarService,
     ComposicaoService
   ]
   

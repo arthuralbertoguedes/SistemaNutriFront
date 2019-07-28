@@ -1,3 +1,6 @@
+import { Anamnese } from '../models/anamnese.model';
+import { Endereco } from '../models/endereco.model';
+
 export class Paciente{
 
     public id: Number;
@@ -15,5 +18,9 @@ export class Paciente{
 	public isPaciente: boolean;
 	
 	public dataCadastro: Date;
+
+	public anamnese: Anamnese;
+
+	public endereco: Endereco;
 
 }

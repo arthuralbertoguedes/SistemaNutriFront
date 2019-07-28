@@ -11,17 +11,30 @@ import { ReactiveFormsModule, FormBuilder } from '../../../node_modules/@angular
 import { PacienteService } from './paciente.service';
 import { DataViewModule } from '../../../node_modules/primeng/dataview';
 import { PacienteDetalhadoComponent } from './paciente-detalhado/paciente-detalhado.component';
+import { AvaliacaoModule } from '../avaliacao/avaliacao.module';
+import { DadosPessoaisModule } from '../dados-pessoais/dados-pessoais.module';
+import { ConsultaModule } from '../consulta/consulta.module';
+import { MensagemModule } from '../mensagem/mensagem.module';
+import { PlanoAlimentarModule } from '../plano-alimentar/plano-alimentar.module';
 
 @NgModule({
   declarations: [PacienteComponent, 
-                 NovoPacienteComponent, PacienteDetalhadoComponent],
+                 NovoPacienteComponent, 
+                 PacienteDetalhadoComponent
+          ],
+          
   imports: [
     CommonModule,
     FieldsetModule,
     BrowserAnimationsModule,
     RouterModule,
     ReactiveFormsModule,
-    DataViewModule
+    DataViewModule,
+    AvaliacaoModule,
+    DadosPessoaisModule,
+    ConsultaModule,
+    MensagemModule,
+    PlanoAlimentarModule
   ],
   exports: [
     PacienteComponent

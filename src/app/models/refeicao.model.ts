@@ -1,4 +1,5 @@
-import { Alimento } from '../avaliacao/plano-alimentar/alimento.model';
+import { Alimento } from '../plano-alimentar/alimento.model';
+
 
 export class Refeicao{
 

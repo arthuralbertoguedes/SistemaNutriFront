@@ -3,19 +3,21 @@ import { ConsultaComponent } from './consulta.component';
 import { NovaConsultaComponent } from './nova-consulta/nova-consulta.component';
 import { ConsultaService } from './consulta.service';
 import { UtilitariosModule } from '../utilitarios/utilitarios.module';
-import { FormsModule } from '../../../node_modules/@angular/forms';
 import { PacienteService } from '../paciente/paciente.service';
+import { HistoricoConsultaComponent } from './historico-consulta/historico-consulta.component';
 
 @NgModule({
   declarations: [
                 ConsultaComponent,
-                NovaConsultaComponent],
+                NovaConsultaComponent,
+                HistoricoConsultaComponent],
   imports: [
             UtilitariosModule
   ],
   exports: [
             ConsultaComponent,
-            NovaConsultaComponent
+            NovaConsultaComponent,
+            HistoricoConsultaComponent
   ],
   providers: [
               ConsultaService,

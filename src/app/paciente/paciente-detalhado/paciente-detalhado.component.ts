@@ -13,6 +13,17 @@ export class PacienteDetalhadoComponent implements OnInit {
   public pacienteEscolhido: Paciente;
   public idadePaciente    : string;
 
+  //  Variáveis para o ngIf
+  //  Controle das informações que aparecerão 
+  //  na tela de acordo com a escolha do usuário
+  public anamneseAtivo: boolean               = false;
+  public informacoesPessoaisAtivo: boolean    = false;
+  public planoAlimentarAtivo: boolean         = false;
+  public medidasAntropometricasAtivo: boolean = false;
+  public historicoConsultaAtivo: boolean      = false;
+  public historicoMensagensAtivo: boolean     = false;
+
+
   constructor(private route: ActivatedRoute,
               private _pacienteService: PacienteService) { }
 
@@ -43,4 +54,61 @@ export class PacienteDetalhadoComponent implements OnInit {
     }
     this.idadePaciente = idade.toString();
   }
+
+
+  public mostrarAnamnese(): void{
+      this.anamneseAtivo               = true;
+      this.informacoesPessoaisAtivo    = false;
+      this.historicoConsultaAtivo      = false;
+      this.historicoMensagensAtivo     = false;
+      this.medidasAntropometricasAtivo = false;
+      this.planoAlimentarAtivo         = false;
+  }
+
+  public mostrarInformacoesPessoaisAtivo(): void{
+    this.anamneseAtivo               = false;
+    this.informacoesPessoaisAtivo    = true;
+    this.historicoConsultaAtivo      = false;
+    this.historicoMensagensAtivo     = false;
+    this.medidasAntropometricasAtivo = false;
+    this.planoAlimentarAtivo         = false;
+}
+
+public mostrarHistoricoConsultaAtivo(): void{
+  this.anamneseAtivo               = false;
+  this.informacoesPessoaisAtivo    = false;
+  this.historicoConsultaAtivo      = true;
+  this.historicoMensagensAtivo     = false;
+  this.medidasAntropometricasAtivo = false;
+  this.planoAlimentarAtivo         = false;
+}
+
+public mostrarHistoricoMensagensAtivo(): void{
+  this.anamneseAtivo               = false;
+  this.informacoesPessoaisAtivo    = false;
+  this.historicoConsultaAtivo      = false;
+  this.historicoMensagensAtivo     = true;
+  this.medidasAntropometricasAtivo = false;
+  this.planoAlimentarAtivo         = false;
+}
+
+public mostrarMedidasAntropometricasAtivo(): void{
+  this.anamneseAtivo               = false;
+  this.informacoesPessoaisAtivo    = false;
+  this.historicoConsultaAtivo      = false;
+  this.historicoMensagensAtivo     = false;
+  this.medidasAntropometricasAtivo = true;
+  this.planoAlimentarAtivo         = false;
+}
+
+  
+public mostrarPlanoAlimentarAtivo(): void{
+  this.anamneseAtivo               = false;
+  this.informacoesPessoaisAtivo    = false;
+  this.historicoConsultaAtivo      = false;
+  this.historicoMensagensAtivo     = false;
+  this.medidasAntropometricasAtivo = false;
+  this.planoAlimentarAtivo         = true;
+}
+
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Alimento } from './alimento.model';
-import { HttpClient } from '../../../../node_modules/@angular/common/http';
-import { urlBackEnd } from '../../recursos/url';
-import { map } from '../../../../node_modules/rxjs/operators';
-import { Observable } from '../../../../node_modules/rxjs';
+import { HttpClient } from '../../../node_modules/@angular/common/http';
+import { urlBackEnd } from '../recursos/url';
+import { map } from '../../../node_modules/rxjs/operators';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'

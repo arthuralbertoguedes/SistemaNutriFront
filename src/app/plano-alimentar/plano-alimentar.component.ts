@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder } from '../../../node_modules/@angular/forms';
 import { Alimento } from './alimento.model';
 import { PlanoAlimentarService } from './plano-alimentar.service';
-import { SelectItem } from '../../../../node_modules/primeng/api';
-import { ItemPlanoAlimentar } from '../../models/itemPlanoAlimentar.model';
-import { Refeicao } from '../../models/refeicao.model';
+import { SelectItem } from '../../../node_modules/primeng/api';
+import { ItemPlanoAlimentar } from '../models/itemPlanoAlimentar.model';
+import { Refeicao } from '../models/refeicao.model';
 
 @Component({
   selector: 'plano-alimentar',

@@ -1,3 +1,21 @@
+<section class="container-fluid p-0">
+    <!-- Cabeçalho -->
+    <div class="row secaoPaciente" *ngIf="pacienteEscolhido!=undefined">
+         <div class="col-4 p-0" style="height: 100px;">
+                <img  class="img-fluid" src="../../../assets/pessoa.jpg" alt="" style="height: 100px; width: 150px; max-width: 300px;" class="ml-5">
+         </div>
+         <div class="col-8">
+                <span class="cabecalhoPaciente">{{pacienteEscolhido.nome}}</span>
+                <br/>
+                <span class="cabecalhoPaciente">{{idadePaciente}} anos</span>
+                <br/>
+                <!--Colocar o objetivo aqui quando tiver implementado no JPA -->
+                <span class="cabecalhoPaciente">Objetivo: Hipertrofia</span>
+         </div>
+    </div>
+
+</section>
+
 <div class="container-fluid " >
     <div class="row">
         <div class="col-12">
@@ -21,10 +39,12 @@
 
 <div class="container containerShadow w-100">
     <anamnese 
+            [pacienteEscolhido] = pacienteEscolhido
             *ngIf="mostrarAnamnese"
             (click)="iniciarAnamnese()">
     </anamnese>
     <antropometria
+            
             *ngIf="mostrarAntropometria"
             (click)="iniciarAntropometria()">
     </antropometria>
@@ -32,8 +52,6 @@
             *ngIf="mostrarComposicaoCorporal"
             (click)="iniciarComposicaoCorporal()">
     </composicao-corporal>
-    <plano-alimentar
-            *ngIf="mostrarPlanoAlimentar"
-            (click)="iniciarPlanoAlimentar()">
-    </plano-alimentar>
+    
 </div>
+
