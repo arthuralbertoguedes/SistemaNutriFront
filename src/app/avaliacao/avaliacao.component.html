@@ -44,7 +44,7 @@
             (click)="iniciarAnamnese()">
     </anamnese>
     <antropometria
-            
+            [paciente] = pacienteEscolhido
             *ngIf="mostrarAntropometria"
             (click)="iniciarAntropometria()">
     </antropometria>

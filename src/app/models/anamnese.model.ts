@@ -10,11 +10,11 @@ export class Anamnese{
     
 	public apetite: string;
 
-	public fumante: boolean;
+	public fumante: string;
 
-    public bebidas: boolean;
+    public bebidas: string;
 
-    public academia: boolean;
+    public academia: string;
 	
 	public atividadesFisica: string;
 
@@ -22,9 +22,9 @@ export class Anamnese{
 
     public qualidadeDeSono: string;
 
-    public gestante: boolean;
+    public gestante: string;
 	
-	public diabetes: boolean;
+	public diabetes: string;
 	
     public alergias: string;
 

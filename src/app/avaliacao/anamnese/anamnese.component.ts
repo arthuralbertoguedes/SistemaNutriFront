@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
 import { AnamneseService } from './anamnese.service';
 import { Paciente } from '../../paciente/Paciente.model';
+import { Anamnese } from '../../models/anamnese.model';
 
 
 
@@ -36,22 +37,23 @@ export class AnamneseComponent implements OnInit {
                           this.buscarAnamnesePacienteEscolhido();
                           clearInterval(interval);
                       }     
-                   }, 2000);
+                   }, 500);
 
 
     this.anamneseForm = this.fb.group({
+      'id': [''],
       'objetivo': [''],
       'casoClinico': [''],
       'refeicoesFora': ['B'],
       'apetite': ['B'],
-      'fumante': ['true'],
-      'bebidas': ['true'],
-      'academia': ['true'],
+      'fumante': ['S'],
+      'bebidas': ['S'],
+      'academia': ['S'],
       'atividadesFisicas': [''],
       'tempoDeSono': [''],
       'qualidadeDeSono': ['B'],
-      'gestante': ['true'],
-      'diabetes': ['true'],
+      'gestante': ['S'],
+      'diabetes': ['S'],
       'alergias': [''],
       'sintomas': [''],
       'doencas': [''],
@@ -67,11 +69,8 @@ export class AnamneseComponent implements OnInit {
       this._service.buscarPorId(this.idAnamnese)
           .subscribe(
               res=>{
-                  console.log(res);
-                },
-              (erro)=>{
-                console.log(erro);
-              }
+                  this.setarAnamnesePaciente(res as Anamnese);
+                }
           )
 
   }
@@ -80,9 +79,12 @@ export class AnamneseComponent implements OnInit {
       let paciente = new Paciente();
       paciente = this.pacienteEscolhido;
       this.anamneseForm.get('paciente').setValue(paciente);
-      console.log(this.anamneseForm.value);
       let model = this.anamneseForm.value;
       this._service.salvar(model).subscribe(
       );
+  }
+
+  setarAnamnesePaciente(anamnese: Anamnese): void{
+      this.anamneseForm.patchValue(anamnese);
   }
 }

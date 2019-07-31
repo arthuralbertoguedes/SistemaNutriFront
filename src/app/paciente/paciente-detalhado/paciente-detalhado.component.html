@@ -55,6 +55,6 @@
     <informacoes-pessoais-paciente *ngIf="informacoesPessoaisAtivo"></informacoes-pessoais-paciente>
     <historico-consulta *ngIf="historicoConsultaAtivo"></historico-consulta>
     <historico-mensagens *ngIf="historicoMensagensAtivo"></historico-mensagens>
-    <antropometria *ngIf="medidasAntropometricasAtivo"></antropometria>
+    <antropometria *ngIf="medidasAntropometricasAtivo" [paciente] = pacienteEscolhido></antropometria>
     <plano-alimentar *ngIf="planoAlimentarAtivo"></plano-alimentar>
 </section>
