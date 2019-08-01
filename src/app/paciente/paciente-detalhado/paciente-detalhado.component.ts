@@ -22,7 +22,7 @@ export class PacienteDetalhadoComponent implements OnInit {
   public medidasAntropometricasAtivo: boolean = false;
   public historicoConsultaAtivo: boolean      = false;
   public historicoMensagensAtivo: boolean     = false;
-
+  public composicaoCorporalAtivo: boolean     = false;
 
   constructor(private route: ActivatedRoute,
               private _pacienteService: PacienteService) { }
@@ -63,6 +63,7 @@ export class PacienteDetalhadoComponent implements OnInit {
       this.historicoMensagensAtivo     = false;
       this.medidasAntropometricasAtivo = false;
       this.planoAlimentarAtivo         = false;
+      this.composicaoCorporalAtivo     = false;
   }
 
   public mostrarInformacoesPessoaisAtivo(): void{
@@ -72,6 +73,7 @@ export class PacienteDetalhadoComponent implements OnInit {
     this.historicoMensagensAtivo     = false;
     this.medidasAntropometricasAtivo = false;
     this.planoAlimentarAtivo         = false;
+    this.composicaoCorporalAtivo     = false;
 }
 
 public mostrarHistoricoConsultaAtivo(): void{
@@ -81,6 +83,7 @@ public mostrarHistoricoConsultaAtivo(): void{
   this.historicoMensagensAtivo     = false;
   this.medidasAntropometricasAtivo = false;
   this.planoAlimentarAtivo         = false;
+  this.composicaoCorporalAtivo     = false;
 }
 
 public mostrarHistoricoMensagensAtivo(): void{
@@ -90,6 +93,7 @@ public mostrarHistoricoMensagensAtivo(): void{
   this.historicoMensagensAtivo     = true;
   this.medidasAntropometricasAtivo = false;
   this.planoAlimentarAtivo         = false;
+  this.composicaoCorporalAtivo     = false;
 }
 
 public mostrarMedidasAntropometricasAtivo(): void{
@@ -99,6 +103,7 @@ public mostrarMedidasAntropometricasAtivo(): void{
   this.historicoMensagensAtivo     = false;
   this.medidasAntropometricasAtivo = true;
   this.planoAlimentarAtivo         = false;
+  this.composicaoCorporalAtivo     = false;
 }
 
   
@@ -109,6 +114,17 @@ public mostrarPlanoAlimentarAtivo(): void{
   this.historicoMensagensAtivo     = false;
   this.medidasAntropometricasAtivo = false;
   this.planoAlimentarAtivo         = true;
+  this.composicaoCorporalAtivo     = false;
+}
+
+public mostrarComposicaoCorporal(): void{
+  this.anamneseAtivo               = false;
+  this.informacoesPessoaisAtivo    = false;
+  this.historicoConsultaAtivo      = false;
+  this.historicoMensagensAtivo     = false;
+  this.medidasAntropometricasAtivo = false;
+  this.planoAlimentarAtivo         = false;
+  this.composicaoCorporalAtivo     = true;
 }
 
 }

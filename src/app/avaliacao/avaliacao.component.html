@@ -49,6 +49,7 @@
             (click)="iniciarAntropometria()">
     </antropometria>
     <composicao-corporal
+             [paciente] = pacienteEscolhido
             *ngIf="mostrarComposicaoCorporal"
             (click)="iniciarComposicaoCorporal()">
     </composicao-corporal>

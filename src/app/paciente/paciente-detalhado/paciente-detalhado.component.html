@@ -44,6 +44,10 @@
             <img src="../../../assets/mensagens.png" style="height: 40px; "class="my-2"/>
             <h2>Histórico de mensagens</h2>
         </div>
+        <div class="col-12 col-md-3 divCabecalhoPaciente text-center" (click)="mostrarComposicaoCorporal()">
+            <img src="../../../assets/composicao.png" style="height: 40px; "class="my-2"/>
+            <h2>Composição corporal</h2>
+        </div>
     </div>
 
 
@@ -57,4 +61,5 @@
     <historico-mensagens *ngIf="historicoMensagensAtivo"></historico-mensagens>
     <antropometria *ngIf="medidasAntropometricasAtivo" [paciente] = pacienteEscolhido></antropometria>
     <plano-alimentar *ngIf="planoAlimentarAtivo"></plano-alimentar>
+    <composicao-corporal *ngIf="composicaoCorporalAtivo" [paciente] = pacienteEscolhido></composicao-corporal>
 </section>
