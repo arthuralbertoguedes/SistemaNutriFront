@@ -35,7 +35,7 @@ export class TelaLoginComponent implements OnInit {
       if(usuario=='art' && senha=='123'){ 
           localStorage.setItem("token", "123123123");
           Infos_globais.token = '123123123';
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/dashboard']);
       }
   }
 }

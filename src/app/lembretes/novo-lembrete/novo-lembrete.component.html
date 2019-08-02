@@ -1,0 +1,40 @@
+<section class="container-fluid">
+  <h2>Cadastrar novo lembrete</h2>
+  <form action="" [formGroup]="novoLembreteForm" novalidate>
+      <div class="row">
+          <div class="col-12 col-md-9">
+              <i class="material-icons prefix">speaker_notes</i>
+              <input  type="text" 
+                      class="validate" 
+                      class="col-11"
+                      placeholder="Lembretes e anotações importantes"
+                      formControlName="lembrete">
+          </div>            
+          <div class="col-12 col-md-2">
+              <p-calendar [showIcon]="true"  
+                          [locale]="ptbr" 
+                          dateFormat="dd/mm/yy"
+                          placeholder="Data do lembrete"
+                          formControlName="dataLembrete">
+              </p-calendar>
+          </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-light mx-3" 
+            type="button" 
+            name="action" 
+            (click)="voltar()"
+            >Voltar
+            <i class="material-icons right" style="color: white;">arrow_back</i>
+          </button>   
+          <button class="btn waves-effect waves-light mx-3" 
+                type="button" 
+                name="action" 
+                (click)="salvar()"
+                >Salvar
+                <i class="material-icons right" style="color: white;">send</i>
+          </button>                 
+      </div>
+  </form>
+</section>
+

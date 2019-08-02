@@ -15,6 +15,9 @@ import { AvaliacaoModule } from './avaliacao/avaliacao.module';
 import { FullCalendarModule } from '../../node_modules/primeng/fullcalendar';
 import { ConsultaService } from './consulta/consulta.service';
 import { PacienteService } from './paciente/paciente.service';
+import { LembretesComponent } from './lembretes/lembretes.component';
+import { LembretesService } from './lembretes/lembretes.service';
+import { NovoLembreteComponent } from './lembretes/novo-lembrete/novo-lembrete.component';
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import { PacienteService } from './paciente/paciente.service';
     AppComponent,
     TelaLoginComponent,
     TelaInicialComponent,
-    DashboardComponent
+    DashboardComponent,
+    LembretesComponent,
+    NovoLembreteComponent
   ],
   imports: [
     BrowserModule,
@@ -38,11 +43,13 @@ import { PacienteService } from './paciente/paciente.service';
   ],
   exports: [
     
+    
   ],
   providers: [
     AuthguardService,
     ConsultaService,
-    PacienteService
+    PacienteService,
+    LembretesService
   ],
   bootstrap: [AppComponent]
 })

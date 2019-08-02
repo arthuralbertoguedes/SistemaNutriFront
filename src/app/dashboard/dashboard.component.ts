@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   public events: any[] = [];
   public options: any;
   public ultimosPacientes: Paciente[] = [];
+  public idadePaciente: string;
 
   constructor(private _consultaService: ConsultaService,
               private _pacienteService: PacienteService) {
@@ -30,7 +31,6 @@ export class DashboardComponent implements OnInit {
         .subscribe(
             res =>{
                 this.carregarConsultas(res);
-
             }
         )
 
@@ -39,6 +39,9 @@ export class DashboardComponent implements OnInit {
         .subscribe(
             res => {
                 this.ultimosPacientes = res;
+                res.forEach((elemento)=>{
+                    this.calcularIdadePaciente(elemento.dataNascimento as string);
+                })
             }
         )
     
@@ -112,7 +115,7 @@ export class DashboardComponent implements OnInit {
 
   public carregarConsultas(res: Consulta[]): void{
       let arrayConsultaCalendar: any[] = [];
-
+        console.log(res);
         res.forEach((element: Consulta) => {
               arrayConsultaCalendar.push( 
                   {   
@@ -124,6 +127,18 @@ export class DashboardComponent implements OnInit {
         })
         
       this.events = arrayConsultaCalendar;
+  }
+
+  public calcularIdadePaciente(dataNascimento: string): string {
+    var dataNasc = new Date(dataNascimento);
+    var hoje = new Date();
+    var anoAtual = hoje.getFullYear();
+    var dataAniversarioAnoAtual = new Date(anoAtual, dataNasc.getMonth(), dataNasc.getDate());
+    var idade = anoAtual - dataNasc.getFullYear();
+    if(dataAniversarioAnoAtual > hoje) {
+      idade--;
+    }
+    return idade.toString();
   }
 
 }

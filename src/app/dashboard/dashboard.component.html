@@ -1,11 +1,14 @@
 
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-12 col-md-8">
+        <div class="col-12">
+            <h3>Lembretes do dia: </h3>
+        </div>
+        <div class="col-12 col-md-9">
+            <h3>Calendário de consultas</h3>
             <p-fullCalendar #fc [events]="events" [options]="options"></p-fullCalendar>
         </div>
-    
-        <div class="col-12 col-md-4 text-center">
+        <div class="col-12 col-md-3 text-center">
             <h3>
                 Novos pacientes
             </h3>
@@ -14,7 +17,7 @@
                     <div class="card-content">
                     <span class="card-title">{{paciente.nome}}</span>
                         <img src="../../assets/paciente1.jpg" alt="" style=" width: 100% ">
-                        <p>Informações do paciente</p>
+                        <p>{{calcularIdadePaciente(paciente.dataNascimento)}} anos - <span>{{paciente.genero == 'M'? 'Masculino': 'Feminino'}}</span></p>
                         <button (click)="verInformacoesPaciente(paciente.Id)">Ver informações</button>
                         <button>Enviar mensagem</button>
                     </div>
