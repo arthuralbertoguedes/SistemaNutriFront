@@ -6,6 +6,8 @@ import { ConsultaService } from '../consulta/consulta.service';
 import { Consulta } from '../consulta/consulta.model';
 import { PacienteService } from '../paciente/paciente.service';
 import { Paciente } from '../paciente/Paciente.model';
+import { LembretesService } from '../lembretes/lembretes.service';
+import { Lembrete } from '../models/lembrete.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,13 +21,18 @@ export class DashboardComponent implements OnInit {
   public options: any;
   public ultimosPacientes: Paciente[] = [];
   public idadePaciente: string;
+  public dataLembrete: Date = new Date();
+  public lembretes: Lembrete[] = [];
 
   constructor(private _consultaService: ConsultaService,
-              private _pacienteService: PacienteService) {
+              private _pacienteService: PacienteService,
+              private _lembreteService: LembretesService) {
       
    }
 
   ngOnInit() {
+
+    this.inicializarDataLembrete();
     //Listando as consultas   
     this._consultaService.listar()
         .subscribe(
@@ -45,7 +52,8 @@ export class DashboardComponent implements OnInit {
             }
         )
     
-    
+ 
+
   /*  this.events = [
       {
           "title": "Consulta Ester Macena",
@@ -141,4 +149,19 @@ export class DashboardComponent implements OnInit {
     return idade.toString();
   }
 
+  inicializarDataLembrete(): void{
+        this.dataLembrete.setMinutes(0);
+        this.dataLembrete.setHours(0);
+        this.dataLembrete.setMilliseconds(0);
+        this.dataLembrete.setSeconds(0);
+        this.buscarLembretesDia();
+  }
+
+  public buscarLembretesDia(): void{
+         //Listando os lembretes do dia
+        this._lembreteService.buscarLembretesDia(this.dataLembrete)
+        .subscribe(res => {
+            this.lembretes = res;
+    })
+  }
 }

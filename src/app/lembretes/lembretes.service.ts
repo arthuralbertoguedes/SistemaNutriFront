@@ -18,4 +18,8 @@ export class LembretesService {
       return this.http.post<Lembrete>(`${this.urlApi}/lembrete/salvar`,lembrete);
   }
 
+  buscarLembretesDia(dataDeHoje: Date): Observable<Lembrete[]>{
+      let objetoConsulta = {data: dataDeHoje};
+      return this.http.post<Lembrete[]>(`${this.urlApi}/lembrete/listarLembretesHoje`, objetoConsulta);
+  }
 }

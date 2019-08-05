@@ -1,7 +1,7 @@
 export class Lembrete{
     id: Number;
 
-    lembre: string;
+    lembrete: string;
 
     dataLembrete: Date;
 }
