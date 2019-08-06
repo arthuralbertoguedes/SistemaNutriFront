@@ -1,0 +1,30 @@
+<section class="container-fluid p-0">
+  <!-- Cabeçalho -->
+  <div class="row secaoPaciente" *ngIf="pacienteEscolhido!=undefined">
+       <div class="col-4 p-0" style="height: 100px;">
+              <img  class="img-fluid" src="../../../assets/pessoa.jpg" alt="" style="height: 100px; width: 150px; max-width: 300px;" class="ml-5">
+       </div>
+       <div class="col-8">
+              <span class="cabecalhoPaciente">{{pacienteEscolhido.nome}}</span>
+              <br/>
+              <span class="cabecalhoPaciente">{{idadePaciente}} anos</span>
+              <br/>
+              <!--Colocar o objetivo aqui quando tiver implementado no JPA -->
+              <span class="cabecalhoPaciente">Objetivo: Hipertrofia</span>
+       </div>
+  </div>
+</section>
+
+<section class="container-fluid">
+    <div class="row">
+        <textarea pInputTextarea [(ngModel)]="mensagem" placeholder="Escreva a mensagem para o paciente..."></textarea>
+
+        <button class="btn waves-effect waves-light mx-3" 
+                type="button" 
+                name="action" 
+                (click)="salvar()"
+                >Salvar
+                <i class="material-icons right" style="color: white;">send</i>
+        </button>          
+    </div>
+</section>

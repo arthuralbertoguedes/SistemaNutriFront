@@ -4,6 +4,7 @@ import { Router } from '../../../node_modules/@angular/router';
 
 import { AuthguardService } from '../guards/authguard.service';
 import { Infos_globais } from '../shared/constantes';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Component({
   selector: 'app-tela-login',
@@ -17,12 +18,10 @@ export class TelaLoginComponent implements OnInit {
     'senha' : new FormControl('',[Validators.minLength(5), Validators.required])
   });
 
-  constructor(private router : Router) { }
+  constructor(private router : Router,
+              private _usuarioService: UsuarioService) { }
 
-  ngOnInit() {
-    
-    
-  }
+  ngOnInit() { }
 
 
   
@@ -36,6 +35,11 @@ export class TelaLoginComponent implements OnInit {
           localStorage.setItem("token", "123123123");
           Infos_globais.token = '123123123';
           this.router.navigate(['/home/dashboard']);
+
+          this._usuarioService.buscarUsuario()
+            .subscribe(res => {
+                localStorage.setItem("usuario",String(res.id));
+            })
       }
   }
 }

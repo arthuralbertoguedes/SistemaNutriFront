@@ -1,0 +1,37 @@
+.cabecalhoPaciente{
+    font-size: 1.5em;
+    text-align: center;
+  
+}
+.divCabecalhoPaciente{
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    background-color: #71af8a;
+    border: 1px solid #538868;
+    color: white;
+    box-shadow: 1px 2px 2px 1px rgb(199, 202, 199);
+    font-size: 0.6em;
+}
+.divCabecalhoPaciente:hover{
+    color: #ddd;
+    box-shadow: 1px 1px 12px 3px rgb(173, 177, 173, 0.5);
+}
+
+.secaoPaciente{
+
+    color: white;
+    background: #134E5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: 1px 1px 5px 2px rgb(169, 181, 179);
+    text-shadow: 1px 1px black;
+}
+.barraFixaRodape{
+    box-shadow: -1px 2px 8px #ddd; 
+    position: fixed; 
+    bottom: 0px;
+    width: 100%;
+    z-index: 999;
+    background: #538868;
+}

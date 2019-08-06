@@ -18,6 +18,7 @@ import { PacienteService } from './paciente/paciente.service';
 import { LembretesComponent } from './lembretes/lembretes.component';
 import { LembretesService } from './lembretes/lembretes.service';
 import { NovoLembreteComponent } from './lembretes/novo-lembrete/novo-lembrete.component';
+import { UsuarioService } from './usuario/usuario.service';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { NovoLembreteComponent } from './lembretes/novo-lembrete/novo-lembrete.c
     AuthguardService,
     ConsultaService,
     PacienteService,
-    LembretesService
+    LembretesService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

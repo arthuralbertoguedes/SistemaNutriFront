@@ -105,5 +105,5 @@ export class AvaliacaoComponent implements OnInit {
            this.calcularIdadePaciente(res.dataNascimento as string);
         }
       );
-}
+   }
 }

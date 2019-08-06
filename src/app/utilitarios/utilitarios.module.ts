@@ -7,7 +7,7 @@ import { ReactiveFormsModule, FormBuilder, FormsModule } from '../../../node_mod
 import { DataViewModule } from '../../../node_modules/primeng/dataview';
 import {CalendarModule} from 'primeng/calendar';
 import {AutoCompleteModule} from 'primeng/autocomplete';
-
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [],
@@ -20,7 +20,8 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     DataViewModule,
     FormsModule,
     CalendarModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    InputTextareaModule
   ],
 
   exports: [

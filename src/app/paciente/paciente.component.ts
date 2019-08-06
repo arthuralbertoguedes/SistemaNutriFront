@@ -32,5 +32,10 @@ export class PacienteComponent implements OnInit {
 
   public iniciarAtendimento(event: any): void{
     this.router.navigate([`home/iniciar-avaliacao/${event.id}`]);
-}
+  }
+
+  public enviarMensagem(event: any) :void{
+      this.router.navigate([`home/mensagens/${event.id}`]);
+  } 
+
 }

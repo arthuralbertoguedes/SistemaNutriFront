@@ -11,22 +11,23 @@ import { PacienteDetalhadoComponent } from './paciente/paciente-detalhado/pacien
 import { AvaliacaoComponent } from './avaliacao/avaliacao.component';
 import { LembretesComponent } from './lembretes/lembretes.component';
 import { NovoLembreteComponent } from './lembretes/novo-lembrete/novo-lembrete.component';
+import { MensagemComponent } from './mensagem/mensagem.component';
 
 export const routes : Routes = [
   {path: 'login', component: TelaLoginComponent},
   {path: 'home', component: TelaInicialComponent, children: [
-      {path: 'paciente', component: PacienteComponent,  },
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'novo-paciente', component: NovoPacienteComponent },
-      {path: 'consulta', component: ConsultaComponent},
-      {path: 'nova-consulta', component: NovaConsultaComponent},
-      {path: 'paciente-detalhado/:id', component: PacienteDetalhadoComponent},
-      {path: 'iniciar-avaliacao/:id', component: AvaliacaoComponent},
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'lembretes', component: LembretesComponent},
-      {path: 'novo-lembrete', component: NovoLembreteComponent}
-
-      ]
+        {path: 'paciente', component: PacienteComponent,  },
+        {path: 'dashboard', component: DashboardComponent},
+        {path: 'novo-paciente', component: NovoPacienteComponent },
+        {path: 'consulta', component: ConsultaComponent},
+        {path: 'nova-consulta', component: NovaConsultaComponent},
+        {path: 'paciente-detalhado/:id', component: PacienteDetalhadoComponent},
+        {path: 'iniciar-avaliacao/:id', component: AvaliacaoComponent},
+        {path: 'dashboard', component: DashboardComponent},
+        {path: 'lembretes', component: LembretesComponent},
+        {path: 'novo-lembrete', component: NovoLembreteComponent},
+        {path: 'mensagens/:id', component: MensagemComponent}
+    ]
   },
   {path: '', redirectTo: '/login', pathMatch: 'full'},
    
