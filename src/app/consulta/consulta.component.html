@@ -1,19 +1,35 @@
 <h1>Nova consulta</h1>
-<a routerLink="/home/nova-consulta">Cadastrar nova consulta</a>
 
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-10">
+            <div class="col-10">
+                    <input  id="buscarConsulta" 
+                            type="text" 
+                            class="validate" 
+                            placeholder="Digite o nome do paciente"
+                            [(ngModel)]="pesquisa"
+                            (keyup)="pesquisarConsulta()"
+                    >
+            </div>
+        </div>
+        <div class="col-2">
+            <a routerLink="/home/nova-consulta">
+               <button>Cadastrar nova consulta</button>
+            </a>
+        </div>
+    </div>
+
     <p-dataView [value]="listaConsultas" emptyMessage="Nenhuma consulta encontrada">
         <ng-template let-consulta pTemplate="listItem">
             <!--Container com cada paciente-->
             <div class="col-sm-12 col-md-12 col-lg-6">
                 <div class="row">
-                    <div class="col-6">
-                        <br/>
-                        <p>Consulta agendada em:</p>
-                        <br/>
-                        {{consulta.dataConsulta}}
-                        <p>Horário: </p> <span> {{consulta.horarioInicio}}</span>
-         
+                    <div class="col-6 m-3">
+                        <p>Consulta agendada em: {{consulta.dataConsulta | date:'dd/MM/yyyy'}}</p>
+                        <p>Horário início: {{consulta.horarioInicio}}</p>
+                        <p>{{consulta.paciente.nome}}</p>
+                        <button (click)="cancelarConsulta(consulta)">Cancelar consulta</button>
                     </div>
                 </div>
             </div>

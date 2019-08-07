@@ -10,6 +10,7 @@ import { Consulta } from './consulta.model';
 export class ConsultaComponent implements OnInit {
 
   public listaConsultas: Consulta[];
+  public pesquisa: string = "";
 
   constructor(private _consultaService: ConsultaService) {}
 
@@ -23,4 +24,24 @@ export class ConsultaComponent implements OnInit {
           )
   }
 
+  public pesquisarConsulta(): void{
+      let nomePaciente;
+      if(this.pesquisa == "")
+         nomePaciente = "flagListarTodos";
+      else
+         nomePaciente = this.pesquisa;
+
+      this._consultaService.buscarConsultaPorNomePaciente(nomePaciente)  
+        .subscribe(res => {
+            this.listaConsultas = res;
+        })
+  }
+
+  public cancelarConsulta(consulta: Consulta): void{
+      this._consultaService.cancelarConsulta(Number(consulta.id))
+        .subscribe(res => {
+            alert('Consulta cancelada com sucesso');
+            this.pesquisarConsulta();
+        })
+  }
 }

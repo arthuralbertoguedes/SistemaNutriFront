@@ -11,13 +11,14 @@ import { Router } from '../../../node_modules/@angular/router';
 export class PacienteComponent implements OnInit {
 
   public pacientes : Paciente[] = [];
+  public pesquisa  : string;
 
-  constructor(private pacienteService: PacienteService,
+  constructor(private _pacienteService: PacienteService,
               private router: Router) { }
 
   ngOnInit() {
 
-    this.pacienteService.listarTodos().subscribe(
+    this._pacienteService.listarTodos().subscribe(
         (res)=>{
               this.pacientes = res
         },
@@ -37,5 +38,12 @@ export class PacienteComponent implements OnInit {
   public enviarMensagem(event: any) :void{
       this.router.navigate([`home/mensagens/${event.id}`]);
   } 
+
+  public pesquisarPaciente(): void{
+      this._pacienteService.listarPorNome(this.pesquisa)
+        .subscribe(res =>{
+            this.pacientes = res;
+        })
+  }
 
 }

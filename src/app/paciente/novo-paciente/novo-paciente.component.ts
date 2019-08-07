@@ -4,6 +4,7 @@ import { PacienteService } from '../paciente.service';
 import { Paciente } from '../Paciente.model';
 import { Utilitarios } from '../../recursos/utilitarios';
 import { Endereco } from '../../models/endereco.model';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-novo-paciente',
@@ -15,7 +16,8 @@ export class NovoPacienteComponent implements OnInit {
   public novoPacienteFormulario : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
-              private _pacienteService : PacienteService) { }
+              private _pacienteService : PacienteService,
+              private route: Router) { }
 
   ngOnInit() {
         this.novoPacienteFormulario = this.formBuilder.group({
@@ -63,5 +65,9 @@ export class NovoPacienteComponent implements OnInit {
         this.novoPacienteFormulario.get('dataNascimento').setValue(dataFormatada);
         this.novoPacienteFormulario.get('dataCadastro').setValue(dataCadastro);
         this.novoPacienteFormulario.get('endereco').setValue(enderecoPessoa);
+    }
+
+    public voltar(): void{
+        this.route.navigate(['/home/paciente']);
     }
 }

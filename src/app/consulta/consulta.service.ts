@@ -29,5 +29,12 @@ export class ConsultaService {
               map(res => res as Consulta[])
           );
   }
+
+  public buscarConsultaPorNomePaciente(nomePaciente: string): Observable<Consulta[]>{
+      return this.http.get<Consulta[]>(this.url + "/consulta/listarPorNomePaciente/" + nomePaciente);
+  }
   
+  public cancelarConsulta(id: number): any{
+      return this.http.get(this.url + "/consulta/cancelar/" + id);
+  }
 }

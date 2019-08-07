@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup, Validators } from '../../../../node_modules/@ang
 import { Utilitarios } from '../../recursos/utilitarios';
 import { ConsultaService } from '../consulta.service';
 import { Consulta } from '../consulta.model';
+import { Router } from '../../../../node_modules/@angular/router';
+import { tradutorCalendario } from '../../shared/tradutor-calendario';
 
 @Component({
   selector: 'app-nova-consulta',
@@ -15,12 +17,18 @@ export class NovaConsultaComponent implements OnInit {
 
   public listaPacientes: Paciente[] = [];
   public novaConsultaFormulario: FormGroup;
+  public ptbr: any;
+  public dataConsulta: Date = new Date();
 
   constructor(private pacienteService: PacienteService,
               private fb: FormBuilder,
-              private consultaService: ConsultaService) { }
+              private consultaService: ConsultaService,
+              private route: Router) { }
 
   ngOnInit() { 
+      this.inicializardataConsulta();
+      this.ptbr = tradutorCalendario;
+
       this.novaConsultaFormulario = this.fb.group({
         'informacoesAdicionais': ['', Validators.required],
         'paciente': [''],
@@ -41,6 +49,9 @@ export class NovaConsultaComponent implements OnInit {
       );
   }
 
+  public vincularDataConsulta(event: any): void{
+      this.novaConsultaFormulario.get('dataConsulta').setValue(event);
+  }
 
   public vincularPaciente(event): void{
      this.novaConsultaFormulario.get('paciente').setValue(event.id);
@@ -76,25 +87,21 @@ export class NovaConsultaComponent implements OnInit {
             )
   }
 
-
-
   public validarForm(): void{
-    
+    let dataSelecionada: Date;
     let horarioInicio = (<HTMLInputElement>document.querySelector('#horarioInicio>span>input')).value;
     let horarioFim = (<HTMLInputElement>document.querySelector('#horarioFim>span>input')).value;
-    let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
-    let dataFormatada = Utilitarios.gerarData(dataSelecionada);
-    this.novaConsultaFormulario.get('dataConsulta').setValue(dataFormatada);    
+    dataSelecionada = this.novaConsultaFormulario.get('dataConsulta').value;  
   
     let hora          = Number(horarioInicio.toString().substring(0,2));
     let minutos       = Number(horarioInicio.toString().substring(3,5));
     
-    let ano           = Number(dataSelecionada.substring(6,10));
-    let mes           = Number(dataSelecionada.substring(3,5));
-    let dia           = Number(dataSelecionada.substring(0,2));
+    let ano           = dataSelecionada.getFullYear();
+    let mes           = dataSelecionada.getMonth();
+    let dia           = dataSelecionada.getDate();
 
     //Criação do LocalDateTime que será utilizado no componente FullCalendar no Dashboard
-    let dataConsultaDateTime = new Date(ano ,mes-1, dia, hora, minutos, Number('00'));
+    let dataConsultaDateTime = new Date(ano ,mes, dia, hora, minutos, Number('00'));
 
     this.novaConsultaFormulario.get('horarioInicio').setValue(horarioInicio);
     this.novaConsultaFormulario.get('horarioFim').setValue(horarioFim);
@@ -116,6 +123,17 @@ export class NovaConsultaComponent implements OnInit {
       (<HTMLInputElement>document.querySelector('#horarioFim>span>input')).value = "";
       (<HTMLInputElement>document.querySelector('#nomePaciente>span>input')).value = "";
       (<HTMLInputElement>document.querySelector('#data')).value = "";
+  }
+
+  public voltar(): void{
+      this.route.navigate(['/home/consulta']);
+  }
+
+  inicializardataConsulta(): void{
+    this.dataConsulta.setMinutes(0);
+    this.dataConsulta.setHours(0);
+    this.dataConsulta.setMilliseconds(0);
+    this.dataConsulta.setSeconds(0);
   }
 
 

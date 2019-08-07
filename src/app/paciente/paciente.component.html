@@ -1,7 +1,23 @@
 <h1>Pacientes</h1>
-<a  routerLink="/home/novo-paciente">cadastrar </a>
 
 <div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-10">
+                <input  id="buscarPaciente" 
+                        type="text" 
+                        class="validate" 
+                        placeholder="Digite o nome do paciente"
+                        [(ngModel)]="pesquisa"
+                        (keyup)="pesquisarPaciente()"
+                >
+        </div>
+        <div class="col-2">
+            <button>
+                <a routerLink="/home/novo-paciente">Cadastrar novo Paciente </a>
+            </button>          
+        </div>
+    </div>
     <p-dataView [value]="pacientes">
         <ng-template let-paciente pTemplate="listItem">
             <!--Container com cada paciente-->

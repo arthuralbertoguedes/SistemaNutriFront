@@ -4,11 +4,14 @@
         <div class="row">
             <div class="input-field col-sm-12 col-md-6">
                 <i class="material-icons prefix">date_range</i>
-                        <input  id="data" 
-                                type="text" 
-                                class="datepicker"
-                                placeholder="Data da consulta"
-                        >
+                <p-calendar 
+                        id="data"
+                        [locale]="ptbr" 
+                        dateFormat="dd/mm/yy"
+                        placeholder="Data da Consulta"
+                        formControlName="dataConsulta"
+                        (onSelect)="vincularDataConsulta($event)">
+                </p-calendar>
             </div>
             <div class="col-sm-12 col-md-3">
                 <h3>Horário início </h3>
@@ -55,6 +58,14 @@
                 </div>
         </div>
         <div class="row mt-4 ">
+                <button class="btn waves-effect waves-light mx-3" 
+                        type="button" 
+                        name="action" 
+                        (click)="voltar()"
+                        >
+                        Voltar
+                        <i class="material-icons right" style="color: white;">arrow_back</i>
+                </button> 
                 <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
                         <i class="material-icons right" style="color: white;" >refresh</i>
                 </button>

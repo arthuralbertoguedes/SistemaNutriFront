@@ -40,4 +40,5 @@ export class PacienteService {
       return this.http.get<Paciente>(this.url + `/paciente/${id}` );
   }
 
+  
 }

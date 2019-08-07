@@ -98,6 +98,14 @@
                                         </div>
                                 </div>
                                 <div class="row mt-3 ">
+                                        <button class="btn waves-effect waves-light mx-3" 
+                                                type="button" 
+                                                name="action" 
+                                                (click)="voltar()"
+                                                >
+                                                Voltar
+                                                <i class="material-icons right" style="color: white;">arrow_back</i>
+                                        </button>   
                                         <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
                                                 <i class="material-icons right" style="color: white;" >refresh</i>
                                         </button>
@@ -105,9 +113,11 @@
                                                 type="button" 
                                                 name="action" 
                                                 (click)="salvar()"
-                                                [disabled]="false">Cadastrar
+                                                [disabled]="false">
+                                                Cadastrar
                                                 <i class="material-icons right" style="color: white;">send</i>
                                         </button>                       
+                                       
                                 </div>
                         </form>
                         
