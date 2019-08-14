@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '../../../node_modules/@angular/forms';
 import { Router } from '../../../node_modules/@angular/router';
-
-import { AuthguardService } from '../guards/authguard.service';
-import { Infos_globais } from '../shared/constantes';
 import { UsuarioService } from '../usuario/usuario.service';
+import { Login } from '../models/login.model';
+import { Token } from '../models/token.model';
+
 
 @Component({
   selector: 'app-tela-login',
@@ -12,6 +12,8 @@ import { UsuarioService } from '../usuario/usuario.service';
   styleUrls: ['./tela-login.component.css']
 })
 export class TelaLoginComponent implements OnInit {
+
+  public mensagemErro: string = "";
 
   public formularioLogin : FormGroup = new FormGroup({
     'usuario': new FormControl('',[Validators.minLength(1), Validators.required]),
@@ -29,17 +31,38 @@ export class TelaLoginComponent implements OnInit {
   
 
   onSubmit(f : FormGroup){
-      let usuario = this.formularioLogin.get('usuario').value;
-      let senha = this.formularioLogin.get('senha').value;
-      if(usuario=='art' && senha=='123'){ 
-          localStorage.setItem("token", "123123123");
-          Infos_globais.token = '123123123';
-          this.router.navigate(['/home/dashboard']);
+      let model = new Login();
+      model.usuario = this.formularioLogin.value.usuario;
+      model.senha   = this.formularioLogin.value.senha;
 
-          this._usuarioService.buscarUsuario()
+          this._usuarioService.buscarUsuario(model)
             .subscribe(res => {
-                localStorage.setItem("usuario",String(res.id));
-            })
-      }
+                this.setarDadosUsuario(res as Token);
+                },
+                (erro) => {
+                  this.mostrarMensagemErro(erro.error.message);
+                }
+          
+            )
+      
+  }
+
+  mostrarMensagemErro(erro: any): void{
+    this.mensagemErro = erro;
+  } 
+
+  setarDadosUsuario(token: Token){
+    if(token.usuario_id > 0 && token.usuario_id != null){
+       localStorage.setItem("usuario_id", String(token.usuario_id));
+       localStorage.setItem("permissao", String(token.permissao_id));
+       localStorage.setItem("usuario_nome", String(token.usuario_nome));
+       localStorage.setItem("token", String(token.token));
+
+       if(token != null && token != undefined)
+          this.router.navigate(['/home/dashboard']);
+       return;
+    }
+    else
+      this.mostrarMensagemErro("Usuário e/ou senha inválidos");
   }
 }

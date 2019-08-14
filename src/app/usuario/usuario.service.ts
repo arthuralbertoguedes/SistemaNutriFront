@@ -3,6 +3,9 @@ import { Usuario } from '../models/usuario.model';
 import { urlBackEnd } from '../recursos/url';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
 import { Observable } from '../../../node_modules/rxjs';
+import { Login } from '../models/login.model';
+import { catchError, map } from '../../../node_modules/rxjs/operators';
+import { Token } from '../models/token.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,8 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  buscarUsuario(): Observable<Usuario>{
-      return this.http.get<Usuario>(`${this.url}/usuario/buscarUsuario`);
+  buscarUsuario(login: Login): Observable<Token>{
+      return this.http.post<Token>(`${this.url}/logar/autenticar`,login);
+  
   }
 }

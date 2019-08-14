@@ -50,7 +50,6 @@ export class MensagemComponent implements OnInit {
 
     let mensagem = new Mensagem();
     let usuario = new Usuario();
-    usuario.id = Number(localStorage.getItem("usuario"));
 
     //Setando informações para serem enviadas corretamente ao Java
     mensagem.foiLida  = false;
