@@ -10,7 +10,7 @@ import { Token } from '../models/token.model';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class AutenticacaoService {
   
   public url : string = urlBackEnd.api;
 

@@ -8,17 +8,19 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { TelaInicialModule } from './tela-inicial/tela-inicial.module';
 import { AuthguardService } from './guards/authguard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConsultaModule } from './consulta/consulta.module';
 import { UtilitariosModule } from './utilitarios/utilitarios.module';
 import { AvaliacaoModule } from './avaliacao/avaliacao.module';
-import { FullCalendarModule } from '../../node_modules/primeng/fullcalendar';
+import { FullCalendarModule } from 'primeng/fullcalendar';
 import { ConsultaService } from './consulta/consulta.service';
 import { PacienteService } from './paciente/paciente.service';
 import { LembretesComponent } from './lembretes/lembretes.component';
 import { LembretesService } from './lembretes/lembretes.service';
 import { NovoLembreteComponent } from './lembretes/novo-lembrete/novo-lembrete.component';
-import { UsuarioService } from './usuario/usuario.service';
+import { AutenticacaoService } from './autenticacao/usuario.service';
+import { HttpRequestInterceptor } from './autenticacao/httpRequestInterceptor.service';
+
 
 
 @NgModule({
@@ -51,7 +53,12 @@ import { UsuarioService } from './usuario/usuario.service';
     ConsultaService,
     PacienteService,
     LembretesService,
-    UsuarioService
+    AutenticacaoService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

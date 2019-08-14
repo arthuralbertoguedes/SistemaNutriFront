@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '../../../node_modules/@angular/forms';
-import { Router } from '../../../node_modules/@angular/router';
-import { UsuarioService } from '../usuario/usuario.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { Login } from '../models/login.model';
 import { Token } from '../models/token.model';
+import { AutenticacaoService } from '../autenticacao/usuario.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class TelaLoginComponent implements OnInit {
   });
 
   constructor(private router : Router,
-              private _usuarioService: UsuarioService) { }
+              private _usuarioService: AutenticacaoService) { }
 
   ngOnInit() { }
 
