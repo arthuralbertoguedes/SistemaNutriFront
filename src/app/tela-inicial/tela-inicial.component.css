@@ -1,28 +1,68 @@
 
 .menuSuperior{
-    border: 2px solid red;
+    box-shadow: 7px 0px 17px 0px #ddd;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    width: 100%;
+
+}
+
+.logoSuperior{
+    height: 80px;
     position: absolute;
     top: 0;
     left: 0;
-    height: 50px;
-    width: 100%;
+    box-shadow: 1px 6px 19px 0px #ddd;
 }
 
-
 .menuLateral{
-    border: 2px solid black;
+    box-shadow: 1px 6px 19px 0px #ddd;
     position: relative;
     top: 50px;
+    min-width: 100px;
+    height: 100%;
+    padding: 0;
 }
 
 
 .conteudoSite{
-    border: 2px solid green;
     position: relative;
     top: 50px;
+    
 }
 
 .height100{
     height: 100%;
 }
 
+.listaAsideSistema > li > a > span {
+    margin-left: 12px;
+
+}
+
+.listaAsideSistema > li{
+    padding: 7px;
+    width: 100%;
+    font-family: bison;
+}
+
+.listaAsideSistema > li:first-of-type{
+    margin-top: 30px;
+}
+
+.listaAsideSistema > li > a{
+    text-decoration: none;
+    color: rgb(49, 41, 41);
+    border: rgb(49, 41, 41);
+}
+
+.tituloUsuarioMenuSuperior{
+    font-family: bison;
+}
+
+.iconeMenuLateral{
+    height: 40px;
+    width: 40px;
+}

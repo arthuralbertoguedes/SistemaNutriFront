@@ -1,42 +1,62 @@
 <div class="row height100">
-    <section class="menuLateral col-1">
+    <section class="menuLateral col-2 col-md-2">
         <aside>
             
             <div>
-                <ul>
+                <ul class="listaAsideSistema">
                     <li>
-                        <a routerLink="/home/dashboard">Dashboard</a>
+                        <a routerLink="/home/dashboard">
+                            <img src="../../assets/home.svg" alt="" class="iconeMenuLateral">
+                            <span>Home</span>
+                        </a>
                     </li>
                     <li>
-                        <a routerLink="paciente">Pacientes</a>
+                        <a routerLink="paciente">
+                            <img src="../../assets/pessoa.png" alt="" class="iconeMenuLateral">
+                        <span>Pacientes</span></a>
                     </li>
                     <li>
-                        <a routerLink="consulta">Consultas</a>
+                        <a routerLink="consulta">
+                            <img src="../../assets/calendario_consulta.svg" alt="" class="iconeMenuLateral">
+                            <span>Consulta</span>
+                        </a>
                     </li>
                     <li>
-                        <a routerLink="paciente">Dados do paciente</a>
+                        <a routerLink="paciente">
+                            <img src="../../assets/consulta.png" alt="" class="iconeMenuLateral">
+                            <span>Dados do paciente</span>
+                         </a>              
                     </li>
                     <li>
-                        <a href="mensagens">Mensagens</a>
+                        <a href="mensagens">
+                            <img src="../../assets/mensagem_paciente.png" alt="" class="iconeMenuLateral">
+                            <span>Mensagens</span>
+                        </a>
                     </li>
                     <li>
-                        <a routerLink="lembretes">Lembretes</a>
+                        <a routerLink="lembretes">
+                           <img src="../../assets/lembrete.png" alt="" class="iconeMenuLateral">
+                            <span>Lembretes</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="">Configurações</a>
+                        <a href="">
+                            <img src="../../assets/configuracoes.svg" alt="" class="iconeMenuLateral">
+                            <span>Configurações</span>
+                        </a>
                     </li>
                 </ul>
             </div>
         </aside>
     </section>
-    <section class="conteudoSite col-11 p-0" >
+    <section class="conteudoSite col-9 col-md-10 p-0" >
             <router-outlet></router-outlet>
     </section>
 
 </div>
 
 <section class="menuSuperior">
-        <h1 class="float-left"><a href="#"></a></h1>
-        <h2 class="text-center">INFORMACOES SISTEMA</h2>    
+      
+        <span class="tituloUsuarioMenuSuperior float-right p-3 mr-5">Olá, {{usuarioLogado}}!</span>
 </section>
 

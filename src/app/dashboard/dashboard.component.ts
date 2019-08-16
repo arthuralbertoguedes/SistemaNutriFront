@@ -106,7 +106,7 @@ export class DashboardComponent implements OnInit {
           right: 'week'
       },
       locale: 'pt-br',
-      editable: true,
+      editable: false,
     /* titleFormat: {
         year: 'numeric', month: 'long', day: 'numeric'
       },*/
@@ -123,7 +123,6 @@ export class DashboardComponent implements OnInit {
 
   public carregarConsultas(res: Consulta[]): void{
       let arrayConsultaCalendar: any[] = [];
-        console.log(res);
         res.forEach((element: Consulta) => {
               arrayConsultaCalendar.push( 
                   {   

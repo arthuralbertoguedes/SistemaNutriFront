@@ -8,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelaInicialComponent implements OnInit {
 
+  public usuarioLogado: string;
+
   constructor() { }
 
   ngOnInit() {
-        
+        this.setarInformacoesUsuarioLogado();
     }
 
+
+  setarInformacoesUsuarioLogado(): void{
+    this.usuarioLogado = localStorage.getItem("usuario_nome");
+  } 
 }

@@ -151,8 +151,7 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
   }
 
   .fc table{
-      font-size: 0.9em;
-     
+      font-size: 0.9em; 
   }
 
 
@@ -160,4 +159,9 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
 @font-face {
     font-family: 'crystal';
     src: url('./fonts/crystal.ttf');
+}
+
+@font-face{
+    font-family: 'bison';
+    src: url('./fonts/menu.otf');
 }
