@@ -33,14 +33,19 @@
                                         </div>
                                 </div>
                                 <div class="row">
+
                                         <div class="input-field col-sm-12 col-md-6">
                                                 <i class="material-icons prefix">date_range</i>
-                                                <label for="data">Data de nascimento (dd/mm/aaaa)</label>
-                                                <input  id="data" 
-                                                        type="text" 
-                                                        class="datepicker"
-                                                        >
-                                        </div>
+     
+                                                <p-calendar 
+                                                        id="data"
+                                                        [locale]="ptbr" 
+                                                        dateFormat="dd/mm/yy"
+                                                        placeholder="Data de Nascimento"
+                                                        formControlName="dataNascimento"
+                                                        (onSelect)="vincularDataConsulta($event)">
+                                                </p-calendar>
+                                            </div>
                                         <div class="input-field col-sm-12 col-md-6" >
                                                 <i class="material-icons prefix">location_city</i>
                                                 <input id="cidade" 
@@ -64,7 +69,8 @@
                                                 <input id="cep" 
                                                         type="text" 
                                                         class="validate"
-                                                        formControlName="cep">
+                                                        formControlName="cep"
+                                                        maxlength="8">
                                                 <label for="cep">CEP</label>
                                         </div>
                                 </div>
@@ -97,6 +103,16 @@
                                                 <label for="logradouro">Logradouro</label>
                                         </div>
                                 </div>
+                                <!-- Upload -->
+                                <div class="row my-5">
+                                        <label for=""> Foto do Paciente</label>
+                                        <br/>
+                                        <p-fileUpload name="fotoPaciente[]"
+                                                auto="true"
+                                                chooseLabel="Escolha a Foto do Paciente"
+                                                customUpload="true" (uploadHandler)="myUploader($event)">
+                                        </p-fileUpload>
+                                </div>
                                 <div class="row mt-3 ">
                                         <button class="btn waves-effect waves-light mx-3" 
                                                 type="button" 
@@ -119,6 +135,7 @@
                                         </button>                       
                                        
                                 </div>
+                                
                         </form>
                         
                 </div>      
@@ -126,27 +143,3 @@
 </section>
 
 
-
-<!--Inicializar componente de Data-->
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.datepicker');
-        var instances = M.Datepicker.init(elems,  {   format: 'dd/mm/yyyy',
-                                                autoClose: true,
-                                                i18n: {
-                                                        today: 'Hoje',
-                                                        clear: 'Limpar',
-                                                        done: 'Ok',
-                                                        nextMonth: 'Próximo mês',
-                                                        previousMonth: 'Mês anterior',
-                                                        weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-                                                        weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-                                                        weekdays: ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'],
-                                                        monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-                                                        months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-                                                        },
-                                                }
-                                        );
-        });
-        
-</script>

@@ -3,7 +3,7 @@
 
 /* RESETS */
 body,html{
-    height: 100%;
+    /*height: 100%;*/
     padding: 0;
     margin: 0;
 }
@@ -70,6 +70,13 @@ h2{
     font-size: 2em !important;
 }
 
+.titleH3{
+    font-size: 1.7em;
+    color: rgb(20,20,20);
+    font-family: titulo;
+    margin-bottom: 50px;
+}
+
 .formulario_container{
     padding: 2%;
     margin: 3% 2%;
@@ -115,6 +122,11 @@ body .ui-selectbutton .ui-button.ui-state-active {
 
 }
 
+.ui-carousel-item .ui-widget-content .ui-corner-all{
+    padding: 10px;
+    font-family: bison;
+}
+
 .ui-state-active .ui-state-focus{
     background-color: var(--cor-primaria);
     border-color: var(--cor-primaria);
@@ -133,28 +145,66 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
 
   body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
     background-color: #538868;
-    border: 1px solid #538868;
+    border: 1px solid #537988;
   }
 
 
-  /*FULL-CALENDAR styles*/
+  /*FULL-CALENDAR and CAROUSEL styles*/
   
   .fc-time, .fc-title{
-      font-size: 12px;
+      font-size: 10px;
       
   }
 
   body .fc .fc-event{
-      background-color: #538868;
+      background-color: #658BB3;
       color: white;
       border-color: #538868;
+      cursor: pointer;
   }
 
   .fc table{
-      font-size: 0.9em; 
+      font-size: 0.8em; 
+      font-weight: 600;
   }
 
+  .fc-content-skeleton > table > thead{
+    background-color: #658b74;
+    color: #eee;
+  }
+  thead{
+   
+  } 
+  .fc-center{
+    font-family: 'titulo';
+    font-size: 0.6em;
+    color: rgb(19, 17, 17);
+  }
 
+  body .ui-carousel .ui-carousel-header{
+    background-color: #658b74;
+  }
+
+  body .ui-carousel .ui-carousel-button, body .ui-carousel .ui-carousel-page-links .ui-carousel-page-link {
+    color: white;
+  }
+
+  body .ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item{
+      border: none;
+  }
+
+  body .fc td.ui-widget-content{
+      background: rgb(244, 246, 244);
+  }
+
+  body .fc th {
+    background-color: #538868;
+    color: #eee;
+    font-weight: 500;
+    font-size: 1.2em !important; 
+    font-family: bison;
+    letter-spacing: .2rem;
+  }
 /*Fontes*/
 @font-face {
     font-family: 'crystal';
@@ -164,4 +214,9 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
 @font-face{
     font-family: 'bison';
     src: url('./fonts/menu.otf');
+}
+
+@font-face{
+    font-family: 'titulo';
+    src: url('./fonts/fontTitulo.ttf');
 }

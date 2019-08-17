@@ -51,8 +51,6 @@ export class DashboardComponent implements OnInit {
                 })
             }
         )
-    
- 
 
   /*  this.events = [
       {

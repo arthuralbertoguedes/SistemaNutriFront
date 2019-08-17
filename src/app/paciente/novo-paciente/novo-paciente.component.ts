@@ -5,6 +5,7 @@ import { Paciente } from '../Paciente.model';
 import { Utilitarios } from '../../recursos/utilitarios';
 import { Endereco } from '../../models/endereco.model';
 import { Router } from '../../../../node_modules/@angular/router';
+import { tradutorCalendario } from '../../shared/tradutor-calendario';
 
 @Component({
   selector: 'app-novo-paciente',
@@ -14,12 +15,15 @@ import { Router } from '../../../../node_modules/@angular/router';
 export class NovoPacienteComponent implements OnInit {
 
   public novoPacienteFormulario : FormGroup;
+  public ptbr: any;
+  public fotoPaciente = [];
 
   constructor(private formBuilder : FormBuilder,
               private _pacienteService : PacienteService,
               private route: Router) { }
 
   ngOnInit() {
+        this.ptbr = tradutorCalendario;
         this.novoPacienteFormulario = this.formBuilder.group({
             'nome': ['', Validators.required],
             'telefone': ['', Validators.required],
@@ -33,13 +37,16 @@ export class NovoPacienteComponent implements OnInit {
             'dataCadastro': [''],
             'endereco': ['']
         }) 
-
-
         
     }   
 
-    public salvar() : void{
+    public vincularDataConsulta(event: any){
+        this.novoPacienteFormulario.get('dataNascimento').setValue(event);
+    }
 
+    public salvar() : void{
+        console.log(this.fotoPaciente)
+        return;
         this.validarForm();
 
         let modelSalvar = this.novoPacienteFormulario.value;
@@ -57,17 +64,17 @@ export class NovoPacienteComponent implements OnInit {
         enderecoPessoa.logradouro = this.novoPacienteFormulario.get('logradouro').value;
         enderecoPessoa.estado = this.novoPacienteFormulario.get('estado').value;
 
-       
-        let dataSelecionada =(<HTMLInputElement>document.getElementById('data')).value;
-        let dataFormatada = Utilitarios.gerarData(dataSelecionada);
         let dataCadastro = Utilitarios.getDataAtual();
  
-        this.novoPacienteFormulario.get('dataNascimento').setValue(dataFormatada);
         this.novoPacienteFormulario.get('dataCadastro').setValue(dataCadastro);
         this.novoPacienteFormulario.get('endereco').setValue(enderecoPessoa);
     }
 
     public voltar(): void{
         this.route.navigate(['/home/paciente']);
+    }
+
+    myUploader(event: any){
+        this.fotoPaciente = event;
     }
 }

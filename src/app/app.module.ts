@@ -20,7 +20,7 @@ import { LembretesService } from './lembretes/lembretes.service';
 import { NovoLembreteComponent } from './lembretes/novo-lembrete/novo-lembrete.component';
 import { AutenticacaoService } from './autenticacao/usuario.service';
 import { HttpRequestInterceptor } from './autenticacao/httpRequestInterceptor.service';
-
+import {CarouselModule, Carousel} from 'primeng/carousel';
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import { HttpRequestInterceptor } from './autenticacao/httpRequestInterceptor.se
     ConsultaModule,
     UtilitariosModule,
     AvaliacaoModule,
-    FullCalendarModule
+    FullCalendarModule,
+    CarouselModule
   ],
   exports: [
     

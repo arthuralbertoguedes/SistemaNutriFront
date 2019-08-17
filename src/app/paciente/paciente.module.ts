@@ -16,6 +16,8 @@ import { DadosPessoaisModule } from '../dados-pessoais/dados-pessoais.module';
 import { ConsultaModule } from '../consulta/consulta.module';
 import { MensagemModule } from '../mensagem/mensagem.module';
 import { PlanoAlimentarModule } from '../plano-alimentar/plano-alimentar.module';
+import { UtilitariosModule } from '../utilitarios/utilitarios.module';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [PacienteComponent, 
@@ -35,7 +37,9 @@ import { PlanoAlimentarModule } from '../plano-alimentar/plano-alimentar.module'
     ConsultaModule,
     MensagemModule,
     PlanoAlimentarModule,
-    FormsModule
+    FormsModule,
+    UtilitariosModule,
+    FileUploadModule
   ],
   exports: [
     PacienteComponent
