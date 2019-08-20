@@ -8,6 +8,7 @@ import { PacienteService } from '../paciente/paciente.service';
 import { Paciente } from '../paciente/Paciente.model';
 import { LembretesService } from '../lembretes/lembretes.service';
 import { Lembrete } from '../models/lembrete.model';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +27,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private _consultaService: ConsultaService,
               private _pacienteService: PacienteService,
-              private _lembreteService: LembretesService) {
+              private _lembreteService: LembretesService,
+              private router          : Router) {
       
    }
 
@@ -99,9 +101,9 @@ export class DashboardComponent implements OnInit {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       timeZone: 'BRT',
       header: {
-          left: 'prev,next',
-          center: 'title',
-          right: 'week'
+          left: 'title',
+          center: 'week',
+          right: 'prev,next'
       },
       locale: 'pt-br',
       editable: false,
@@ -157,8 +159,20 @@ export class DashboardComponent implements OnInit {
   public buscarLembretesDia(): void{
          //Listando os lembretes do dia
         this._lembreteService.buscarLembretesDia(this.dataLembrete)
-        .subscribe(res => {
-            this.lembretes = res;
-    })
+        .subscribe(
+            res => {
+                this.lembretes = res;
+            },
+            erro=>console.log(erro),
+            ()=>{
+                if(this.lembretes.length==0){
+                    this.lembretes.push(new Lembrete('Nenhum lembrete encontrado para hoje'));
+                }
+            }
+        )
+  }
+
+  public verInformacoesPaciente(event: any): void{
+      this.router.navigate([`home/paciente-detalhado/${event}`])
   }
 }

@@ -4,4 +4,8 @@ export class Lembrete{
     lembrete: string;
 
     dataLembrete: Date;
+
+    constructor(lembrete?: string){
+        this.lembrete = lembrete;
+    }
 }

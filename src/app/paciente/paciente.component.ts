@@ -18,9 +18,10 @@ export class PacienteComponent implements OnInit {
 
   ngOnInit() {
 
-    this._pacienteService.listarTodos().subscribe(
+    this._pacienteService.listarPorNome('a').subscribe(
         (res)=>{
               this.pacientes = res
+              console.log(res);
         },
         (err)=>console.log(err)  
     )
@@ -43,6 +44,7 @@ export class PacienteComponent implements OnInit {
       this._pacienteService.listarPorNome(this.pesquisa)
         .subscribe(res =>{
             this.pacientes = res;
+            console.log(this.pacientes)
         })
   }
 

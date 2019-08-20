@@ -6,7 +6,7 @@ import { Utilitarios } from '../../recursos/utilitarios';
 import { Endereco } from '../../models/endereco.model';
 import { Router } from '../../../../node_modules/@angular/router';
 import { tradutorCalendario } from '../../shared/tradutor-calendario';
-
+import { Message, MessageService } from '../../../../node_modules/primeng/api';
 @Component({
   selector: 'app-novo-paciente',
   templateUrl: './novo-paciente.component.html',
@@ -17,22 +17,24 @@ export class NovoPacienteComponent implements OnInit {
   public novoPacienteFormulario : FormGroup;
   public ptbr: any;
   public fotoPaciente = [];
+  public msgs: Message[] = [];
 
   constructor(private formBuilder : FormBuilder,
               private _pacienteService : PacienteService,
-              private route: Router) { }
+              private route: Router,
+              private _messageService: MessageService) { }
 
   ngOnInit() {
         this.ptbr = tradutorCalendario;
         this.novoPacienteFormulario = this.formBuilder.group({
             'nome': ['', Validators.required],
-            'telefone': ['', Validators.required],
-            'estado': ['', Validators.required],
-            'dataNascimento': ['', Validators.required],
-            'cidade': ['', Validators.required],
-            'email': ['', Validators.required],
-            'cep': ['', Validators.required],
-            'logradouro': ['', Validators.required],
+            'telefone': [''],
+            'estado': [''],
+            'dataNascimento': [''],
+            'cidade': [''],
+            'email': [''],
+            'cep': ['', [Validators.maxLength(8),Validators.pattern('[0-9]*')]],
+            'logradouro': [''],
             'genero': ['M'],
             'dataCadastro': [''],
             'endereco': ['']
@@ -45,14 +47,17 @@ export class NovoPacienteComponent implements OnInit {
     }
 
     public salvar() : void{
-        console.log(this.fotoPaciente)
-        return;
         this.validarForm();
 
         let modelSalvar = this.novoPacienteFormulario.value;
-        console.log(modelSalvar);
         this._pacienteService.salvar(modelSalvar).subscribe(
-            (res)=>{console.log(res)}
+            (res)=>{
+                this.mostrarMensagemSucesso();
+                this.limparFormulario();
+            },
+            (erro=>{
+                this.mostrarMensagemErro();
+            })
         );
     }
 
@@ -76,5 +81,17 @@ export class NovoPacienteComponent implements OnInit {
 
     myUploader(event: any){
         this.fotoPaciente = event;
+    }
+
+    mostrarMensagemSucesso(): void {
+        this._messageService.add({severity:'success', summary:'Paciente cadastrado com sucesso!'});
+    }
+
+    mostrarMensagemErro(): void {
+        this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
+    }
+
+    limparFormulario(): void{
+        this.novoPacienteFormulario.reset();
     }
 }

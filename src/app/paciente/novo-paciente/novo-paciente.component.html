@@ -1,27 +1,31 @@
 <section>
         <div class="container-fluid">
-                <div class="col-10 mx-auto">
+                <div class="col-12 mx-auto">
                         <form class="formulario_container" [formGroup]="novoPacienteFormulario"  novalidate>
-                                <h2>Cadastrar paciente</h2>
+                                <h3 class="titleH3">Cadastrar paciente</h3>
+                                <p-messages [(value)]="msgs"></p-messages>
                                 <div class="row">
                                         <div class="input-field col-sm-12 col-md-12">
                                                 <i class="material-icons prefix">account_circle</i>
                                                 <input  id="nome" 
                                                         type="text" 
                                                         class="validate" 
-                                                        formControlName="nome">
-                                                <label for="nome">Nome Completo</label>
+                                                        formControlName="nome" required>
+                                                <label for="nome">Nome Completo *</label>
                                         </div>
                                 </div>
                                 <div class="row">
                                         <div class="input-field col-sm-12 col-md-6">
                                                 <i class="material-icons prefix">phone</i>
-                                                <input  id="telefone" 
-                                                        type="text" 
-                                                        class="validate"
-                                                        formControlName="telefone" >
-                                                <label for="telefone">Telefone</label>
+                                                <p-inputMask 
+                                                        formControlName="telefone" 
+                                                        mask="(99)99999-9999" 
+                                                        placeholder="Telefone" 
+                                                        styleClass="ajustePrimengInputs"></p-inputMask>
+                                                
                                         </div>
+                                        
+
                                         <div class="input-field col-sm-12 col-md-6" >
                                                 <i class="material-icons prefix">map</i>
                                                 <input  id="estado" 
@@ -43,7 +47,8 @@
                                                         dateFormat="dd/mm/yy"
                                                         placeholder="Data de Nascimento"
                                                         formControlName="dataNascimento"
-                                                        (onSelect)="vincularDataConsulta($event)">
+                                                        (onSelect)="vincularDataConsulta($event)"
+                                                        styleClass="ajustePrimengInputs">
                                                 </p-calendar>
                                             </div>
                                         <div class="input-field col-sm-12 col-md-6" >
@@ -129,15 +134,16 @@
                                                 type="button" 
                                                 name="action" 
                                                 (click)="salvar()"
-                                                [disabled]="false">
+                                                [disabled]="!novoPacienteFormulario.valid">
                                                 Cadastrar
                                                 <i class="material-icons right" style="color: white;">send</i>
                                         </button>                       
                                        
                                 </div>
-                                
-                        </form>
                         
+                        </form>
+
+
                 </div>      
         </div>
 </section>

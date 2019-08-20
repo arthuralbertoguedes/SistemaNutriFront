@@ -3,14 +3,14 @@
 
 /* RESETS */
 body,html{
-    /*height: 100%;*/
+    height: 100%;
     padding: 0;
     margin: 0;
 }
 
 /* CORES PRINCIPAIS */
 body{
-    --cor-primaria: rgb(16, 156, 16);
+    --cor-primaria: #5f9474;
 }
 
 
@@ -48,6 +48,8 @@ label{
     background-color: var(--cor-primaria) !important;
 }
 
+
+
 [type="radio"]:checked + span:after, [type="radio"].with-gap:checked + span:after{
     background-color: var(--cor-primaria);
 }    
@@ -64,6 +66,11 @@ label{
 .ui-calendar{
     width: 100%;
 }
+
+.ajustePrimengInputs {
+    margin-left: 45px !important;
+    width: 90% !important ;
+}
 /* DEFINIÇÕES DE ESTILOS DA APLICAÇÃO */ 
 
 h2{
@@ -71,7 +78,7 @@ h2{
 }
 
 .titleH3{
-    font-size: 1.7em;
+    font-size: 1.3em;
     color: rgb(20,20,20);
     font-family: titulo;
     margin-bottom: 50px;
@@ -80,15 +87,54 @@ h2{
 .formulario_container{
     padding: 2%;
     margin: 3% 2%;
-    box-shadow: 0px 0px 12px 2px #cac0c0;
-    -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: -1px 4px 11px 2px #dfd9d9;
+
 }
+
+/*Estilização de botões*/
+
+
+.btnPaciente{
+    min-width: 120px;
+    height: 40px;
+    background-color: #5f9474;
+    cursor: pointer;
+    color: white;
+    font-family: labels;
+    font-size: 0.9em;
+    font-weight: 400;
+    border-radius: 5px;
+    border: 1px solid #ccc
+}
+.btnPaciente:hover{
+    background-color: rgb(221, 172, 80);
+}
+
+.divPaciente{
+    text-shadow: 1px 2px rgb(231, 223, 223);
+    background-color: #f3f3f3;
+}
+
+.ui-carousel-item.ui-widget-content.ui-corner-all{
+    font-family: 'labels';
+}
+
+@font-face{
+    font-family: 'labels';
+    src: url('./fonts/Vollkorn-Regular.ttf');
+}
+
 
 .containerShadow{
     box-shadow: 0px 1px 2px 1px #ddd;
     min-height: 400px;
+}
+
+.telaShadow{
+    border: 1px solid #ccc;
+    box-shadow: 0px 3px 9px 3px #ddd;
+    margin-top: 25px;
+    padding: 25px;
 }
 
 /*RESETS BOTOES PRIMENG*/
@@ -148,6 +194,9 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
     border: 1px solid #537988;
   }
 
+  .ui-carousel.ui-widget.ui-widget-content.ui-corner-all{
+    margin-bottom: 20px !important;
+  }
 
   /*FULL-CALENDAR and CAROUSEL styles*/
   
@@ -155,7 +204,7 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
       font-size: 10px;
       
   }
-
+  /* Evento de consulta no calendário */
   body .fc .fc-event{
       background-color: #658BB3;
       color: white;
@@ -169,20 +218,32 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
   }
 
   .fc-content-skeleton > table > thead{
-    background-color: #658b74;
-    color: #eee;
+    /*background-color: #84b698;
+    color: #eee;*/
   }
-  thead{
-   
-  } 
+
+  .fc-right{
+    position: absolute;
+    right: 20px;
+  }
+
+  .fc-left{
+    font-size: 0.4em;
+    font-family: bison;
+    color: #cacaca;
+  }
   .fc-center{
     font-family: 'titulo';
     font-size: 0.6em;
     color: rgb(19, 17, 17);
   }
 
+  .fc-today{
+    background-color: #feeddc;
+  }
+
   body .ui-carousel .ui-carousel-header{
-    background-color: #658b74;
+    background-color: #84b698;
   }
 
   body .ui-carousel .ui-carousel-button, body .ui-carousel .ui-carousel-page-links .ui-carousel-page-link {
@@ -191,6 +252,11 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
 
   body .ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item{
       border: none;
+      padding: 10px;
+  }
+
+  .ui-carousel-item.ui-widget-content{
+    
   }
 
   body .fc td.ui-widget-content{
@@ -198,13 +264,35 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
   }
 
   body .fc th {
-    background-color: #538868;
-    color: #eee;
+  /*  background-color: #538868;
+    color: #eee;*/
     font-weight: 500;
     font-size: 1.2em !important; 
     font-family: bison;
     letter-spacing: .2rem;
   }
+
+  /*Logo*/
+.logo{
+    font-family: logo;
+    font-size: 25px;
+    text-shadow: 4px 3px 0px rgb(231, 173, 65);
+    margin-left: 15px !important;
+    margin-top: 9px !important;
+}
+.logo > img{
+    width: 35px;
+    margin-bottom: 3px;
+}
+
+.spanPaciente{
+    font-size: 1.1em;
+    font-family: span;
+    font-weight: 200;
+    text-shadow: none;
+    color: #706b6b;
+}
+
 /*Fontes*/
 @font-face {
     font-family: 'crystal';
@@ -219,4 +307,14 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
 @font-face{
     font-family: 'titulo';
     src: url('./fonts/fontTitulo.ttf');
+}
+
+@font-face{
+    font-family: 'logo';
+    src: url('./fonts/avocado.ttf');
+}
+
+@font-face{
+    font-family: 'span';
+    src: url('./fonts/BreeSerif-Regular.ttf');
 }

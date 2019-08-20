@@ -20,6 +20,7 @@ export class ConsultaComponent implements OnInit {
           .subscribe(
                 res=>{
                     this.listaConsultas = res;
+                    console.log(res);
                 }
           )
   }

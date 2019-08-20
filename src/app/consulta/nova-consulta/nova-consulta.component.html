@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <form action="" novalidate class="formulario_container" [formGroup]="novaConsultaFormulario">
-        <h1>Nova consulta</h1>
+        <h3 class="titleH3">Nova consulta</h3>
         <div class="row">
             <div class="input-field col-sm-12 col-md-6">
                 <i class="material-icons prefix">date_range</i>
@@ -8,13 +8,14 @@
                         id="data"
                         [locale]="ptbr" 
                         dateFormat="dd/mm/yy"
-                        placeholder="Data da Consulta"
+                        placeholder="Data da Consulta *"
                         formControlName="dataConsulta"
-                        (onSelect)="vincularDataConsulta($event)">
+                        (onSelect)="vincularDataConsulta($event)"
+                        styleClass="ajustePrimengInputs">
                 </p-calendar>
             </div>
             <div class="col-sm-12 col-md-3">
-                <h3>Horário início </h3>
+                <h3>Horário início * </h3>
                 <p-calendar  [timeOnly]="true"
                              (onSelect)="vincularHorarioInicio($event)"   
                              id="horarioInicio"
@@ -22,7 +23,7 @@
             </p-calendar>
             </div>    
             <div class="col-sm-12 col-md-3">     
-                <h3 style="">Horário fim </h3>
+                <h3 style="">Horário fim * </h3>
                 <p-calendar  [timeOnly]="true"
                              (onSelect)="vincularHorarioFim($event)"  
                              id="horarioFim"
@@ -42,8 +43,9 @@
                                 field="nome" 
                                 [size]="30"
                                 [minLength]="1"
-                                placeholder="Nome do paciente"
+                                placeholder="Nome do paciente *"
                                 id="nomePaciente"
+                                styleClass="ajustePrimengInputs"
                                 >
                 </p-autoComplete>
             </div>
@@ -73,6 +75,7 @@
                         type="button" 
                         name="action" 
                         (click)="salvar()"
+                        [disabled]="!novaConsultaFormulario.valid"
                          >Salvar
                         <i class="material-icons right" style="color: white;">send</i>
                 </button>                       

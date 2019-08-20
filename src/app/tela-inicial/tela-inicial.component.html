@@ -49,14 +49,16 @@
             </div>
         </aside>
     </section>
-    <section class="conteudoSite col-9 col-md-10 p-0" >
+    <section class="conteudoSite col-9 col-md-10 py-3 px-4" >
             <router-outlet></router-outlet>
     </section>
 
 </div>
 
 <section class="menuSuperior">
-      
-        <span class="tituloUsuarioMenuSuperior float-right p-3 mr-5">Olá, {{usuarioLogado}}!</span>
+     <div class="row">
+            <h1 class="logo">NutriSys <img src="../../assets/maca.png" alt=""></h1>
+            <span class="tituloUsuarioMenuSuperior float-right p-3 ml-auto">Olá, {{usuarioLogado}}!</span>
+     </div>
 </section>
 

@@ -8,6 +8,9 @@ import { DataViewModule } from '../../../node_modules/primeng/dataview';
 import {CalendarModule} from 'primeng/calendar';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {InputMaskModule} from 'primeng/inputmask';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [],
@@ -21,7 +24,10 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     FormsModule,
     CalendarModule,
     AutoCompleteModule,
-    InputTextareaModule
+    InputTextareaModule,
+    InputMaskModule,
+    MessagesModule,
+    MessageModule
   ],
 
   exports: [
@@ -33,7 +39,10 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     DataViewModule,
     FormsModule,
     CalendarModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    InputMaskModule,
+    MessagesModule,
+    MessageModule
   ]
           ,
   providers: [

@@ -1,12 +1,13 @@
 
 .menuSuperior{
-    box-shadow: 7px 0px 17px 0px #ddd;
     position: absolute;
     top: 0;
     right: 0;
     height: 50px;
     width: 100%;
-
+    background: linear-gradient(to right, #71B280, #134E5E);
+    color: #fff;
+    box-shadow: 2px 2px 4px #acacac;
 }
 
 .logoSuperior{
@@ -18,14 +19,31 @@
 }
 
 .menuLateral{
-    box-shadow: 1px 6px 19px 0px #ddd;
     position: relative;
     top: 50px;
     min-width: 100px;
     padding: 0;
+    background: #f3f3f3;
+    height: auto;
+    border-right: 2px solid rgb(240, 241, 240);
+    box-shadow: 1px 2px 5px #ddd;
+    max-width: 190px;
 }
 
-
+.listaAsideSistema>li>a{
+    color: rgb(104, 104, 104) !important;
+    font-weight: 200;
+    font-family: 'labels';
+    font-size: 14px;
+}
+.listaAsideSistema>li:hover{
+    border: 2px solid #ddd;
+    background: rgb(231, 171, 59);
+}
+.linkActive{
+    border: 2px solid #ddd;
+    background: rgb(231, 171, 59);
+}
 .conteudoSite{
     position: relative;
     top: 50px;
@@ -42,9 +60,9 @@
 }
 
 .listaAsideSistema > li{
-    padding: 7px;
+    padding: 8px;
     width: 100%;
-    font-family: bison;
+  /*  font-family: bison;*/
 }
 
 .listaAsideSistema > li:first-of-type{
@@ -58,10 +76,10 @@
 }
 
 .tituloUsuarioMenuSuperior{
-    font-family: bison;
+  /*  font-family: bison;*/
 }
 
 .iconeMenuLateral{
-    height: 40px;
-    width: 40px;
+    height: 34px;
+    width: 34px;
 }

@@ -1,6 +1,6 @@
-<h1>Nova consulta</h1>
 
-<div class="container-fluid">
+<div class="container-fluid  telaShadow">
+    <h3 class="titleH3">Nova consulta</h3>
     <div class="row">
         <div class="col-10">
             <div class="col-10">
@@ -15,7 +15,7 @@
         </div>
         <div class="col-2">
             <a routerLink="/home/nova-consulta">
-               <button>Cadastrar nova consulta</button>
+               <button class="btnPaciente">Nova consulta</button>
             </a>
         </div>
     </div>
@@ -23,13 +23,14 @@
     <p-dataView [value]="listaConsultas" emptyMessage="Nenhuma consulta encontrada">
         <ng-template let-consulta pTemplate="listItem">
             <!--Container com cada paciente-->
-            <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="col-sm-12 col-md-12 col-lg-5 container-paciente card mx-auto px-2 pb-4 pt-2 divPaciente">
                 <div class="row">
-                    <div class="col-6 m-3">
-                        <p>Consulta agendada em: {{consulta.dataConsulta | date:'dd/MM/yyyy'}}</p>
-                        <p>Horário início: {{consulta.horarioInicio}}</p>
-                        <p>{{consulta.paciente.nome}}</p>
-                        <button (click)="cancelarConsulta(consulta)">Cancelar consulta</button>
+                    <div class="col-10 m-3">
+                        <p class="spanPaciente"> Consulta agendada em: {{consulta.dataConsulta | date:'dd/MM/yyyy'}}</p>
+                        <p class="spanPaciente">Horário início: {{consulta.horarioInicio}}</p>
+                        <p class="spanPaciente">Horário fim: {{consulta.horarioFim}}</p>
+                        <p class="spanPaciente">Paciente: {{consulta.paciente.nome}}</p>
+                        <button (click)="cancelarConsulta(consulta)" class="btnPaciente mt-3">Cancelar consulta</button>
                     </div>
                 </div>
             </div>

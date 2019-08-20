@@ -18,6 +18,7 @@ import { MensagemModule } from '../mensagem/mensagem.module';
 import { PlanoAlimentarModule } from '../plano-alimentar/plano-alimentar.module';
 import { UtilitariosModule } from '../utilitarios/utilitarios.module';
 import {FileUploadModule} from 'primeng/fileupload';
+import { MessageService } from '../../../node_modules/primeng/api';
 
 @NgModule({
   declarations: [PacienteComponent, 
@@ -46,6 +47,7 @@ import {FileUploadModule} from 'primeng/fileupload';
   ],
   providers: [AuthguardService,
               FormBuilder,
-              PacienteService  ]
+              PacienteService,
+              MessageService  ]
 })
 export class PacienteModule { }

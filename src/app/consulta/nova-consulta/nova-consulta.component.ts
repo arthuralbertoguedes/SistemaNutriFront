@@ -30,11 +30,11 @@ export class NovaConsultaComponent implements OnInit {
       this.ptbr = tradutorCalendario;
 
       this.novaConsultaFormulario = this.fb.group({
-        'informacoesAdicionais': ['', Validators.required],
-        'paciente': [''],
-        'dataConsulta': [''],
-        'horarioInicio': [''],
-        'horarioFim': [''],
+        'informacoesAdicionais': [''],
+        'paciente': ['', Validators.required],
+        'dataConsulta': ['', Validators.required],
+        'horarioInicio': ['', Validators.required],
+        'horarioFim': ['', Validators.required],
         'horarioDateTime': ['']
       })
   }
