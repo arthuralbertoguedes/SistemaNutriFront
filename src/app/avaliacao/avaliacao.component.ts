@@ -101,6 +101,7 @@ export class AvaliacaoComponent implements OnInit {
   listarPacienteEscolhido(id: String): void{
     this._pacienteService.listarPorId(Number(id))
       .subscribe(res => {
+          console.log(res);
            this.pacienteEscolhido = res;
            this.calcularIdadePaciente(res.dataNascimento as string);
         }

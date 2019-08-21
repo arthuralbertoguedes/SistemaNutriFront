@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsultaService } from './consulta.service';
 import { Consulta } from './consulta.model';
+import { MessageService, Message, ConfirmationService } from '../../../node_modules/primeng/api';
+import { tradutorCalendario } from '../shared/tradutor-calendario';
 
 @Component({
   selector: 'app-consulta',
@@ -11,11 +13,15 @@ export class ConsultaComponent implements OnInit {
 
   public listaConsultas: Consulta[];
   public pesquisa: string = "";
+  public msgs: Message[] = [];
+  public ptbr: any;
 
-  constructor(private _consultaService: ConsultaService) {}
+  constructor(private _consultaService: ConsultaService,
+              private _messageService: MessageService,
+              private _confirmationService: ConfirmationService) {}
 
   ngOnInit() {
-
+      this.ptbr = tradutorCalendario;
       this._consultaService.listar()
           .subscribe(
                 res=>{
@@ -38,11 +44,42 @@ export class ConsultaComponent implements OnInit {
         })
   }
 
-  public cancelarConsulta(consulta: Consulta): void{
-      this._consultaService.cancelarConsulta(Number(consulta.id))
-        .subscribe(res => {
-            alert('Consulta cancelada com sucesso');
-            this.pesquisarConsulta();
-        })
-  }
+  public confirmarCancelamentoConsulta(consulta: Consulta): void{
+        this._confirmationService.confirm({
+            message: `Tem certeza que deseja cancelar a consulta com ${consulta.paciente.nome}?`,
+            accept: () => {
+                this.cancelarConsulta(consulta.id);
+            }
+        });
+   }      
+
+   public cancelarConsulta(consultaId: Number): void{
+       this._consultaService.cancelarConsulta(Number(consultaId))
+         .subscribe(
+             res => {
+                  this.pesquisarConsulta();
+                  this.mostrarMensagemSucesso();
+             },
+             erro => {
+                  this.mostrarMensagemErro();
+             }
+         )
+   }
+
+  
+  mostrarMensagemSucesso(): void {
+    this._messageService.add({severity:'success', summary:'Consulta cancelada com sucesso!'});
+    this.limparMensagem();
+}
+
+mostrarMensagemErro(): void {
+    this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
+    this.limparMensagem();
+}
+
+limparMensagem(): void{
+    setTimeout(()=>{
+        this._messageService.clear();
+    },4000);
+}
 }

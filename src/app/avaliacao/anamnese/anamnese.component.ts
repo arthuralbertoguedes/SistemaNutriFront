@@ -85,6 +85,9 @@ export class AnamneseComponent implements OnInit {
   }
 
   setarAnamnesePaciente(anamnese: Anamnese): void{
-      this.anamneseForm.patchValue(anamnese);
+      try{
+        this.anamneseForm.patchValue(anamnese);
+      }
+      catch(e){}
   }
 }

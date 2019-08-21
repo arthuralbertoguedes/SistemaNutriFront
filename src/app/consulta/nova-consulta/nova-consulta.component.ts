@@ -4,9 +4,9 @@ import { Paciente } from '../../paciente/Paciente.model';
 import {FormBuilder, FormGroup, Validators } from '../../../../node_modules/@angular/forms';
 import { Utilitarios } from '../../recursos/utilitarios';
 import { ConsultaService } from '../consulta.service';
-import { Consulta } from '../consulta.model';
 import { Router } from '../../../../node_modules/@angular/router';
 import { tradutorCalendario } from '../../shared/tradutor-calendario';
+import { Message, MessageService } from '../../../../node_modules/primeng/api';
 
 @Component({
   selector: 'app-nova-consulta',
@@ -19,11 +19,13 @@ export class NovaConsultaComponent implements OnInit {
   public novaConsultaFormulario: FormGroup;
   public ptbr: any;
   public dataConsulta: Date = new Date();
+  public msgs: Message[] = [];
 
   constructor(private pacienteService: PacienteService,
               private fb: FormBuilder,
               private consultaService: ConsultaService,
-              private route: Router) { }
+              private route: Router,
+              private _messageService: MessageService) { }
 
   ngOnInit() { 
       this.inicializardataConsulta();
@@ -37,7 +39,18 @@ export class NovaConsultaComponent implements OnInit {
         'horarioFim': ['', Validators.required],
         'horarioDateTime': ['']
       })
+
   }
+
+  public validarHorarioInicio(event: any): void{
+      if(event.target.value.toString().length == 5)
+        this.novaConsultaFormulario.get('horarioInicio').setErrors(null);
+  }
+
+  public validarHorarioFim(event: any): void{
+    if(event.target.value.toString().length == 5)
+      this.novaConsultaFormulario.get('horarioFim').setErrors(null);
+}
 
 
   public listarPacientes(event): void{
@@ -77,12 +90,14 @@ export class NovaConsultaComponent implements OnInit {
        
         this.validarForm();
         let consulta = this.novaConsultaFormulario.value;
-        console.log(consulta);
         this.consultaService.salvarConsulta(consulta)
             .subscribe(
                 res=>{
-                    alert('Consulta cadastrada');
+                    this.mostrarMensagemSucesso();
                     this.resetarFormulario();
+                },
+                erro => {
+                    this.mostrarMensagemErro();
                 }
             )
   }
@@ -135,6 +150,22 @@ export class NovaConsultaComponent implements OnInit {
     this.dataConsulta.setMilliseconds(0);
     this.dataConsulta.setSeconds(0);
   }
+
+  mostrarMensagemSucesso(): void {
+    this._messageService.add({severity:'success', summary:'Consulta cadastrada com sucesso!'});
+    this.limparMensagem();
+}
+
+mostrarMensagemErro(): void {
+    this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
+    this.limparMensagem();
+}
+
+limparMensagem(): void{
+    setTimeout(()=>{
+        this._messageService.clear();
+    },4000);
+}
 
 
 }

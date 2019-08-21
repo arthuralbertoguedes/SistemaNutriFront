@@ -5,6 +5,9 @@ import { ConsultaService } from './consulta.service';
 import { UtilitariosModule } from '../utilitarios/utilitarios.module';
 import { PacienteService } from '../paciente/paciente.service';
 import { HistoricoConsultaComponent } from './historico-consulta/historico-consulta.component';
+import { MessageService } from '../../../node_modules/primeng/api';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -12,7 +15,8 @@ import { HistoricoConsultaComponent } from './historico-consulta/historico-consu
                 NovaConsultaComponent,
                 HistoricoConsultaComponent],
   imports: [
-            UtilitariosModule
+            UtilitariosModule,
+            ConfirmDialogModule
   ],
   exports: [
             ConsultaComponent,
@@ -21,7 +25,9 @@ import { HistoricoConsultaComponent } from './historico-consulta/historico-consu
   ],
   providers: [
               ConsultaService,
-              PacienteService
+              PacienteService,
+              MessageService,
+              ConfirmationService
   ]
 })
 export class ConsultaModule { }

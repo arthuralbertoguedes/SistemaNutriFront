@@ -85,13 +85,24 @@ export class NovoPacienteComponent implements OnInit {
 
     mostrarMensagemSucesso(): void {
         this._messageService.add({severity:'success', summary:'Paciente cadastrado com sucesso!'});
+        this.limparMensagem();
     }
 
     mostrarMensagemErro(): void {
         this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
+        this.limparMensagem();
     }
+
+    limparMensagem(): void{
+        setTimeout(()=>{
+            this._messageService.clear();
+        },4000);
+    }
+
+
 
     limparFormulario(): void{
         this.novoPacienteFormulario.reset();
+        this.novoPacienteFormulario.get('email').setValue('');
     }
 }

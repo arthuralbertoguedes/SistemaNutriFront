@@ -1,24 +1,19 @@
 <div class="container-fluid">
-  <div class="col-12">
-      <h1>Anamneses</h1>
+  <div class="col-12 p-3">
+      <h3 class="titleH3 mt-2">Anamneses</h3>
       <form novalidate [formGroup]="anamneseForm">
-          <div class="col-8">
-              <label>Nome do paciente aqui</label>
-              <label>Idade aqui</label>
-              <label>Sexo aqui</label>   
-          </div>
           <div class="col-12 card p-4 mx-auto">
-              <h3>Caso clínico</h3>
+              <h3 class="labelFormulario">Caso clínico</h3>
               <input type="text" size="200" formControlName="casoClinico">
-              <span>Objetivo do paciente:</span>
+              <span  class="labelFormulario">Objetivo do paciente:</span>
               <input type="text" formControlName="objetivo">
           </div>
           <div class="row">
                    <!--Hábitos alimentares-->
-                <div class="col-12 col-md-8 p-4">
-                    <h3>Hábitos alimentares</h3>
-                    <div>
-                        <span>Frequência refeições fora de casa</span>
+                <div class="col-12 col-md-7 p-3 card">
+                    <h3 class="titleH3">Hábitos alimentares</h3>
+                    <div class="mt-4 mb-1">
+                        <span class="labelFormulario">Frequência refeições fora de casa</span>
                     </div>
                     <div >
                         <label>
@@ -49,7 +44,7 @@
                     </div>
 
                     <div>
-                        <span>Apetite</span>
+                        <span class="labelFormulario mt-4">Apetite</span>
                     </div>
                     <div >
                         <label>
@@ -81,28 +76,28 @@
                     <div>
                         <label>
                             <input class="with-gap" type="number" formControlName="quantidadeRefeicoes"/>
-                            <span>Quantidade de refeições diárias</span>
+                            <span class="labelFormulario">Quantidade de refeições diárias</span>
                         </label>
                     </div>
                     <div >
                         <label>
                             <input class="with-gap" type="text" formControlName="suplementos"/>
-                            <span>Suplementos</span>
+                            <span class="labelFormulario">Suplementos</span>
                         </label>
                     </div>
                     <div>
                         <label>
                             <input class="with-gap" type="text" formControlName="alimentosConsumidos"/>
-                            <span>Alimentos mais consumidos</span>
+                            <span class="labelFormulario">Alimentos mais consumidos</span>
                         </label>
                     </div>
                 </div>
                 <!--Hábitos de vida-->
-                <div class="col-12 col-md-4 card p-4">
-                    <h3>Hábitos de vida  </h3>
+                <div class="col-12 col-md-4 card p-4 ml-auto">
+                    <h3 class="titleH3">Hábitos de vida  </h3>
                     <div>
                         <br/>
-                        <span>Fumante</span>
+                        <span class="labelFormulario">Fumante</span>
                         <br/>
                         <label>
                             <input class="with-gap" 
@@ -124,7 +119,7 @@
                     </div>
                     <div>
                         <br/>
-                        <span>Bebidas alcóolicas?</span>
+                        <span class="labelFormulario">Bebidas alcóolicas?</span>
                         <br/>
                         <label>
                             <input class="with-gap" 
@@ -147,7 +142,7 @@
                     </div>
                     <div>
                         <br/>
-                        <span>Academia?</span>
+                        <span class="labelFormulario">Frequenta academia?</span>
                         <br/>
                         <label>
                             <input class="with-gap" 
@@ -170,18 +165,18 @@
                     <div>
                         <label>
                             <input class="with-gap" type="text" formControlName="atividadesFisicas"/>
-                            <span>Atividades físicas</span>
+                            <span class="labelFormulario">Principais atividades físicas</span>
                         </label>
                     </div>      
                     <div>
                         <label>
                             <input class="with-gap" type="number" name="tempoDeSono" formControlName="tempoDeSono" />
-                            <span>Tempo de sono (horas)</span>
+                            <span class="labelFormulario">Tempo de sono (horas)</span>
                         </label>
                     </div> 
                     <div>
                         <br/>
-                        <span>Qualidade do sono</span>
+                        <span class="labelFormulario">Qualidade do sono</span>
                         <br/>
                         <label>
                             <input class="with-gap" 
@@ -205,12 +200,12 @@
                 </div>
           </div>
           <!--Informações clínicas-->
-          <div class="row">
-                <h3>Informações clínicas</h3>
+          <div class="row card p-3">
+                <h3 class="titleH3">Informações clínicas</h3>
                 <br/>
                 <div class="col-12">
                     <br/>
-                    <span>Gestante?</span>
+                    <span class="labelFormulario">Gestante?</span>
                     <br/>
                     <label>
                         <input class="with-gap" 
@@ -232,7 +227,7 @@
                 </div>
                 <div class="col-12">
                     <br/>
-                    <span>Diabetes?</span>
+                    <span class="labelFormulario">Diabetes?</span>
                     <br/>
                     <label>
                         <input class="with-gap" 
@@ -256,7 +251,7 @@
                     <div>
                         <label>
                             <input class="with-gap" type="text" formControlName="alergias"/>
-                            <span>Alergias</span>
+                            <span class="labelFormulario">Alergias</span>
                         </label>
                     </div>
                 </div>
@@ -264,7 +259,7 @@
                     <div>
                         <label>
                             <input class="with-gap" type="text" formControlName="sintomas"/>
-                            <span>Sintomas e queixas</span>
+                            <span class="labelFormulario">Sintomas e queixas</span>
                         </label>
                     </div>
                 </div>
@@ -272,7 +267,7 @@
                     <div>
                         <label>
                             <input class="with-gap" type="text" formControlName="doencas"/>
-                            <span>Doenças crônicas</span>
+                            <span class="labelFormulario">Doenças crônicas</span>
                         </label>
                     </div>
                 </div>
@@ -280,15 +275,15 @@
                     <div>
                         <label>
                             <input class="with-gap" type="text" formControlName="observacoes"/>
-                            <span>Observações adicionais</span>
+                            <span class="labelFormulario">Observações adicionais</span>
                         </label>
                     </div>
                 </div>
-                <div class="col-4">
-                    <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
+                <div class="col-12 mt-5">
+                    <button class="btn waves-effect waves-light mr-auto" type="reset" name="action">Limpar
                         <i class="material-icons right" style="color: white;" >refresh</i>
                     </button>
-                    <button class="btn waves-effect waves-light mx-3" 
+                    <button class="btn waves-effect waves-light ml-auto float-right" 
                             type="button" 
                             name="action" 
                             (click)="salvar()"

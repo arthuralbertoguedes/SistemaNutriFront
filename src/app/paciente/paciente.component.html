@@ -29,10 +29,10 @@
                         <span class="spanPaciente">{{paciente.nome}}</span>
                     </div> 
                     <div class="col-12">
-                        <span class="spanPaciente">Cadastrado em {{paciente.dataCadastro | date: 'dd/mm/yyyy'}}</span>
+                        <span class="spanPaciente">Cadastrado em {{paciente.dataCadastro | date: 'dd/MM/yyyy'}} as {{ paciente.dataCadastro | date: 'HH:mm'}}</span>
                     </div>
                     <div class="col-12">
-                        <span class="spanPaciente">Telefone: {{paciente.telefone=='(__) _____-____'? 'Não cadastrado': paciente.telefone}}</span>
+                        <span class="spanPaciente">Telefone: {{paciente.telefone=='(__) _____-____' || paciente.telefone == '' ? 'Não cadastrado': paciente.telefone}}</span>
                     </div>
                     <div class="col-12 pb-3" >
                         <span class="spanPaciente"> {{paciente.genero=='M'? 'Masculino':'Feminino'}}</span>

@@ -3,7 +3,7 @@
                 <div class="col-12 mx-auto">
                         <form class="formulario_container" [formGroup]="novoPacienteFormulario"  novalidate>
                                 <h3 class="titleH3">Cadastrar paciente</h3>
-                                <p-messages [(value)]="msgs"></p-messages>
+                                
                                 <div class="row">
                                         <div class="input-field col-sm-12 col-md-12">
                                                 <i class="material-icons prefix">account_circle</i>
@@ -138,9 +138,9 @@
                                                 Cadastrar
                                                 <i class="material-icons right" style="color: white;">send</i>
                                         </button>                       
-                                       
                                 </div>
-                        
+                                <p-messages [(value)]="msgs"></p-messages>
+                                
                         </form>
 
 
