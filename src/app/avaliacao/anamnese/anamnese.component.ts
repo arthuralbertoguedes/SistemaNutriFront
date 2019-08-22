@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms'
 import { AnamneseService } from './anamnese.service';
 import { Paciente } from '../../paciente/Paciente.model';
 import { Anamnese } from '../../models/anamnese.model';
+import { MessageService } from '../../../../node_modules/primeng/api';
 
 
 
@@ -25,7 +26,8 @@ export class AnamneseComponent implements OnInit {
   public anamnesePacienteEscolhido: Object;
 
   constructor(private fb: FormBuilder,
-              private _service: AnamneseService) { }
+              private _service: AnamneseService,
+              private _messageService: MessageService) { }
 
   ngOnInit() {
 
@@ -81,6 +83,12 @@ export class AnamneseComponent implements OnInit {
       this.anamneseForm.get('paciente').setValue(paciente);
       let model = this.anamneseForm.value;
       this._service.salvar(model).subscribe(
+          res => {
+              this.mostrarMensagemSucesso();
+          },
+          erro => {
+              this.mostrarMensagemErro();
+          }
       );
   }
 
@@ -90,4 +98,21 @@ export class AnamneseComponent implements OnInit {
       }
       catch(e){}
   }
+
+  mostrarMensagemSucesso(): void {
+    this._messageService.add({severity:'success', summary:'Anamnese cadastrada com sucesso!'});
+      this.limparMensagem();
+  }
+
+  mostrarMensagemErro(): void {
+      this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
+      this.limparMensagem();
+  }
+
+  limparMensagem(): void{
+      setTimeout(()=>{
+          this._messageService.clear();
+      },4000);
+  }
+
 }

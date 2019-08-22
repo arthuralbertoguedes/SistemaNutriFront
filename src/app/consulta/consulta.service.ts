@@ -30,8 +30,8 @@ export class ConsultaService {
           );
   }
 
-  public buscarConsultaPorNomePaciente(nomePaciente: string): Observable<Consulta[]>{
-      return this.http.get<Consulta[]>(this.url + "/consulta/listarPorNomePaciente/" + nomePaciente);
+  public buscarConsultaPorNomePaciente(objetoConsulta: Object): Observable<Consulta[]>{
+      return this.http.post<Consulta[]>(this.url + `/consulta/listarPorNomePaciente`, objetoConsulta);
   }
   
   public cancelarConsulta(id: number): any{

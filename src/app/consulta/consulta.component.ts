@@ -15,6 +15,8 @@ export class ConsultaComponent implements OnInit {
   public pesquisa: string = "";
   public msgs: Message[] = [];
   public ptbr: any;
+  public dataInicio: any;
+  public dataFim: any;
 
   constructor(private _consultaService: ConsultaService,
               private _messageService: MessageService,
@@ -38,7 +40,14 @@ export class ConsultaComponent implements OnInit {
       else
          nomePaciente = this.pesquisa;
 
-      this._consultaService.buscarConsultaPorNomePaciente(nomePaciente)  
+      let objetoPesquisaConsulta =
+        {
+            pesquisa: nomePaciente, 
+            dataInicio: this.dataInicio,
+            dataFim: this.dataFim
+        }
+         
+      this._consultaService.buscarConsultaPorNomePaciente(objetoPesquisaConsulta)  
         .subscribe(res => {
             this.listaConsultas = res;
         })
@@ -67,19 +76,29 @@ export class ConsultaComponent implements OnInit {
    }
 
   
-  mostrarMensagemSucesso(): void {
-    this._messageService.add({severity:'success', summary:'Consulta cancelada com sucesso!'});
-    this.limparMensagem();
-}
+    mostrarMensagemSucesso(): void {
+        this._messageService.add({severity:'success', summary:'Consulta cancelada com sucesso!'});
+        this.limparMensagem();
+    }
 
-mostrarMensagemErro(): void {
-    this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
-    this.limparMensagem();
-}
+    mostrarMensagemErro(): void {
+        this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
+        this.limparMensagem();
+    }
 
-limparMensagem(): void{
-    setTimeout(()=>{
-        this._messageService.clear();
-    },4000);
-}
+    limparMensagem(): void{
+        setTimeout(()=>{
+            this._messageService.clear();
+        },4000);
+    }
+
+    public vincularDataInicio(event: any): void{
+        this.dataInicio = event;
+    }
+
+    public vincularDataFim(event: any): void{
+        this.dataFim = event;
+    }
+
+
 }

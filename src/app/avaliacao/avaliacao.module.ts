@@ -12,6 +12,7 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {TableModule} from 'primeng/table';
+import { MessageService } from '../../../node_modules/primeng/api';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {TableModule} from 'primeng/table';
   providers: [
     AnamneseService,
     AntropometriaService,
-    ComposicaoService
+    ComposicaoService,
+    MessageService
   ]
   
 })

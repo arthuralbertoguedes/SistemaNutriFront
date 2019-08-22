@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '../../../../node_modules/@angular/forms'
 import { AntropometriaService } from './antropometria-service';
 import { Paciente } from '../../paciente/Paciente.model';
 import { Antropometria } from '../../models/antropometria.model';
+import { MessageService } from '../../../../node_modules/primeng/api';
 
 @Component({
   selector: 'antropometria',
@@ -18,7 +19,8 @@ export class AntropometriaComponent implements OnInit {
   @Input() paciente: Paciente;
 
   constructor(private fb: FormBuilder, 
-              private _antropometriaService: AntropometriaService) { }
+              private _antropometriaService: AntropometriaService,
+              private _messageService: MessageService) { }
 
   ngOnInit() {
 
@@ -63,8 +65,8 @@ export class AntropometriaComponent implements OnInit {
     paciente = this.paciente;
     this.antropometriaForm.get('paciente').setValue(paciente);
     this._antropometriaService.salvar(this.antropometriaForm.value).subscribe(
-            res=>alert('salvou'),
-            (erro)=>console.log(erro)
+            res=>this.mostrarMensagemSucesso(),
+            (erro)=>this.mostrarMensagemErro()
         );
 
   } 
@@ -80,5 +82,21 @@ export class AntropometriaComponent implements OnInit {
   //Carrega antropometria anteriormente cadastrada (caso haja)
   carregarAntropometriaPaciente(antropometriaModel: any): void{
       this.antropometriaForm.patchValue(antropometriaModel);
+  }
+
+  mostrarMensagemSucesso(): void {
+    this._messageService.add({severity:'success', summary:'Antropometria cadastrada com sucesso!'});
+      this.limparMensagem();
+  }
+
+  mostrarMensagemErro(): void {
+      this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
+      this.limparMensagem();
+  }
+
+  limparMensagem(): void{
+      setTimeout(()=>{
+          this._messageService.clear();
+      },4000);
   }
 }

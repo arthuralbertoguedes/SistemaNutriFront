@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <h1>Antropometria</h1>
+<div class="container-fluid containerShadow">
+    <h3 class="titleH3">Antropometria</h3>
     <form novalidate [formGroup]="antropometriaForm">
       <div class="row">
         <div class="col-3">
@@ -36,11 +36,11 @@
         </div>
       </div>
 
-      <h2 class="col-12">Circunferências</h2>
+      <h3 class="col-12 titleH3 my-4">Circunferências</h3>
       <div class="col-sm-6 col-md-6 col-lg-3 float-left">
           <h3>Braço direito</h3>
           <br/>
-          <div class="row">
+          <div class="row p-0">
               <div class="col-6">
                   <label >
                       <input class="with-gap" type="number" formControlName="bracoRelaxadoDireito"/>
@@ -109,7 +109,7 @@
               </div>
           </div>         
       </div>
-      <div class="col-md-6 col-sm-6 col-lg-3 float-left">
+      <div class="col-md-6 col-sm-6 col-lg-3 float-left mt-4">
         <div class="row">
           <h3 class="col-12">Coxa</h3>
           <div class="col-6">
@@ -126,7 +126,7 @@
           </div>
         </div>  
       </div>
-       <div class="col-md-6 col-sm-6 col-lg-3 float-left">
+       <div class="col-md-6 col-sm-6 col-lg-3 float-left mt-4">
             <div class="row">
                 <h3 class="col-12">Panturrilha</h3>
                 <div class="col-6">
@@ -143,7 +143,7 @@
                 </div>
             </div>       
        </div>
-       <div class="col-md-12 col-sm-12 col-lg-6 float-right" >
+       <div class="col-md-12 col-sm-12 col-lg-6 float-right mt-4" >
            <div class="row">
                <h3 class="col-12">Superiores</h3>
                <div class="col-3">
@@ -171,20 +171,21 @@
                    </label>
                </div>
            </div>
-           <br/>
-           <div class="col-12">
-                <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
-                    <i class="material-icons right" style="color: white;" >refresh</i>
-                </button>
-                <button class="btn waves-effect waves-light mx-3" 
-                        type="button" 
-                        name="action" 
-                        (click)="salvar()"
-                        >Salvar
-                        <i class="material-icons right" style="color: white;">send</i>
-                </button> 
-            </div>
-       </div>
-      
+        </div>
+        
+        
     </form>
+</div>
+<p-messages [(value)]="msgs"></p-messages>
+<div class="col-12 mt-5">
+    <button class="btn waves-effect waves-light mr-auto float-left" type="reset" name="action">Limpar
+        <i class="material-icons right" style="color: white;" >refresh</i>
+    </button>
+    <button class="btn waves-effect waves-light mx-3 float-right" 
+            type="button" 
+            name="action" 
+            (click)="salvar()"
+            >Salvar
+            <i class="material-icons right" style="color: white;">send</i>
+    </button> 
 </div>
