@@ -256,7 +256,8 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
   }
 
   .fc-today{
-    background-color: #feeddc;
+    background-color: #e8f3ea !important;
+    border: 1px solid #ccc !important;
   }
 
   .fc-day-grid-event .fc-time {
@@ -281,7 +282,7 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
   }
 
   body .fc td.ui-widget-content{
-      background: rgb(244, 246, 244);
+      background: rgb(247, 247, 247);
   }
 
   body .fc th {
@@ -291,6 +292,9 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
     font-size: 1.2em !important; 
     font-family: bison;
     letter-spacing: 0.1rem;
+    background-color: #84b698;
+    border: 1px solid #c8c8c8;
+    color: #ffffff;
   }
 
   /*Logo*/
@@ -352,4 +356,11 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
 
 body, body .ui-widget{
     font-family: labels;
+}
+
+@media (min-width: 768px){
+    .col-md-11 {
+        flex: 0 0 91.666667%;
+        max-width: 86.666667%;
+    }
 }

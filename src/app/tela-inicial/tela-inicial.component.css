@@ -27,26 +27,31 @@
     height: auto;
   /*  border-right: 2px solid rgb(240, 241, 240);
     box-shadow: 1px 2px 5px #ddd;*/
-    max-width: 190px;
+    max-width: 120px;
 }
+
+
+/*Lista Lateral*/
 
 .listaAsideSistema>li>a{
     color: rgb(104, 104, 104) !important;
-    font-weight: 200;
+    font-weight: 400;
     font-family: 'labels';
-    font-size: 14px;
+    font-size: 1.0em;
 }
 .listaAsideSistema>li:hover{
     border: 2px solid #ddd;
     background: rgb(231, 171, 59);
 }
+
+
 .linkActive{
     border: 2px solid #ddd;
     background: rgb(231, 171, 59);
 }
 .conteudoSite{
     position: relative;
-    
+    margin: 18px;
 }
 
 .height100{
@@ -54,14 +59,13 @@
 }
 
 .listaAsideSistema > li > a > span {
-    margin-left: 12px;
+    margin-left: 9px;
 
 }
 
 .listaAsideSistema > li{
-    padding: 8px;
-    width: 100%;
-  /*  font-family: bison;*/
+    padding: 9px;
+    width: 130%;
 }
 
 .listaAsideSistema > li:first-of-type{
@@ -79,6 +83,6 @@
 }
 
 .iconeMenuLateral{
-    height: 34px;
-    width: 34px;
+    height: 24px;
+    width: 24px;
 }

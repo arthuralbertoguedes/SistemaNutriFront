@@ -22,10 +22,10 @@
             <div class="col-12  mt-5">
                 <div class="card" *ngFor="let paciente of ultimosPacientes">
                     <div class="card-content">
-                    <span class="card-title spanPaciente">{{paciente.nome}}</span>
-                        <p spanPaciente>{{calcularIdadePaciente(paciente.dataNascimento)}} anos - <span>{{paciente.genero == 'M'? 'Masculino': 'Feminino'}}</span></p>
-                        <button (click)="verInformacoesPaciente(paciente.id)" class="btnPaciente">Ver informações</button>
-                        <button class="btnPaciente mt-2">Enviar mensagem</button>
+                    <span class="card-title spanPaciente" style="font-size: 22px">{{paciente.nome}}</span>
+                        <p class="spanPaciente">{{calcularIdadePaciente(paciente.dataNascimento)}} anos - <span>{{paciente.genero == 'M'? 'Masculino': 'Feminino'}}</span></p>
+                        <button (click)="verInformacoesPaciente(paciente.id)" class="btnPaciente mt-3">Ver informações</button>
+                        <button class="btnPaciente mt-2 mb-3">Enviar mensagem</button>
                     </div>
                 </div>
             </div>
