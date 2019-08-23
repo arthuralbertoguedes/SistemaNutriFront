@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     this.inicializarDataLembrete();
+    
     //Listando as consultas   
     this._consultaService.listar()
         .subscribe(
@@ -114,7 +115,7 @@ export class DashboardComponent implements OnInit {
         console.log(e);
       },
       eventClick: (e) => {
-        console.log(e);
+        console.log(e.value);
       }
     };
 
@@ -126,14 +127,13 @@ export class DashboardComponent implements OnInit {
         res.forEach((element: Consulta) => {
               arrayConsultaCalendar.push( 
                   {   
-                    //Colocar aqui o nome do paciente, que virá com o JPA na consulta
-                     'title': `: ${element.paciente.nome}`,
+                     'title': `:00 - ${element.paciente.nome}`,
                      'start': element.horarioDateTime
                   }
               )
         })
-        
-      this.events = arrayConsultaCalendar;
+        this.events = arrayConsultaCalendar;
+        console.log(this.events)
   }
 
   public calcularIdadePaciente(dataNascimento: string): string {
