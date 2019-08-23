@@ -79,7 +79,7 @@ h2{
 }
 
 .titleH3{
-    font-size: 1.4em;
+    font-size: 1.3em;
     color: rgb(20,20,20);
     font-family: titulo;
     margin-bottom: 20px  !important;
@@ -141,7 +141,13 @@ h2{
     padding: 25px;
 }
 
+
 /*RESETS BOTOES PRIMENG*/
+
+.container-fluid{
+    margin-top: 50px !important;
+}
+
 body .ui-selectbutton .ui-button.ui-state-active{
     background-color: var(--cor-primaria);
     border-color: var(--cor-primaria);
