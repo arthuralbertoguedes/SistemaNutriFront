@@ -1,3 +1,111 @@
-<p>
-  informacoes-pessoais-paciente works!
-</p>
+
+  <section>
+    <div class="container-fluid">
+            <div class="col-12 mx-auto">
+                    <form class="formulario_container" [formGroup]="dadosPacienteFormulario"  novalidate>
+                            <h3 class="titleH3">{{pacienteEscolhido.nome}}</h3>                       
+                            <div class="row">
+                                    <div class="input-field col-sm-12 col-md-12">
+                                            <i class="material-icons prefix">account_circle</i>
+                                            <input  id="nome" 
+                                                    type="text" 
+                                                    class="validate" 
+                                                    formControlName="nome" required>
+
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col-sm-12 col-md-6">
+                                            <i class="material-icons prefix">phone</i>
+                                            <p-inputMask 
+                                                    formControlName="telefone" 
+                                                    mask="(99)99999-9999" 
+                                                   
+                                                    styleClass="ajustePrimengInputs"></p-inputMask>
+                                            
+                                    </div>
+                                    
+
+                                    <div class="input-field col-sm-12 col-md-6" >
+                                            <i class="material-icons prefix">map</i>
+                                            <input  id="estado" 
+                                                    type="text" 
+                                                    class="validate"
+                                                    formControlName="estado">
+          
+                                           
+                                    </div>
+                            </div>
+                            <div class="row">
+
+                                    <div class="input-field col-sm-12 col-md-12" >
+                                            <i class="material-icons prefix">location_city</i>
+                                            <input id="cidade" 
+                                                    type="text" 
+                                                    class="validate"
+                                                    formControlName="cidade">
+      
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col-sm-12 col-md-6">
+                                            <i class="material-icons prefix">laptop</i>
+                                            <input  id="email" 
+                                                    type="text" 
+                                                    class="validate"
+                                                    formControlName="email">
+                                    </div>
+                                    <div class="input-field col-sm-12 col-md-6" >               
+                                            <i class="material-icons prefix">domain</i>
+                                            <input id="cep" 
+                                                    type="text" 
+                                                    class="validate"
+                                                    formControlName="cep"
+                                                    maxlength="8">
+  
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col-sm-12 col-md-6">
+                                            <i class="material-icons prefix">wc</i>
+                                            <br/>
+                                            <label id="genero">
+                                                    <input name="genero" 
+                                                            type="radio" 
+                                                            value="M" 
+                                                            formControlName="genero" />
+                                                    <span>Masculino</span>
+                                            </label> 
+                                            
+                                            <label style="margin-left: 190px;">
+                                                    <input name="genero" 
+                                                            type="radio" 
+                                                            value="F"
+                                                            formControlName="genero" />
+                                                    <span>Feminino</span>
+                                            </label>                                            
+                                    </div>
+                                    <div class="input-field col-sm-12 col-md-6" >                      
+                                            <i class="material-icons prefix">markunread</i>
+                                            <input id="logradouro" 
+                                                    type="text" 
+                                                    class="validate"
+                                                    formControlName="logradouro">
+            
+                                    </div>
+                            </div>
+                            <button class="btn waves-effect waves-light mx-3" 
+                                    type="button" 
+                                    name="action" 
+                                    (click)="salvar()"
+                                    [disabled]="!dadosPacienteFormulario.valid">
+                                    Atualizar
+                                    <i class="material-icons right" style="color: white;">send</i>
+                            </button> 
+                            
+                    </form>
+                    <p-messages [(value)]="msgs"></p-messages>
+
+            </div>      
+    </div>
+</section>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '../../../node_modules/@angular/forms';
 import { Alimento } from './alimento.model';
 import { PlanoAlimentarService } from './plano-alimentar.service';
@@ -38,6 +38,8 @@ export class PlanoAlimentarComponent implements OnInit {
   public observacoesRefeicaoSelecionada: string;
 
   public listaRefeicoes: Refeicao[] = [];
+
+  @Input() public pacienteEscolhido: any;
 
   constructor(private fb: FormBuilder,
               private _service: PlanoAlimentarService) { 

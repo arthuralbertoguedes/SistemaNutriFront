@@ -1,41 +1,44 @@
-<div class="container-fluid containerShadow">
+<div class="container-fluid containerShadow card">
     <h3 class="titleH3">Antropometria</h3>
     <form novalidate [formGroup]="antropometriaForm">
-      <div class="row">
-        <div class="col-3">
-            <label>
-                <input class="with-gap" type="number" formControlName="altura"/>
-                <span>Altura (cm)</span>
-            </label>
-          </div>
-          <div class="col-3">
-            <label>
-                <input class="with-gap" type="number" formControlName="peso"/>
-                <span>Peso (kg)</span>
-            </label>
-          </div>
-          <div class="col-3">
-            <label>
-                <input class="with-gap" type="number" formControlName="idade"/>
-                <span>Idade (anos)</span>
-            </label>
-          </div>
-          <div class="col-3">
-            <label>
-                <input class="with-gap" type="number" formControlName="imc"/>
-                <span>IMC</span>
-            </label>
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label >
-              <input class="with-gap" type="text" formControlName="observacao"/>
-              <span>Observacao</span>
-          </label>
+        <div class="card p-2">
+           <div class="row">
+                <div class="col-3">
+                    <label>
+                        <input class="with-gap" type="number" formControlName="altura"/>
+                        <span>Altura (cm)</span>
+                    </label>
+                </div>
+                <div class="col-3">
+                    <label>
+                        <input class="with-gap" type="number" formControlName="peso"/>
+                        <span>Peso (kg)</span>
+                    </label>
+                </div>
+                <div class="col-3">
+                    <label>
+                        <input class="with-gap" type="number" formControlName="idade"/>
+                        <span>Idade (anos)</span>
+                    </label>
+                </div>
+                <div class="col-3">
+                    <label>
+                        <input class="with-gap" type="number" formControlName="imc"/>
+                        <span>IMC</span>
+                    </label>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-12">
+                <label >
+                    <input class="with-gap" type="text" formControlName="observacao"/>
+                    <span>Observacao</span>
+                </label>
+                </div>
+            </div>
         </div>
-      </div>
-
+        
       <h3 class="col-12 titleH3 my-4">Circunferências</h3>
       <div class="col-sm-6 col-md-6 col-lg-3 float-left">
           <h3>Braço direito</h3>

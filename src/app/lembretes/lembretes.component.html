@@ -1,25 +1,32 @@
-<section class="container-fluid">
-    <h1>Novo lembrete</h1>
-    <a routerLink="/home/novo-lembrete">Cadastrar novo lembrete</a>
-    <div class="row">     
-        <p>Buscar lembrete pela data</p>
-        <div class="col-12 col-md-2">
-            <p-calendar [showIcon]="true"  
-                        [locale]="ptbr" 
-                        dateFormat="dd/mm/yy"
-                        placeholder="Data do lembrete"
-                        [(ngModel)]="dataLembrete">
-            </p-calendar>
-        </div>
-        <div class="col-md-2">
-            <button class="btn waves-effect waves-light" 
-                type="button" 
-                name="action" 
-                (click)="buscarLembretes()"
-                >Buscar
-                <i class="material-icons right" style="color: white;"></i>
-            </button>  
-         </div>
+<section class="container-fluid formulario_container  p-4">
+    <h3 class="titleH3">Novo lembrete</h3>
+    <p>Buscar lembrete pela data:</p>
+    <div class="row col-12">     
+
+        <p-calendar [showIcon]="false"  
+                    [locale]="ptbr" 
+                    dateFormat="dd/mm/yy"
+                    placeholder="Data do lembrete"
+                    [(ngModel)]="dataLembrete">
+        </p-calendar>
+
+
+        <button class="btn waves-effect waves-light ml-4" 
+            class="btnPaciente"
+            type="button" 
+            name="action" 
+            (click)="buscarLembretes()"
+            >Buscar
+            <i class="material-icons right" style="color: white;"></i>
+        </button>  
+
+
+        <a routerLink="/home/novo-lembrete" class=" ml-auto float-right">
+            <button class="btnPaciente" style="margin-left: 50px;">
+                Cadastrar novo lembrete
+            </button> 
+        </a>
+
     </div>
     <div class="col-12">
         <table>
@@ -30,6 +37,10 @@
             <tr *ngFor="let lembrete of lembretes">
                 <td>{{lembrete.dataLembrete  | date: 'dd/MM/yyyy'}}</td>
                 <td>{{lembrete.lembrete}}</td>
+            </tr>
+            <tr *ngIf="lembretes.length == 0">
+                <td></td>
+                <td>Nenhum lembrete encontrado para este dia.</td>
             </tr>
         </table>
     </div>

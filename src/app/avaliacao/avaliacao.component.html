@@ -16,13 +16,13 @@
 
 </section>
 
-<div class="container-fluid " >
+<div class="container-fluid " style="    margin-top: -30px !important; max-height: 85px;">
     <div class="row">
         <div class="col-12">
             <div class="p2 m-4">
                 <p-tabMenu [model]="items" [activeItem]="activeItem" class="col-6">
                     <ng-template pTemplate="item" let-item let-i="index" >
-                        <div style="position: relative; text-align: center; min-width: 10em" (click)="abrirComponenteCorrespondente(item)">          
+                        <div style="position: relative; text-align: center; min-width: 10em;" (click)="abrirComponenteCorrespondente(item)">          
                             <div>
                                 <img [src]="imagens[i]" style="height: 40px;">
                             </div>
@@ -53,6 +53,11 @@
             *ngIf="mostrarComposicaoCorporal"
             (click)="iniciarComposicaoCorporal()">
     </composicao-corporal>
-    
+    <plano-alimentar
+                 *ngIf="mostrarPlanoAlimentar"
+                [pacienteEscolhido] = pacienteEscolhido
+                (click)="iniciarPlanoAlimentar()">
+         
+    </plano-alimentar>
 </div>
 

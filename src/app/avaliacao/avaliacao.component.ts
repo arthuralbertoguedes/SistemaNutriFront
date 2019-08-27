@@ -15,6 +15,8 @@ export class AvaliacaoComponent implements OnInit {
   public mostrarAnamnese: boolean = true;
   public mostrarAntropometria: boolean = false;
   public mostrarComposicaoCorporal: boolean = false;
+  public mostrarPlanoAlimentar: boolean = false;
+
   public items: any[];
   public imagens: any[];
   public pacienteEscolhido: Paciente;
@@ -42,7 +44,8 @@ export class AvaliacaoComponent implements OnInit {
     this.items = [
         {label: 'Anamnese', mostrarComponent: 'mostrarAnamnese'},
         {label: 'Antropometria', mostrarComponent: 'mostrarAntropometria'},
-        {label: 'Composição Corporal', mostrarComponent: 'mostrarComposicaoCorporal'}
+        {label: 'Composição Corporal', mostrarComponent: 'mostrarComposicaoCorporal'},
+        {label: 'Plano Alimentar', mostrarComponent: 'mostrarPlanoAlimentar'}
     ];
 
     this.items2 = [
@@ -60,18 +63,28 @@ export class AvaliacaoComponent implements OnInit {
       this.mostrarAnamnese           = true;
       this.mostrarAntropometria      = false;
       this.mostrarComposicaoCorporal = false;
+      this.mostrarPlanoAlimentar     = false;
   }
 
   iniciarAntropometria(): void{
       this.mostrarAnamnese           = false;
       this.mostrarAntropometria      = true;
       this.mostrarComposicaoCorporal = false;
+      this.mostrarPlanoAlimentar     = false;
   }
 
   iniciarComposicaoCorporal(): void{
       this.mostrarAnamnese           = false;
       this.mostrarAntropometria      = false;
       this.mostrarComposicaoCorporal = true;
+      this.mostrarPlanoAlimentar     = false;
+  }
+
+  iniciarPlanoAlimentar(): void{
+        this.mostrarAnamnese           = false;
+        this.mostrarAntropometria      = false;
+        this.mostrarComposicaoCorporal = false;
+        this.mostrarPlanoAlimentar     = true;
   }
 
 
@@ -83,6 +96,8 @@ export class AvaliacaoComponent implements OnInit {
           this.iniciarAntropometria();
       else if(componenteClicado=='mostrarComposicaoCorporal')    
           this.iniciarComposicaoCorporal();
+      else if(componenteClicado=='mostrarPlanoAlimentar')    
+          this.iniciarPlanoAlimentar();
   }
 
 

@@ -1,5 +1,5 @@
-<div class="container-fluid">
-   <form novalidate [formGroup]="composicaoForm">
+<div class="container-fluid card p-3">
+   <form novalidate [formGroup]="composicaoForm ">
 
       <!--Biopendância--> 
       <h2 class="col-12" style="clear:both;">Bioimpedância</h2>
@@ -109,11 +109,13 @@
                   <span>Abdominal (mm)</span>
               </label>
           </div>
-          <div class="col-12">
-            <button class="btn waves-effect waves-light ml-auto" type="reset" name="action">Limpar
+        
+      </div>
+      <div class="col-12 mt-4">
+            <button class="btn waves-effect waves-light mr-auto" type="reset" name="action">Limpar
                 <i class="material-icons right" style="color: white;" >refresh</i>
             </button>
-            <button class="btn waves-effect waves-light mx-3" 
+            <button class="btn waves-effect waves-light ml-auto float-right" 
                     type="button" 
                     name="action" 
                     (click)="salvar()"
@@ -121,7 +123,5 @@
                     <i class="material-icons right" style="color: white;">send</i>
             </button> 
         </div>
-      </div>
-      <h3>Resultado: </h3>
    </form>
 </div>

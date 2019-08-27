@@ -1,5 +1,5 @@
-<section class="container-fluid">
-  <h2>Cadastrar novo lembrete</h2>
+<section class="container-fluid formulario_container  p-4">
+  <h3 class="titleH3">Cadastrar novo lembrete</h3>
   <form action="" [formGroup]="novoLembreteForm" novalidate>
       <div class="row">
           <div class="col-12 col-md-9">
@@ -11,7 +11,7 @@
                       formControlName="lembrete">
           </div>            
           <div class="col-12 col-md-2">
-              <p-calendar [showIcon]="true"  
+              <p-calendar [showIcon]="false"  
                           [locale]="ptbr" 
                           dateFormat="dd/mm/yy"
                           placeholder="Data do lembrete"
@@ -19,7 +19,7 @@
               </p-calendar>
           </div>
       </div>
-      <div class="row">
+      <div class="row mt-5">
           <button class="btn waves-effect waves-light mx-3" 
             type="button" 
             name="action" 
@@ -27,7 +27,7 @@
             >Voltar
             <i class="material-icons right" style="color: white;">arrow_back</i>
           </button>   
-          <button class="btn waves-effect waves-light mx-3" 
+          <button class="btn waves-effect waves-light ml-auto float-right" 
                 type="button" 
                 name="action" 
                 (click)="salvar()"

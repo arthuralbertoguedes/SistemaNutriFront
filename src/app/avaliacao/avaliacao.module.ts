@@ -13,6 +13,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {TableModule} from 'primeng/table';
 import { MessageService } from '../../../node_modules/primeng/api';
+import { PlanoAlimentarModule } from '../plano-alimentar/plano-alimentar.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MessageService } from '../../../node_modules/primeng/api';
     TabMenuModule,
     AutoCompleteModule,
     SelectButtonModule,
-    TableModule
+    TableModule,
+    PlanoAlimentarModule
   ],
   exports: [
       AvaliacaoComponent,
