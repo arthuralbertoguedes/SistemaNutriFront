@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Login } from '../models/login.model';
 import { Token } from '../models/token.model';
 import { AutenticacaoService } from '../autenticacao/usuario.service';
+import { Usuario } from '../models/usuario.model';
 
 
 @Component({
@@ -15,6 +16,14 @@ import { AutenticacaoService } from '../autenticacao/usuario.service';
 export class TelaLoginComponent implements OnInit {
 
   public mensagemErro: string = "";
+  public mostrarTelaCadastro: boolean = false;
+
+  /* Variáveis para cadastro de novo usuário - vinculadas aos ngModel */
+  public nomeCadastro: string = "";
+  public senhaCadastro: string = "";
+  public loginCadastro: string = "";
+  public senhaNovamenteCadastro: string = "";
+  public mensagemErroCadastro: string = "";
 
   public formularioLogin : FormGroup = new FormGroup({
     'usuario': new FormControl('',[Validators.minLength(1), Validators.required]),
@@ -26,12 +35,15 @@ export class TelaLoginComponent implements OnInit {
 
   ngOnInit() { }
 
+  abrirTelaCadastro(): void{
+    this.mostrarTelaCadastro = true;
+  }
 
-  
+  abrirTelaLogar(): void{
+    this.mostrarTelaCadastro = false;
+  }
 
-  
-
-  onSubmit(f : FormGroup){
+  onSubmit(f : FormGroup): void{
       let model = new Login();
       model.usuario = this.formularioLogin.value.usuario;
       model.senha   = this.formularioLogin.value.senha;
@@ -52,7 +64,26 @@ export class TelaLoginComponent implements OnInit {
     this.mensagemErro = erro;
   } 
 
-  setarDadosUsuario(token: Token){
+  cadastrarNovoUsuario(): void{
+      if(!(this.nomeCadastro.length > 0 && this.loginCadastro.length > 0 && this.senhaCadastro.length > 0 && this.mensagemErroCadastro == "")){
+         this.mensagemErroCadastro = "Preencha todos os campos!"
+         return;
+      }
+
+      let novoUsuario = new Usuario();
+      novoUsuario.nome = this.nomeCadastro;
+      novoUsuario.senha = this.senhaCadastro;
+      novoUsuario.login = this.loginCadastro;
+
+      this._usuarioService.salvarUsuario(novoUsuario)
+           .subscribe(
+                res => {
+                   this.mostrarTelaCadastro = false;
+                }
+           )
+  }
+
+  setarDadosUsuario(token: Token): void{
     if(token.usuario_id > 0 && token.usuario_id != null){
        localStorage.setItem("usuario_id", String(token.usuario_id));
        localStorage.setItem("permissao", String(token.permissao_id));
@@ -65,5 +96,12 @@ export class TelaLoginComponent implements OnInit {
     }
     else
       this.mostrarMensagemErro("Usuário e/ou senha inválidos");
+  }
+
+  verificarSenhas(): void{
+      if(this.senhaCadastro != this.senhaNovamenteCadastro)
+         this.mensagemErroCadastro = "Atenção! As senhas não coincidem!";
+      else
+         this.mensagemErroCadastro = "";
   }
 }
