@@ -97,7 +97,7 @@ h2{
 
 
 .btnPaciente{
-    min-width: 120px;
+    width: 100%;
     height: 40px;
     background-color: #5f9474;
     cursor: pointer;
