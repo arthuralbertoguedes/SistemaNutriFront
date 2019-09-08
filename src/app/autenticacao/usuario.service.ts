@@ -18,6 +18,10 @@ export class AutenticacaoService {
 
   buscarUsuario(login: Login): Observable<Token>{
       return this.http.post<Token>(`${this.url}/logar/autenticar`,login);
-  
+  }
+
+  salvarUsuario(usuario: Usuario): Observable<Usuario>{
+      return this.http.post<Usuario>(`${this.url}/usuario/salvar`, usuario);
+    
   }
 }
