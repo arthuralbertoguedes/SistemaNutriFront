@@ -21,6 +21,7 @@ import { NovoLembreteComponent } from './lembretes/novo-lembrete/novo-lembrete.c
 import { AutenticacaoService } from './autenticacao/usuario.service';
 import { HttpRequestInterceptor } from './autenticacao/httpRequestInterceptor.service';
 import {CarouselModule, Carousel} from 'primeng/carousel';
+import { MensagemService } from './mensagem/mensagem.service';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {CarouselModule, Carousel} from 'primeng/carousel';
     PacienteService,
     LembretesService,
     AutenticacaoService,
+    MensagemService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestInterceptor,
