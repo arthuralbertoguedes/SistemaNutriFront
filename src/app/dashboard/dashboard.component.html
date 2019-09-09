@@ -1,9 +1,8 @@
 
 <div class="container-fluid mt-5">
-    <div class="row telaShadow">
+    <div class="row telaShadow" style="padding: 0 !important; margin-top: 80px !important">
         <div class="col-12">
             <h3 class="titleH3 my-3">Lembretes do dia: </h3>
-           
             <p-carousel [value]="lembretes" numVisible="1" easing="easeOutStrong" headerText="" 
                 [autoplayInterval]="4000" class="my-4" responsive="true">
                 <ng-template let-item pTemplate="item" >
@@ -21,9 +20,9 @@
             </h3>
             <div class="col-12  mt-5">
                 <div class="card" *ngFor="let paciente of ultimosPacientes">
-                    <div class="card-content">
-                    <span class="card-title spanPaciente" style="font-size: 22px">{{paciente.nome}}</span>
-                        <p class="spanPaciente">{{calcularIdadePaciente(paciente.dataNascimento)}} anos - <span>{{paciente.genero == 'M'? 'Masculino': 'Feminino'}}</span></p>
+                    <div class="card-content" style="padding: 20px 10px;">
+                    <span class="card-title spanPaciente" style="font-size: 16px">{{paciente.nome}}</span>
+                        <p class="spanPaciente" style="font-size: 14px" >{{calcularIdadePaciente(paciente.dataNascimento)}} anos <br/>  <span>{{paciente.genero == 'M'? 'Masculino': 'Feminino'}}</span></p>
                         <button (click)="verInformacoesPaciente(paciente.id)" class="btnPaciente mt-3">Ver informações</button>
                         <button class="btnPaciente mt-2 mb-3">Enviar mensagem</button>
                     </div>
