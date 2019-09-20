@@ -127,6 +127,7 @@ h2{
 }
 
 
+
 .containerShadow{
     box-shadow: 0px 1px 2px 1px #ddd;
     min-height: 400px;
@@ -220,15 +221,15 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
   }
 
  body .fc .fc-event:hover{
-     width: 300px;
-     height: 400px;
-     text-align: left;
-     color: white;
-     padding-left: 0;
-     z-index: 999;
-     margin-left: -100px;
-     border-radius: 5px;
-     transition: hover 0.4s;
+    width: 200px;
+    height: 400px;
+    text-align: right;
+    color: white;
+    padding-left: 0;
+    z-index: 999;
+    margin-left: -100px;
+    border-radius: 5px;
+    transition: hover 0.4s;
   }
 
 
@@ -284,10 +285,6 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
       padding: 10px;
   }
 
-  .ui-carousel-item.ui-widget-content{
-    
-  }
-
   body .fc td.ui-widget-content{
       background: rgb(247, 247, 247);
   }
@@ -323,6 +320,10 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
     font-weight: 200;
     text-shadow: none;
     color: #706b6b;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav{
+    border: none !important;
 }
 
 /*Fontes*/
@@ -364,7 +365,7 @@ body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
 }
 
 body, body .ui-widget{
-    font-family: labels;
+    font-family: serif;
 }
 
 @media (min-width: 768px){

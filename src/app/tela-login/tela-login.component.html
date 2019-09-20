@@ -3,38 +3,33 @@
             <div class="row">
                 
                     <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-1 tela-login-titulos text-center">
-                        <h1 style="font-size: 30px; margin-bottom: 40px;">Bem-vindo a Nutrisys</h1>
-                        <p style="font-size: 18px; margin-top: 50px;">Faça já sua conta e tenha o sistema de integração entre nutricionista e cliente.</p>
-                        <div *ngIf="!mostrarTelaCadastro ; else tituloCadastro">
-                                <h1 >Bem-vindo a SysNutri</h1>
-                                <p>Faça já sua conta e tenha o sistema de integração entre nutricionista e cliente.</p>
+                         <div *ngIf="!mostrarTelaCadastro ; else tituloCadastro">
+                                <h1  class="titulo-tela-login">Bem-vindo a SysNutri</h1>
+                                <p  class="titulo-tela-login" style="margin-top: 50px;">Faça já sua conta e tenha o sistema de integração entre nutricionista e cliente.</p>
                         </div>
                         <ng-template #tituloCadastro>
-                                <p>Preencha seus dados para ter seu primeiro acesso ao sistema</p>
+                                <p class="titulo-tela-login">Preencha seus dados para ter seu primeiro acesso ao sistema</p>
                         </ng-template>
                     </div>
 
                     <div class="mx-auto col-12 col-sm-10 col-md-5" *ngIf="!mostrarTelaCadastro ; else formularioCadastro">
                         <form  class="form-group tela-login-form" [formGroup]="formularioLogin" #f="ngForm" (ngSubmit)="onSubmit(f)" >
-<<<<<<< HEAD
-                        
-                            <label for="usuario">Usuario</label>
-=======
-                            <label for="usuario" style="font-size: 25px; color: #222;">Usuario</label>
->>>>>>> d39b134693c3d9d76d14b68c7146c49ceb6c1fa1
-                            <div class="ui-inputgroup">
+                            <label for="usuario" class="label-tela-login">Usuário</label>
+                            <div class="ui-inputgroup" style="height: 60px">
                                     <span class="ui-inputgroup-addon "><i class="pi pi-user" style="color: white;"></i></span>
                                     <input type="text" pInputText 
                                             placeholder="" 
                                             class="col-10" 
+                                            style="height: 58px; font-size: 20px"
                                             formControlName = "usuario">         
                             </div>
-                            <label for="senha" class="mt-3" style="font-size: 25px; color: #222">Senha</label>
-                            <div class="ui-inputgroup">
+                            <label for="senha" class="mt-3" class="label-tela-login mt-3">Senha</label>
+                            <div class="ui-inputgroup" style="height: 60px">
                                     <span class="ui-inputgroup-addon "><i class="pi pi-key" style="color: white"></i></span>
                                     <input type="password" pInputText 
                                             placeholder=""
                                             class="col-10" 
+                                            style="height: 58px; font-size: 20px"
                                             formControlName = "senha">         
                             </div>
                           
@@ -48,9 +43,9 @@
                      <ng-template #formularioCadastro>
   
                         <div class="mx-auto col-12 col-sm-10 col-md-5">
-                                <form  class="form-group tela-login-form">
+                                <form  class="form-group tela-login-form" style="padding: 30px 30px;">
                                     <p-messages [(value)]="msgs"></p-messages>
-                                    <label for="usuario">Nome</label>
+                                      <label for="usuario" class="label-tela-login">Nome</label>
                                     <div class="ui-inputgroup">
                                             <input type="text" pInputText 
                                                     placeholder="" 
@@ -58,7 +53,7 @@
                                                     name="nomeCadastro"
                                                     [(ngModel)] = "nomeCadastro">         
                                     </div>
-                                    <label for="usuario">Login</label>
+                                    <label for="usuario" class="label-tela-login">Login</label>
                                     <div class="ui-inputgroup">
                                             <input type="text" pInputText 
                                                     placeholder="" 
@@ -66,7 +61,7 @@
                                                     name="loginCadastro"
                                                     [(ngModel)] = "loginCadastro">         
                                     </div>
-                                    <label for="senha" class="mt-3">Senha</label>
+                                    <label for="senha" class="label-tela-login mt-3">Senha</label>
                                     <div class="ui-inputgroup">
                                             <input type="password" pInputText 
                                                     placeholder=""
@@ -74,7 +69,7 @@
                                                     name="senhaCadastro"
                                                     [(ngModel)] = "senhaCadastro">         
                                     </div>
-                                    <label for="senha" class="mt-3">Digite sua senha novamente</label>
+                                    <label for="senha" class="label-tela-login mt-3">Digite sua senha novamente:</label>
                                     <div class="ui-inputgroup">
                                             <input type="password" pInputText 
                                                     placeholder=""
@@ -84,9 +79,12 @@
                                                     [(ngModel)] = "senhaNovamenteCadastro">         
                                     </div>
                                     <p>{{mensagemErroCadastro}}</p>
-                                    <button type="submit" class="btn btn-success mt-5 mb-3" (click)="cadastrarNovoUsuario()" >
-                                                Cadastrar
-                                    </button>                   
+                                    <button type="submit" class="btn btn-success mt-5 mb-3"  (click)="abrirTelaLogar()" >
+                                        Voltar
+                                    </button>      
+                                    <button type="submit" class="btn btn-success mt-5 mb-3" style="float: right;" (click)="cadastrarNovoUsuario()" >
+                                        Cadastrar
+                                    </button>              
                                 </form>
                                
                                 

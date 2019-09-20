@@ -98,6 +98,7 @@ export class ConsultaComponent implements OnInit {
 
     public vincularDataFim(event: any): void{
         this.dataFim = event;
+        this.pesquisarConsulta();
     }
 
 

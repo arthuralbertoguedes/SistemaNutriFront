@@ -37,14 +37,18 @@ export class TelaLoginComponent implements OnInit {
               private _usuarioService: AutenticacaoService,
               private _messageService: MessageService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.mostrarTelaCadastro == false;
+   }
 
   abrirTelaCadastro(): void{
     this.mostrarTelaCadastro = true;
+    this.formularioLogin.reset();
   }
 
   abrirTelaLogar(): void{
     this.mostrarTelaCadastro = false;
+    this.formularioLogin.reset();
   }
 
   onSubmit(f : FormGroup): void{

@@ -2,7 +2,7 @@
     font-family: Poet;
     src: url("src/fonts/Poet.ttf");
 }
-/*Ficar com essa*/
+/* ESSA É A FONTE SUPER DESENHADA */
 @font-face {
     font-family: Signatra;
     src: url("src/fonts/Signatra.otf");
@@ -14,13 +14,13 @@
     height: 100%;
 }
 .tela-login-form{
-    margin: 5%;
-    padding: 10% 8%;
+    margin: 4%;
+    padding: 8% 8%;
     font-weight: 400;
-    font: 25px Signatra;
+    font: 25px titulo;
     border: 2px 2px 2px solid #ddd;
     background: #FAFAFA;
-    border-radius: 20px;
+    border-radius: 15px;
     -webkit-box-shadow: -5px 8px 20px 0px #777;
     -moz-box-shadow: -5px 8px 20px 0px #777;
     box-shadow: -5px 8px 20px 0px #777;
@@ -33,7 +33,6 @@
 .tela-login-titulos{
     padding: 5%;
     color: white;
-    font-family: Poet;
     text-shadow: 2px 2px 2px rgb(41, 39, 39);
 }
 .tela-login-titulos h1{
@@ -41,9 +40,9 @@
 }
 
 
-input, button{
+input, button, p{
     font-weight: 200 !important;
-    font-family: Poet;
+    font-family: span;
     font-size: 15px;
 }
 
@@ -55,4 +54,15 @@ input.ng-invalid.ng-dirty{
 }
 a{
     color: inherit !important;
+}
+
+.label-tela-login{
+    font-size: 15px; 
+    color: #222;
+}
+
+.titulo-tela-login{
+   font-family: Poet;
+   font-size: 20px;
+   margin-bottom: 40px;
 }
