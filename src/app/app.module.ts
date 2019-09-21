@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { TelaInicialModule } from './tela-inicial/tela-inicial.module';
-import { AuthguardService } from './guards/authguard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConsultaModule } from './consulta/consulta.module';
@@ -20,8 +19,9 @@ import { LembretesService } from './lembretes/lembretes.service';
 import { NovoLembreteComponent } from './lembretes/novo-lembrete/novo-lembrete.component';
 import { AutenticacaoService } from './autenticacao/usuario.service';
 import { HttpRequestInterceptor } from './autenticacao/httpRequestInterceptor.service';
-import {CarouselModule, Carousel} from 'primeng/carousel';
+import {CarouselModule} from 'primeng/carousel';
 import { MensagemService } from './mensagem/mensagem.service';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 
 @NgModule({
@@ -51,12 +51,12 @@ import { MensagemService } from './mensagem/mensagem.service';
     
   ],
   providers: [
-    AuthguardService,
     ConsultaService,
     PacienteService,
     LembretesService,
     AutenticacaoService,
     MensagemService,
+    AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestInterceptor,

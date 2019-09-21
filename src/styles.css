@@ -326,6 +326,31 @@ body .ui-tabmenu .ui-tabmenu-nav{
     border: none !important;
 }
 
+.container-cadastro{
+    margin-top: 95px !important;
+}
+
+.titulo-flutuante{
+    text-align: center;
+    max-width: 400px;
+    margin-left: calc(50% - 200px);
+    margin-top: -43px;
+    padding: 15px 0px 0px 0px;
+    z-index: 99999;
+    height: 45px;
+    border-radius: 5px;
+    background: radial-gradient(#71B280, #3e7c6d);
+    margin-bottom: 15px;
+}
+.titulo-flutuante > h3 {
+    color: white;
+}
+.titulo-flutuante::before{
+    border: 5px solid green;
+    height: 50px;
+    width: 2px;
+}
+
 /*Fontes*/
 @font-face {
     font-family: 'crystal';

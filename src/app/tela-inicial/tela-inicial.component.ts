@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '../../../node_modules/@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ export class TelaInicialComponent implements OnInit {
 
   public usuarioLogado: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
         this.setarInformacoesUsuarioLogado();
@@ -20,4 +21,9 @@ export class TelaInicialComponent implements OnInit {
   setarInformacoesUsuarioLogado(): void{
     this.usuarioLogado = localStorage.getItem("usuario_nome");
   } 
+
+  logout(): void{
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

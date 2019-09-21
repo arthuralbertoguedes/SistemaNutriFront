@@ -6,7 +6,6 @@ import {FieldsetModule} from 'primeng/fieldset';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NovoPacienteComponent } from './novo-paciente/novo-paciente.component';
 import { RouterModule } from '../../../node_modules/@angular/router';
-import { AuthguardService } from '../guards/authguard.service';
 import { ReactiveFormsModule, FormBuilder, FormsModule } from '../../../node_modules/@angular/forms';
 import { PacienteService } from './paciente.service';
 import { DataViewModule } from '../../../node_modules/primeng/dataview';
@@ -45,7 +44,7 @@ import { MessageService } from '../../../node_modules/primeng/api';
   exports: [
     PacienteComponent
   ],
-  providers: [AuthguardService,
+  providers: [
               FormBuilder,
               PacienteService,
               MessageService  ]
