@@ -52,8 +52,16 @@
 <section class="menuSuperior">
      <div class="row">
             <h1 class="logo">SYSNUTRI </h1>
-            <span class="tituloUsuarioMenuSuperior float-right p-3 ml-auto">Olá, {{usuarioLogado}}!</span>
-            <i class="material-icons tituloUsuarioMenuSuperior p-3  mr-4" (click)="logout();" style="cursor: pointer; color: white; font-size: 25px; height: 25px">highlight_off</i>
+             <span class="tituloUsuarioMenuSuperior float-right p-3 ml-auto">Olá, {{usuarioLogado}}!</span>
+    <!--        <div style=" width: 80px; height: 50px;">
+                <img src="../../assets/fotoNutricionista.png" alt="" class="img-fluid" style="height: 100%">
+            </div> -->
+            
+            <i class="material-icons tituloUsuarioMenuSuperior p-3 " style="cursor: pointer; color: white; font-size: 25px; height: 25px">notifications_active</i>
+            <i class="material-icons tituloUsuarioMenuSuperior p-3 " style="cursor: pointer; color: white; font-size: 25px; height: 25px">event</i>
+            <i class="material-icons tituloUsuarioMenuSuperior p-3 " style="cursor: pointer; color: white; font-size: 25px; height: 25px">email</i>
+            <span class=" p-3  mr-4" (click)="logout();" style="cursor: pointer; color: white; font-size: 17px; height: 25px">Sair</span>
+            
      </div>
 </section>
 

@@ -79,8 +79,8 @@
     border: rgb(49, 41, 41);
 }
 
-.tituloUsuarioMenuSuperior{
-  /*  font-family: bison;*/
+.tituloUsuarioMenuSuperior:hover{
+  color: rgb(231, 171, 59) !important;
 }
 
 .iconeMenuLateral{
