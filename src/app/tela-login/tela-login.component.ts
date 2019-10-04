@@ -55,7 +55,7 @@ export class TelaLoginComponent implements OnInit {
       let model = new Login();
       model.usuario = this.formularioLogin.value.usuario;
       model.senha   = this.formularioLogin.value.senha;
-
+      model.tipo = 1;
           this._usuarioService.buscarUsuario(model)
             .subscribe(res => {
                 this.setarDadosUsuario(res as Token);
@@ -78,6 +78,7 @@ export class TelaLoginComponent implements OnInit {
       novoUsuario.nome = this.nomeCadastro;
       novoUsuario.senha = this.senhaCadastro;
       novoUsuario.login = this.loginCadastro;
+      novoUsuario.tipo_usuario = 1;
       novoUsuario.status = 'A';
 
       this._usuarioService.salvarUsuario(novoUsuario)

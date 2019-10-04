@@ -7,6 +7,7 @@ import { Endereco } from '../../models/endereco.model';
 import { Router } from '../../../../node_modules/@angular/router';
 import { tradutorCalendario } from '../../shared/tradutor-calendario';
 import { Message, MessageService } from '../../../../node_modules/primeng/api';
+import { Usuario } from '../../models/usuario.model';
 @Component({
   selector: 'app-novo-paciente',
   templateUrl: './novo-paciente.component.html',
@@ -37,7 +38,9 @@ export class NovoPacienteComponent implements OnInit {
             'logradouro': [''],
             'genero': ['M'],
             'dataCadastro': [''],
-            'endereco': ['']
+            'endereco': [''],
+            'login': [''],
+            'senha': ['']
         }) 
         
     }   
@@ -49,7 +52,17 @@ export class NovoPacienteComponent implements OnInit {
     public salvar() : void{
         this.validarForm();
 
-        let modelSalvar = this.novoPacienteFormulario.value;
+        let usuario = new Usuario();
+        usuario.tipo_usuario = 2;
+        usuario.nome = this.novoPacienteFormulario.get('nome').value;
+        usuario.status = 'A';
+        usuario.login = this.novoPacienteFormulario.get('login').value;
+        usuario.senha = this.novoPacienteFormulario.get('senha').value;
+
+        let modelSalvar: Paciente = this.novoPacienteFormulario.value;
+
+        modelSalvar.usuario = usuario;
+
         this._pacienteService.salvar(modelSalvar).subscribe(
             (res)=>{
                 this.mostrarMensagemSucesso();
@@ -104,5 +117,6 @@ export class NovoPacienteComponent implements OnInit {
     limparFormulario(): void{
         this.novoPacienteFormulario.reset();
         this.novoPacienteFormulario.get('email').setValue('');
+        this.novoPacienteFormulario.get('genero').setValue('M');
     }
 }

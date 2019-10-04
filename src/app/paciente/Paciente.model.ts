@@ -1,5 +1,6 @@
 import { Anamnese } from '../models/anamnese.model';
 import { Endereco } from '../models/endereco.model';
+import { Usuario } from '../models/usuario.model';
 
 export class Paciente{
 
@@ -23,4 +24,5 @@ export class Paciente{
 
 	public endereco: Endereco;
 
+	public usuario: Usuario;
 }

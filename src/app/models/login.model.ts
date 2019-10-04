@@ -4,4 +4,5 @@ export class Login{
 
     public senha: string;
 
+    public tipo: number;
 }

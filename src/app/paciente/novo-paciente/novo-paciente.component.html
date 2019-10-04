@@ -111,15 +111,24 @@
                                                 <label for="logradouro">Logradouro</label>
                                         </div>
                                 </div>
-                                <!-- Upload -->
-                                <div class="row my-5">
-                                        <label for=""> Foto do Paciente</label>
-                                        <br/>
-                                        <p-fileUpload name="fotoPaciente[]"
-                                                auto="true"
-                                                chooseLabel="Escolha a Foto do Paciente"
-                                                customUpload="true" (uploadHandler)="myUploader($event)">
-                                        </p-fileUpload>
+                                <hr>
+                                <label for="" style="font-size: 15px; font-weight: 600;"> Dados do aplicativo</label>
+                                <div class="" >                       
+                                        <div class="col-4">                   
+                                                <br/>
+                                                <label for="login">Login</label>
+                                                <input id="login" 
+                                                        type="text" 
+                                                        class="validate"
+                                                        formControlName="login">
+                                        </div>
+                                        <div  class="col-4">
+                                                <label for="senha">Senha</label>
+                                                <input id="senha" 
+                                                        type="text" 
+                                                        class="validate"
+                                                        formControlName="senha">  
+                                        </div>               
                                 </div>
                                 <div class="row mt-3 ">
                                         <button class="btn waves-effect waves-light mx-3" 

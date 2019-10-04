@@ -10,4 +10,6 @@ export class Usuario{
 
     public status: string;
 
+    public tipo_usuario: number;
+
 }
