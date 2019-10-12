@@ -13,5 +13,8 @@
     min-height: 400px;
 }
 .card-content{
-    min-height: 120px;
+    min-height: 200px;
+}
+.card-reveal{
+    font-size: 12px;
 }

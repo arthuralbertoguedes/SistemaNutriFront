@@ -2,9 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '../../../node_modules/@angular/forms';
 import { Alimento } from './alimento.model';
 import { PlanoAlimentarService } from './plano-alimentar.service';
-import { SelectItem } from '../../../node_modules/primeng/api';
+import { SelectItem, MessageService } from '../../../node_modules/primeng/api';
 import { ItemPlanoAlimentar } from '../models/itemPlanoAlimentar.model';
 import { Refeicao } from '../models/refeicao.model';
+import { ItemRefeicao } from '../models/item-refeicao.model';
+import { PlanoAlimentar } from '../models/plano-alimentar.model';
+import { isHitsEqual } from '@fullcalendar/interaction/interactions/HitDragging';
 
 @Component({
   selector: 'plano-alimentar',
@@ -39,10 +42,13 @@ export class PlanoAlimentarComponent implements OnInit {
 
   public listaRefeicoes: Refeicao[] = [];
 
+  public itensRefeicao: ItemRefeicao[] = [];
+
   @Input() public pacienteEscolhido: any;
 
   constructor(private fb: FormBuilder,
-              private _service: PlanoAlimentarService) { 
+              private _service: PlanoAlimentarService,
+              private _messageService: MessageService) { 
                   
        this.inicializarDiasDaSemana();
 
@@ -70,6 +76,12 @@ export class PlanoAlimentarComponent implements OnInit {
           .subscribe( 
                 (res: any) => {
                     this.alimentosRetornados = res as Alimento[];
+                    this.alimentosRetornados.forEach(
+                        alimento => {
+                            if(alimento.descricao_preparacao != 'NAO SE APLICA')
+                                alimento.descricao += ' ' + alimento.descricao_preparacao;
+                        }
+                    );
                 },
                 erro => {
                 }
@@ -86,6 +98,13 @@ export class PlanoAlimentarComponent implements OnInit {
 
    adicionarItemPlanoAlimentar(): void{
 
+        //Adiciona o id do alimento na lista que será adicionada na refeição após clicar em adicionar refeição
+        
+        let itemRefeicao =  new ItemRefeicao();
+        itemRefeicao.alimento_id = this.alimentoSelecionado.id;
+        itemRefeicao.quantidade = this.planoAlimentarForm.get('quantidade').value + ' ' + ( <HTMLInputElement> document.getElementById('medida')).value;
+        this.itensRefeicao.push(itemRefeicao);
+        console.log(this.itensRefeicao);
         /*Adiciona alimento a lista/tabela*/
         let novoItemPlanoAlimentar = new ItemPlanoAlimentar();
         novoItemPlanoAlimentar.alimento       = this.alimentoSelecionado.descricao;
@@ -143,7 +162,7 @@ export class PlanoAlimentarComponent implements OnInit {
       refeicao.horario           = this.horarioRefeicaoSelecionado;
       refeicao.alimentosRefeicao = this.listaAlimentosRefeicao;
       refeicao.tipoRefeicao      = this.tipoRefeicaoSelecionado;
-      refeicao.diaDaSemana       = this.planoAlimentarForm.get('diasDaSemanaSelecionados').value;
+      refeicao.itensRefeicao     = this.itensRefeicao;
       
       this.listaRefeicoes.push(refeicao);
       console.log(this.listaRefeicoes)
@@ -153,7 +172,53 @@ export class PlanoAlimentarComponent implements OnInit {
       this.mostrarSecaoNovaRefeicao       = true;
       this.mostrarSecaoAdicionarAlimentos = false;
       this.itensPlanoAlimentar            = [];
-      this.listaAlimentosRefeicao         = []
+      this.listaAlimentosRefeicao         = [];
+      this.itensRefeicao                  = [];
   }
 
+
+    public salvar(): void{
+        let refeicao = new Refeicao();
+        let planoAlimentar = new PlanoAlimentar();
+
+        //Setando o nutricionista
+        let nutricionista_id = Number(localStorage.getItem("usuario_id"));
+
+        planoAlimentar.paciente_id = this.pacienteEscolhido.id;
+        planoAlimentar.data_horario_cadastro = new Date();
+        planoAlimentar.nutricionista_id = nutricionista_id;
+
+
+
+        planoAlimentar.refeicoes = this.listaRefeicoes;
+
+        this._service.salvar(planoAlimentar)
+            .subscribe(
+                res => {
+                    this.listaRefeicoes = [];
+                    this.mostrarMensagemSucesso();
+                },
+                erro => {
+                    this.mostrarMensagemErro();
+                }
+            );
+
+    }
+
+
+    mostrarMensagemSucesso(): void {
+        this._messageService.add({severity:'success', summary:'Plano Alimentar cadastrado com sucesso!'});
+          this.limparMensagem();
+      }
+    
+      mostrarMensagemErro(): void {
+          this._messageService.add({severity:'error', summary:'Ops! Algum problema aconteceu!'});
+          this.limparMensagem();
+      }
+    
+      limparMensagem(): void{
+          setTimeout(()=>{
+              this._messageService.clear();
+          },4000);
+      }
 }

@@ -167,7 +167,18 @@
             </div>
         </div>
 
-        
-        
+        <p-messages [(value)]="msgs"></p-messages>
+        <div class="col-12 mt-5">
+            <button class="btn waves-effect waves-light mr-auto" type="reset" name="action">Limpar
+                <i class="material-icons right" style="color: white;" >refresh</i>
+            </button>
+            <button class="btn waves-effect waves-light ml-auto float-right" 
+                    type="button" 
+                    name="action" 
+                    (click)="salvar()"
+                    >Salvar
+                    <i class="material-icons right" style="color: white;">send</i>
+            </button> 
+        </div>
     </form>
 </div>
