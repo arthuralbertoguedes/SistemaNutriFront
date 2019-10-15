@@ -62,6 +62,7 @@ export class NovoPacienteComponent implements OnInit {
         let modelSalvar: Paciente = this.novoPacienteFormulario.value;
 
         modelSalvar.usuario = usuario;
+        modelSalvar.nutricionista_id = Number(localStorage.getItem('usuario_id'));
 
         this._pacienteService.salvar(modelSalvar).subscribe(
             (res)=>{

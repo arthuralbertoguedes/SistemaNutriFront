@@ -101,7 +101,7 @@ export class PlanoAlimentarComponent implements OnInit {
         //Adiciona o id do alimento na lista que será adicionada na refeição após clicar em adicionar refeição
         
         let itemRefeicao =  new ItemRefeicao();
-        itemRefeicao.alimento_id = this.alimentoSelecionado.id;
+        itemRefeicao.alimento = this.alimentoSelecionado;
         itemRefeicao.quantidade = this.planoAlimentarForm.get('quantidade').value + ' ' + ( <HTMLInputElement> document.getElementById('medida')).value;
         this.itensRefeicao.push(itemRefeicao);
         console.log(this.itensRefeicao);

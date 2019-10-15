@@ -25,4 +25,6 @@ export class Paciente{
 	public endereco: Endereco;
 
 	public usuario: Usuario;
+	
+    public nutricionista_id: number;
 }

@@ -5,7 +5,7 @@ export class ItemRefeicao{
 
     public id: number;
 
-    public alimento_id: number;
+    public alimento: Alimento;
 
     public refeicao_id: number;
 
