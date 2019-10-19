@@ -55,7 +55,8 @@ export class AntropometriaComponent implements OnInit {
       'ombro': [''],
       'peitoral': [''],
       'cintura': [''],
-      'paciente': ['']
+      'paciente': [''],
+      'data': ['']
 
     })
   }
@@ -64,6 +65,9 @@ export class AntropometriaComponent implements OnInit {
     let paciente = new Paciente();
     paciente = this.paciente;
     this.antropometriaForm.get('paciente').setValue(paciente);
+    this.antropometriaForm.get('id').setValue(null);
+    let data = new Date();
+    this.antropometriaForm.get('data').setValue(data);
     this._antropometriaService.salvar(this.antropometriaForm.value).subscribe(
             res=>this.mostrarMensagemSucesso(),
             (erro)=>this.mostrarMensagemErro()

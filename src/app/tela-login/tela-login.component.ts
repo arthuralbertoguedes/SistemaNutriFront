@@ -52,20 +52,18 @@ export class TelaLoginComponent implements OnInit {
   }
 
   onSubmit(f : FormGroup): void{
-      let model = new Login();
-      model.usuario = this.formularioLogin.value.usuario;
-      model.senha   = this.formularioLogin.value.senha;
-      model.tipo = 1;
-          this._usuarioService.buscarUsuario(model)
-            .subscribe(res => {
-                this.setarDadosUsuario(res as Token);
-                },
-                (erro) => {
-                  this.mostrarMensagemErro("Login e/ou senha inválidos !");
-                }
-          
-            )
-      
+    let model = new Login();
+    model.usuario = this.formularioLogin.value.usuario;
+    model.senha   = this.formularioLogin.value.senha;
+    model.tipo = 1;
+    this._usuarioService.buscarUsuario(model)
+      .subscribe(res => {
+          this.setarDadosUsuario(res as Token);
+          },
+          (erro) => {
+            this.mostrarMensagemErro("Login e/ou senha inválidos !");
+          }
+      )
   }
 
   cadastrarNovoUsuario(): void{
