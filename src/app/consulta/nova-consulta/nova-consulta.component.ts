@@ -57,6 +57,7 @@ export class NovaConsultaComponent implements OnInit {
       let nomePaciente = event;
       this.pacienteService.listarPorNome(nomePaciente)
       .subscribe(res=>{
+                      console.log(res);
                       this.listaPacientes = res;
                 }
       );

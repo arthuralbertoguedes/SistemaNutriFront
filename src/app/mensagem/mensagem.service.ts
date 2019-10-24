@@ -16,4 +16,8 @@ export class MensagemService {
   public salvarMensagem(mensagem: Mensagem): Observable<Mensagem>{
       return this.http.post<Mensagem>(`${this.url}/mensagem/salvar`, mensagem);
   }
+
+  public buscarMensagens(idPaciente: number, idNutricionista: number): Observable<Mensagem[]>{
+    return this.http.get<Mensagem[]>(`${this.url}/mensagem/buscarMensagens/${idPaciente}/${idNutricionista}`);
+  }
 }

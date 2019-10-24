@@ -27,7 +27,7 @@ export const routes : Routes = [
         {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
         {path: 'lembretes', component: LembretesComponent, canActivate: [AuthGuardService]},
         {path: 'novo-lembrete', component: NovoLembreteComponent, canActivate: [AuthGuardService]},
-        {path: 'mensagens/:id', component: MensagemComponent, canActivate: [AuthGuardService]}
+        {path: 'mensagens', component: MensagemComponent, canActivate: [AuthGuardService]}
     ]
   },
   {path: '', redirectTo: '/login', pathMatch: 'full'},

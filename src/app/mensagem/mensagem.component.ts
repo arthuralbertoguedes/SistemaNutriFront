@@ -14,15 +14,19 @@ import { MensagemService } from './mensagem.service';
 export class MensagemComponent implements OnInit {
 
   public mensagem: string;
-  public pacienteEscolhido: Paciente;
+  public listaPacientes: Paciente[];
   public idadePaciente    : string;
+  public pacienteEscolhido: Paciente;
+  public usuarioId: number;
+  public mostrarHistorico: boolean = false;
+  public mensagens: Mensagem[] = [];
 
   constructor(private route: ActivatedRoute,
               private _pacienteService: PacienteService,
               private _mensagemService: MensagemService) { }
 
   ngOnInit() {
-    this.listarPacienteEscolhido(this.route.snapshot.params.id);
+     this.usuarioId = Number(localStorage.getItem('usuario_id'));
   }
 
   public calcularIdadePaciente(dataNascimento: string): void {
@@ -37,19 +41,11 @@ export class MensagemComponent implements OnInit {
     this.idadePaciente = idade.toString();
   }
 
-  listarPacienteEscolhido(id: String): void{
-    this._pacienteService.listarPorId(Number(id))
-      .subscribe(res => {
-           this.pacienteEscolhido = res;
-           this.calcularIdadePaciente(res.dataNascimento as string);
-        }
-      );
-   }
-
    salvar(): void{
 
     let mensagem = new Mensagem();
     let usuario = new Usuario();
+    usuario.id = this.usuarioId;
 
     //Setando informações para serem enviadas corretamente ao Java
     mensagem.foiLida  = false;
@@ -60,9 +56,34 @@ export class MensagemComponent implements OnInit {
     console.log(mensagem);
     this._mensagemService.salvarMensagem(mensagem)
       .subscribe(res =>{
+          this.mensagem = "";
           console.log(res);
       })
    }
 
-   
+   public listarPacientes(event): void{
+    let nomePaciente = event;
+    this._pacienteService.listarPorNome(nomePaciente)
+    .subscribe(res=>{
+                    this.listaPacientes = res;
+              }
+    );
+  }
+
+  public vincularPaciente(event): void{
+    this.pacienteEscolhido = event;
+  }
+
+  public abrirHistoricoMensagens(): void{
+     this.mostrarHistorico = true;
+
+     this._mensagemService.buscarMensagens(Number(this.pacienteEscolhido.id), this.usuarioId)
+        .subscribe(
+            res => {
+              console.log(res);
+              this.mensagens = res;
+            }
+        )
+  }
+    
 }
