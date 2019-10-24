@@ -52,7 +52,8 @@ export class MensagemComponent implements OnInit {
     mensagem.paciente = this.pacienteEscolhido;
     mensagem.mensagem = this.mensagem;
     mensagem.usuario  = usuario;
-
+    mensagem.remetente = 'nutricionista';
+    
     console.log(mensagem);
     this._mensagemService.salvarMensagem(mensagem)
       .subscribe(res =>{

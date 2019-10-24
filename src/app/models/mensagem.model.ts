@@ -15,4 +15,5 @@ export class Mensagem{
 
     public paciente: Paciente;
 
+    public remetente: string;
 }

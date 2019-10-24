@@ -9,7 +9,7 @@ margin-left: 15px;">
         <div class="row">     
             <div *ngIf="mensagens!= undefined && mensagens != null">
                 <p *ngFor="let mensagem of mensagens">
-                <span>{{mensagem.horario | date: 'dd/MM/yyyy HH:mm'}}: {{mensagem.paciente.nome}} diz - {{mensagem.mensagem}}</span>    
+                <span>{{mensagem.horario | date: 'dd/MM/yyyy HH:mm'}}: {{mensagem.remetente=='nutricionista'? mensagem.usuario.nome: mensagem.paciente.nome}} diz - {{mensagem.mensagem}}</span>    
                 </p>
             </div>
         </div>
